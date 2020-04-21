@@ -3,13 +3,15 @@ import React from "react"
 import { Link } from "gatsby"
 import { Styled, jsx } from "theme-ui"
 
+import Map from "../components/map"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <Map/>
+    {/* <SEO title="Home" />
     <Styled.h1>Hi people</Styled.h1>
     <Styled.p>Welcome to your new Gatsby site.</Styled.p>
     <Styled.p>Now go build something great.</Styled.p>
@@ -18,7 +20,7 @@ const IndexPage = () => (
     </div>
     <Styled.p>
       <Link to="/page-2/">Go to page 2</Link>
-    </Styled.p>
+    </Styled.p> */}
   </Layout>
 )
 
