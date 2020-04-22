@@ -1,6 +1,7 @@
 import React from 'react';
 import DeckGL from '@deck.gl/react';
 import { StaticMap } from 'react-map-gl';
+import '../css/mapbox-gl.css';
 
 const mapStyle = require('./style.json');
 
