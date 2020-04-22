@@ -1,27 +1,47 @@
 /** @jsx jsx */
-import React from "react"
-import { Link } from "gatsby"
-import { Styled, jsx } from "theme-ui"
+import React from 'react';
+import { Link } from 'gatsby';
+import { Styled, jsx } from 'theme-ui';
+import {
+  Container,
+  Accordion,
+  Checkbox,
+  Card,
+  Grid,
+  List,
+  Icon,
+  Header,
+} from 'semantic-ui-react';
 
-import Map from "../components/map"
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Map from '../components/map';
+import Layout from '../components/layout';
+import Image from '../components/image';
+import SEO from '../components/seo';
 
-const IndexPage = () => (
-  <Layout>
-    <Map/>
-    {/* <SEO title="Home" />
-    <Styled.h1>Hi people</Styled.h1>
-    <Styled.p>Welcome to your new Gatsby site.</Styled.p>
-    <Styled.p>Now go build something great.</Styled.p>
-    <div sx={{ maxWidth: 300, marginBottom: [3] }}>
-      <Image />
-    </div>
-    <Styled.p>
-      <Link to="/page-2/">Go to page 2</Link>
-    </Styled.p> */}
-  </Layout>
-)
+class IndexPage extends React.Component {
+  render() {
+    return (
+      <Layout>
+        <Map />
 
-export default IndexPage
+        <Container
+          style={{
+            position: 'absolute',
+            width: 240,
+            left: 30,
+            top: 160,
+            maxHeight: '70%',
+            zIndex: 1,
+            backgroundColor: '#fff',
+            pointerEvents: 'auto',
+            overflowY: 'auto',
+          }}
+        >
+          <p>Hello world!</p>
+        </Container>
+      </Layout>
+    );
+  }
+}
+
+export default IndexPage;

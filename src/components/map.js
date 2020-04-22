@@ -1,8 +1,8 @@
-import React from "react";
-import DeckGL from "@deck.gl/react";
-import { StaticMap } from "react-map-gl";
+import React from 'react';
+import DeckGL from '@deck.gl/react';
+import { StaticMap } from 'react-map-gl';
 
-const mapStyle = require('./style.json')
+const mapStyle = require('./style.json');
 
 const initialViewState = {
   longitude: -112.1861,
@@ -18,6 +18,6 @@ export default class Map extends React.Component {
       <DeckGL initialViewState={initialViewState} controller>
         <StaticMap mapStyle={mapStyle} mapOptions={{ hash: true }} />
       </DeckGL>
-    )
+    );
   }
 }
