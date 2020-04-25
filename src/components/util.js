@@ -82,3 +82,23 @@ export function getNaipUrl(options) {
   }
   return baseUrl + params.toString();
 }
+
+/**
+ * Get MODIS Tile urls for date
+ * @param {object} options {dateStr: str}
+ */
+export function getModisUrls(options) {
+  const { dateStr = '2018-06-01' } = options || {};
+
+  // From https://github.com/nasa-gibs/gibs-web-examples/blob/8cd157424abd98d0b3463b457579eb0e62e1cdd2/examples/mapbox-gl/webmercator-epsg3857.js#L22-L24
+  const tilePath =
+    'wmts/epsg3857/best/' +
+    'MODIS_Terra_CorrectedReflectance_TrueColor/default/' +
+    `${dateStr}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg`;
+
+  return [
+    'https://gibs-a.earthdata.nasa.gov/' + tilePath,
+    'https://gibs-b.earthdata.nasa.gov/' + tilePath,
+    'https://gibs-c.earthdata.nasa.gov/' + tilePath,
+  ];
+}
