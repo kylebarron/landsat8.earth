@@ -37,7 +37,7 @@ export function getLandsatUrl(options) {
     y,
     z,
     color_ops,
-  } = options;
+  } = options || {};
   const bandsArray = Array.isArray(bands) ? bands : [bands];
   const params = new URLSearchParams({
     url: mosaicUrl,
@@ -64,7 +64,7 @@ export function getNaipUrl(options) {
     y = null,
     z = null,
     color_ops = 'sigmoidal RGB 4 0.5, saturation 1.25',
-  } = options;
+  } = options || {};
   const params = new URLSearchParams({
     url: mosaicUrl,
     color_ops,

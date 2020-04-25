@@ -15,7 +15,7 @@ export default function NAIPLayer(props) {
       tiles={[tileUrl]}
       tileSize={512}
       minzoom={12}
-      minzoom={16}
+      maxzoom={16}
       attribution="USDA FSA"
     >
       <Layer

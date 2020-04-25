@@ -3,7 +3,14 @@ import { COORDINATE_SYSTEM } from '@deck.gl/core';
 import { load } from '@loaders.gl/core';
 import { TileLayer } from '@deck.gl/geo-layers';
 import { getNaipUrl } from '../util';
-import { getTerrainUrl, loadTerrain, getMeshMaxError } from './util';
+import {
+  getTerrainUrl,
+  loadTerrain,
+  getMeshMaxError,
+  getMercatorModelMatrix,
+} from './util';
+
+const DUMMY_DATA = [1];
 
 export default function NAIPTerrainTileLayer(props) {
   const {
@@ -71,7 +78,7 @@ function renderSubLayers(props) {
       texture,
       getPolygonOffset: null,
       coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
-      modelMatrix: getModelMatrix(tile),
+      modelMatrix: getMercatorModelMatrix(tile),
       getPosition: d => [0, 0, 0],
       // Color to use if surfaceImage is unavailable
       getColor: [255, 255, 255],
