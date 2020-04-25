@@ -118,7 +118,8 @@ function renderSubLayers(props) {
   return [
     new BandsSimpleMeshLayer(props, {
       // NOTE: currently you need to set each sublayer id so they don't conflict
-      id: `terrain-simple-mesh-layer-${tile.x}-${tile.y}-${tile.z}`,
+      // NOTE: is there an id on props?
+      id: `${props.id}-${tile.x}-${tile.y}-${tile.z}`,
       data: DUMMY_DATA,
       mesh,
       image_r,

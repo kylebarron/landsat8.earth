@@ -1,11 +1,3 @@
-export const TERRAIN_IMAGE = `https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png`;
-
-export function getTerrainUrl({ x, y, z }) {
-  return TERRAIN_IMAGE.replace('{x}', x)
-    .replace('{y}', y)
-    .replace('{z}', z);
-}
-
 // Attempt at worldwide mosaic
 export const LANDSAT_MOSAIC_URL =
   's3://kylebarron-landsat-test/mosaics/8113f57876010a63aadacef4eac6d010d10c9aafcf36a5ece064ea7f.json.gz';
@@ -67,35 +59,13 @@ export function getNaipUrl(options) {
   // Don't replace string by default, so that it can be passed as a Mapbox tile
   // url
   let baseUrl = `https://naip-lambda.kylebarron.dev/{z}/{x}/{y}@2x.jpg?`;
-  
+
   // If x, y, z are passsed fill them into url template
   if (x && y && z) {
-      baseUrl = baseUrl
-        .replace('{x}', x)
-        .replace('{y}', y)
-        .replace('{z}', z);
+    baseUrl = baseUrl
+      .replace('{x}', x)
+      .replace('{y}', y)
+      .replace('{z}', z);
   }
   return baseUrl + params.toString();
-}
-
-/**
- * Decoder for AWS Terrain Tiles
- */
-export const ELEVATION_DECODER = {
-  rScaler: 256,
-  gScaler: 1,
-  bScaler: 1 / 256,
-  offset: -32768,
-};
-
-/**
- * get mesh max error for z value
- * @param {int} z mercator tile z coord
- * @param {float} multiplier multipler applied to default error
- *
- * Uses suggestion from here
- * https://www.linkedin.com/pulse/fast-cesium-terrain-rendering-new-quantized-mesh-output-alvaro-huarte/
- */
-export function getMeshMaxError(z, multiplier = 0.4) {
-  return (77067.34 / (1 << z)) * multiplier;
 }
