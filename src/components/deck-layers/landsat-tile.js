@@ -2,7 +2,7 @@ import { TileLayer } from '@deck.gl/geo-layers';
 import {
   BandsBitmapLayer,
   PanBandsBitmapLayer,
-} from '@kylebarron/bands-bitmap-layer';
+} from '@kylebarron/deck.gl-extended-layers';
 import { loadImageArray } from '@loaders.gl/images';
 import { Texture2D } from '@luma.gl/core';
 import GL from '@luma.gl/constants';

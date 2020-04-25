@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@emotion/core": "^10.0.22",
+    "@kylebarron/deck.gl-extended-layers": "^0.1.0",
     "@mdx-js/react": "^1.5.1",
     "@theme-ui/components": "^0.3.1",
     "@theme-ui/presets": "^0.3.0",

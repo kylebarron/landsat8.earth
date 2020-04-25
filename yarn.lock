@@ -1310,6 +1310,13 @@
   dependencies:
     core-js "^2.5.7"
 
+"@kylebarron/deck.gl-extended-layers@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@kylebarron/deck.gl-extended-layers/-/deck.gl-extended-layers-0.1.0.tgz#4b01d8e33f157e6750d22619305330292357b066"
+  integrity sha512-n6B1q5vPy4NnYnm93J9Q7uQL106P2dfaBXQ5ruTHv7+jRAw2vJYfZ96tzIVCSyxdcAeQJ/gvOtnOB/dVEgifxw==
+  dependencies:
+    "@luma.gl/constants" "^8.1.0"
+
 "@loaders.gl/3d-tiles@^2.1.1":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@loaders.gl/3d-tiles/-/3d-tiles-2.1.2.tgz#a518d60e2043ddea58546c10a5d132a15d44798c"
@@ -1396,7 +1403,7 @@
     "@math.gl/geospatial" "^3.1.2"
     "@probe.gl/stats" "^3.2.1"
 
-"@luma.gl/constants@8.1.1":
+"@luma.gl/constants@8.1.1", "@luma.gl/constants@^8.1.0":
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/@luma.gl/constants/-/constants-8.1.1.tgz#75ad54d9ccbb92e21e12d8b16619f94da6661204"
   integrity sha512-QasDQorHeggwLCsyaBUZd58hUjWX0785dIjb8YPJto22d/Swcg2j4SAvNOq9aD5c0MUkzXoBWvrhThLIzxn8qA==
