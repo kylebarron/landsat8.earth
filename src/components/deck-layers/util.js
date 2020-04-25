@@ -52,7 +52,7 @@ export function loadTerrain({
 /**
  * Decoder for AWS Terrain Tiles
  */
-const ELEVATION_DECODER = {
+export const ELEVATION_DECODER = {
   rScaler: 256,
   gScaler: 1,
   bScaler: 1 / 256,
