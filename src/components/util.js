@@ -1,8 +1,8 @@
 // Attempt at worldwide mosaic
-export const LANDSAT_MOSAIC_URL =
+export const DEFAULT_LANDSAT_MOSAIC_URL =
   's3://kylebarron-landsat-test/mosaics/8113f57876010a63aadacef4eac6d010d10c9aafcf36a5ece064ea7f.json.gz';
 
-export const NAIP_MOSAIC_URL =
+export const DEFAULT_NAIP_MOSAIC_URL =
   'dynamodb://us-west-2/7610d6d77fca346802fb21b89668cb12ef3162a31eb71734a8aaf5de';
 
 /**
@@ -30,7 +30,14 @@ function landsatColorOps(nBands) {
  * color_ops: Custom color_ops rio-color string
  */
 export function getLandsatUrl(options) {
-  const { bands, mosaicUrl = LANDSAT_MOSAIC_URL, x, y, z, color_ops } = options;
+  const {
+    bands,
+    mosaicUrl = DEFAULT_LANDSAT_MOSAIC_URL,
+    x,
+    y,
+    z,
+    color_ops,
+  } = options;
   const bandsArray = Array.isArray(bands) ? bands : [bands];
   const params = new URLSearchParams({
     url: mosaicUrl,
@@ -51,10 +58,16 @@ export function getLandsatUrl(options) {
  * color_ops: Custom color_ops rio-color string
  */
 export function getNaipUrl(options) {
-  const { mosaicUrl = NAIP_MOSAIC_URL, x, y, z, color_ops } = options;
+  const {
+    mosaicUrl = DEFAULT_NAIP_MOSAIC_URL,
+    x = null,
+    y = null,
+    z = null,
+    color_ops = 'sigmoidal RGB 4 0.5, saturation 1.25',
+  } = options;
   const params = new URLSearchParams({
     url: mosaicUrl,
-    color_ops: color_ops || 'sigmoidal RGB 4 0.5, saturation 1.25',
+    color_ops,
   });
   // Don't replace string by default, so that it can be passed as a Mapbox tile
   // url
