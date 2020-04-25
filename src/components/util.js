@@ -64,7 +64,17 @@ export function getNaipUrl(options) {
     url: mosaicUrl,
     color_ops: color_ops || 'sigmoidal RGB 4 0.5, saturation 1.25',
   });
-  let baseUrl = `https://naip-lambda.kylebarron.dev/${z}/${x}/${y}@2x.jpg?`;
+  // Don't replace string by default, so that it can be passed as a Mapbox tile
+  // url
+  let baseUrl = `https://naip-lambda.kylebarron.dev/{z}/{x}/{y}@2x.jpg?`;
+  
+  // If x, y, z are passsed fill them into url template
+  if (x && y && z) {
+      baseUrl = baseUrl
+        .replace('{x}', x)
+        .replace('{y}', y)
+        .replace('{z}', z);
+  }
   return baseUrl + params.toString();
 }
 
