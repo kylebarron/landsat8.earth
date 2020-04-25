@@ -26,6 +26,7 @@ export function MODISLayer(props) {
       tileSize={256}
       minzoom={0}
       minzoom={8}
+      attribution="NASA EOSDIS GIBS"
     >
       <Layer id="gibs-modis-raster" type="raster" maxzoom={7} />
     </Source>

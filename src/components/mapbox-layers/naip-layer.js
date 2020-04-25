@@ -16,6 +16,7 @@ export function NAIPLayer(props) {
       tileSize={512}
       minzoom={12}
       minzoom={16}
+      attribution="USDA FSA"
     >
       <Layer id="naip-raster" type="raster" />
     </Source>
