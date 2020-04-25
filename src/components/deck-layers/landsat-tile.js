@@ -15,7 +15,7 @@ const DEFAULT_TEXTURE_PARAMETERS = {
   [GL.TEXTURE_WRAP_T]: GL.CLAMP_TO_EDGE,
 };
 
-export function LandsatTileLayer(props) {
+export default function LandsatTileLayer(props) {
   const {
     gl,
     minZoom = 7,

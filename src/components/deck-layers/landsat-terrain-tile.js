@@ -25,7 +25,7 @@ const DUMMY_DATA = [1];
 
 // TODO: update to have one terrain tile layer switching image urls at different
 // z's instead of separate tile layers?
-export function LandsatTerrainTileLayer(props) {
+export default function LandsatTerrainTileLayer(props) {
   const {
     gl,
     minZoom = 7,

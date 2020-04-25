@@ -5,7 +5,7 @@ import { TileLayer } from '@deck.gl/geo-layers';
 import { getNaipUrl } from '../util';
 import { getTerrainUrl, loadTerrain, getMeshMaxError } from './util';
 
-export function NAIPTerrainTileLayer(props) {
+export default function NAIPTerrainTileLayer(props) {
   const {
     minZoom = 12,
     maxZoom = 17,
