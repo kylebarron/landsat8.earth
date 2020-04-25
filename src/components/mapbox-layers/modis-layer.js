@@ -7,7 +7,7 @@ import { getModisUrls } from '../util';
  * @param {object} props props
  */
 export default function MODISLayer(props) {
-  const { dateStr = '2018-06-01', visible = true } = props;
+  const { dateStr = '2018-06-01', visible = true, beforeId } = props;
   const tileUrls = getModisUrls({ dateStr });
 
   return (
@@ -27,6 +27,7 @@ export default function MODISLayer(props) {
         layout={{
           visibility: visible ? 'visible' : 'none',
         }}
+        beforeId={beforeId}
       />
     </Source>
   );

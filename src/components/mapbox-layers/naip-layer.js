@@ -6,7 +6,7 @@ import { Source, Layer } from 'react-map-gl';
  * @param {object} props props
  */
 export default function NAIPLayer(props) {
-  const { tileUrl, visible = true } = props;
+  const { tileUrl, visible = true, beforeId } = props;
 
   return (
     <Source
@@ -24,6 +24,7 @@ export default function NAIPLayer(props) {
         layout={{
           visibility: visible ? 'visible' : 'none',
         }}
+        beforeId={beforeId}
       />
     </Source>
   );
