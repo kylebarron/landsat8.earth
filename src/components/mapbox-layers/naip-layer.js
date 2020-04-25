@@ -5,7 +5,7 @@ import { Source, Layer } from 'react-map-gl';
  * Render high-zoom NAIP imagery as a Mapbox layer
  * @param {object} props props
  */
-export function NAIPLayer(props) {
+export default function NAIPLayer(props) {
   const { tileUrl, visible = true } = props;
 
   return (

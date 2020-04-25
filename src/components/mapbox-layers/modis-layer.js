@@ -5,7 +5,7 @@ import { Source, Layer } from 'react-map-gl';
  * Render low-zoom MODIS imagery through GIBS
  * @param {object} props props
  */
-export function MODISLayer(props) {
+export default function MODISLayer(props) {
   const { dateStr = '2018-06-01', visible = true } = props;
 
   // From https://github.com/nasa-gibs/gibs-web-examples/blob/8cd157424abd98d0b3463b457579eb0e62e1cdd2/examples/mapbox-gl/webmercator-epsg3857.js#L22-L24
