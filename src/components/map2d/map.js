@@ -46,6 +46,7 @@ export default class Map extends React.Component {
     const layers = [
       new LandsatTileLayer({
         id: 'landsat-tile-layer',
+        gl,
       }),
     ];
 

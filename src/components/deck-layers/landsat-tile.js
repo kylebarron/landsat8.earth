@@ -6,7 +6,7 @@ import {
 import { loadImageArray } from '@loaders.gl/images';
 import { Texture2D } from '@luma.gl/core';
 import GL from '@luma.gl/constants';
-import { getLandsatUrl } from './util';
+import { getLandsatUrl } from '../util';
 
 const DEFAULT_TEXTURE_PARAMETERS = {
   [GL.TEXTURE_MIN_FILTER]: GL.LINEAR_MIPMAP_LINEAR,
@@ -25,6 +25,7 @@ export default function LandsatTileLayer(props) {
     color_ops,
     rgbBands,
   } = props || {};
+
   return new TileLayer({
     id,
     minZoom,
