@@ -6,7 +6,7 @@ import { Source, Layer } from 'react-map-gl';
  * @param {object} props props
  */
 export function NAIPLayer(props) {
-  const { tileUrl } = props;
+  const { tileUrl, visible = true } = props;
 
   return (
     <Source
@@ -18,7 +18,13 @@ export function NAIPLayer(props) {
       minzoom={16}
       attribution="USDA FSA"
     >
-      <Layer id="naip-raster" type="raster" />
+      <Layer
+        id="naip-raster"
+        type="raster"
+        layout={{
+          visibility: visible ? 'visible' : 'none',
+        }}
+      />
     </Source>
   );
 }
