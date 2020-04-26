@@ -1,10 +1,12 @@
 import React from 'react';
 import DeckGL from '@deck.gl/react';
 import { MapboxLayer } from '@deck.gl/mapbox';
+import { PostProcessEffect } from '@deck.gl/core';
 import { StaticMap } from 'react-map-gl';
 import { getNaipUrl } from '../util';
 import { NAIPLayer, MODISLayer } from '../mapbox-layers';
 import { LandsatTileLayer } from '../deck-layers';
+import { vibrance } from '@luma.gl/shadertools';
 
 // You'll get obscure errors without including the Mapbox GL CSS
 import '../../css/mapbox-gl.css';
@@ -18,6 +20,10 @@ const initialViewState = {
   pitch: 0,
   bearing: 0,
 };
+
+const vibranceEffect = new PostProcessEffect(vibrance, {
+  amount: 1,
+});
 
 export default class Map extends React.Component {
   state = {
@@ -71,6 +77,8 @@ export default class Map extends React.Component {
         onViewStateChange={this.onViewStateChange}
         controller
         onWebGLInitialized={this._onWebGLInitialized}
+        // Weird effects with MapboxLayer
+        // effects={[vibranceEffect]}
       >
         {gl && (
           <StaticMap
