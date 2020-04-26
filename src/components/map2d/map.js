@@ -2,7 +2,6 @@ import React from 'react';
 import DeckGL from '@deck.gl/react';
 import { MapboxLayer } from '@deck.gl/mapbox';
 import { StaticMap } from 'react-map-gl';
-import { pushContextState, popContextState } from '@luma.gl/gltools';
 import { getNaipUrl } from '../util';
 import { NAIPLayer, MODISLayer } from '../mapbox-layers';
 import { LandsatTileLayer } from '../deck-layers';
@@ -15,7 +14,7 @@ const mapStyle = require('./style.json');
 const initialViewState = {
   longitude: -112.1861,
   latitude: 36.1284,
-  zoom: 12.1,
+  zoom: 11.5,
   pitch: 0,
   bearing: 0,
 };
@@ -27,7 +26,7 @@ export default class Map extends React.Component {
     naipTileUrl: getNaipUrl(),
     
     // Show NAIP imagery at zoom >= 12
-    useNaip: false
+    useNaip: true
   };
 
   // DeckGL and mapbox will both draw into this WebGL context
@@ -56,6 +55,7 @@ export default class Map extends React.Component {
       new LandsatTileLayer({
         id: 'landsat-tile-layer',
         gl,
+        rgbBands: [4, 3, 2],
         visible: viewState.zoom >= 7 && (viewState.zoom <= 12 || !useNaip),
       }),
     ];
@@ -68,8 +68,6 @@ export default class Map extends React.Component {
         }}
         layers={layers}
         initialViewState={initialViewState}
-        onBeforeRender={() => pushContextState(gl)}
-        onAfterRender={() => popContextState(gl)}
         onViewStateChange={this.onViewStateChange}
         controller
         onWebGLInitialized={this._onWebGLInitialized}
