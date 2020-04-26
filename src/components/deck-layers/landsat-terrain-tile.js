@@ -49,9 +49,7 @@ export default function LandsatTerrainTileLayer(props) {
     id,
     minZoom,
     maxZoom,
-    
-    // Don't load data when visibility off
-    getTileData: visible ? _getTileData : () => Promise.resolve(null),
+    getTileData: _getTileData,
     renderSubLayers,
     visible,
   });
@@ -69,6 +67,13 @@ async function getTileData(options) {
     rgbBands = [4, 3, 2],
   } = options || {};
   const pan = z >= 12;
+
+  // TODO: don't load unnecessary tiles
+  // NOTE: if I return false, that gets cached, so that when you zoom out you
+  // see nothing.
+  // if (!visible) {
+  //   return false
+  // }
 
   // Load terrain
   const terrainImage = getTerrainUrl({ x, y, z });
