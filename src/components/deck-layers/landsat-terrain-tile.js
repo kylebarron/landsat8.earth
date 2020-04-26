@@ -2,17 +2,13 @@ import { COORDINATE_SYSTEM } from '@deck.gl/core';
 import { load } from '@loaders.gl/core';
 import { TerrainLoader } from '@loaders.gl/terrain';
 import { TileLayer } from '@deck.gl/geo-layers';
-import {
-  ELEVATION_DECODER,
-  getLandsatUrl,
-  getTerrainUrl,
-  getMeshMaxError,
-} from './util';
+import { ELEVATION_DECODER, getTerrainUrl, getMeshMaxError } from './util';
 import { Matrix4 } from 'math.gl';
 import { BandsSimpleMeshLayer } from '@kylebarron/deck.gl-extended-layers';
 import { loadImageArray } from '@loaders.gl/images';
 import GL from '@luma.gl/constants';
 import { Texture2D } from '@luma.gl/core';
+import { getLandsatUrl } from '../util';
 
 const DEFAULT_TEXTURE_PARAMETERS = {
   [GL.TEXTURE_MIN_FILTER]: GL.LINEAR_MIPMAP_LINEAR,
