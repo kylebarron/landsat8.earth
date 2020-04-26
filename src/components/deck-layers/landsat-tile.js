@@ -18,12 +18,15 @@ const DEFAULT_TEXTURE_PARAMETERS = {
 export default function LandsatTileLayer(props) {
   const {
     gl,
-    minZoom = 7,
+    // Bug in TileLayer? with minZoom=7, zoom 7 tiles are loaded when map is at
+    // zoom >= 6.
+    minZoom = 8,
     maxZoom = 12,
     id = 'landsat-tile-layer',
     mosaicUrl,
     color_ops,
     rgbBands,
+    visible = true,
   } = props || {};
 
   return new TileLayer({
@@ -40,6 +43,7 @@ export default function LandsatTileLayer(props) {
         })
       ),
     renderSubLayers,
+    visible,
   });
 }
 

@@ -21,6 +21,7 @@ export default function NAIPLayer(props) {
       <Layer
         id="naip-raster"
         type="raster"
+        minzoom={12}
         layout={{
           visibility: visible ? 'visible' : 'none',
         }}

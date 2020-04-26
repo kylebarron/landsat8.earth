@@ -22,7 +22,12 @@ const initialViewState = {
 
 export default class Map extends React.Component {
   state = {
+    gl: null,
+    viewState: initialViewState,
     naipTileUrl: getNaipUrl(),
+    
+    // Show NAIP imagery at zoom >= 12
+    useNaip: false
   };
 
   // DeckGL and mapbox will both draw into this WebGL context
@@ -41,12 +46,17 @@ export default class Map extends React.Component {
     );
   };
 
+  onViewStateChange = ({viewState}) => {
+    this.setState({viewState})
+  }
+
   render() {
-    const { gl, naipTileUrl } = this.state;
+    const { gl, naipTileUrl, viewState, useNaip } = this.state;
     const layers = [
       new LandsatTileLayer({
         id: 'landsat-tile-layer',
         gl,
+        visible: viewState.zoom >= 7 && (viewState.zoom <= 12 || !useNaip),
       }),
     ];
 
@@ -60,6 +70,7 @@ export default class Map extends React.Component {
         initialViewState={initialViewState}
         onBeforeRender={() => pushContextState(gl)}
         onAfterRender={() => popContextState(gl)}
+        onViewStateChange={this.onViewStateChange}
         controller
         onWebGLInitialized={this._onWebGLInitialized}
       >
@@ -81,7 +92,7 @@ export default class Map extends React.Component {
             />
             <NAIPLayer
               tileUrl={naipTileUrl}
-              visible={true}
+              visible={useNaip}
               beforeId="waterway_other"
             />
           </StaticMap>

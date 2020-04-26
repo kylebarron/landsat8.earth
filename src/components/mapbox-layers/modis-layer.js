@@ -17,7 +17,7 @@ export default function MODISLayer(props) {
       tiles={tileUrls}
       tileSize={256}
       minzoom={0}
-      minzoom={8}
+      maxzoom={8}
       attribution="NASA EOSDIS GIBS"
     >
       <Layer
