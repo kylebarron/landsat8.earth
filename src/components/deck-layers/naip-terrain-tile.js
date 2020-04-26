@@ -14,8 +14,10 @@ const DUMMY_DATA = [1];
 
 export default function NAIPTerrainTileLayer(props) {
   const {
-    minZoom = 12,
-    maxZoom = 17,
+    // Bug in TileLayer? with minZoom=7, zoom 7 tiles are loaded when map is at
+    // zoom >= 6.
+    minZoom = 13,
+    maxZoom = 16,
     id = 'naip-terrain-tile-layer',
     mosaicUrl,
     meshMultiplier,
@@ -66,9 +68,21 @@ function getTileData(options) {
 function renderSubLayers(props) {
   const { data, tile } = props;
 
-  // Resolve promises
-  const mesh = data.then(result => result && result[0]);
-  const texture = data.then(result => result && result[1]);
+  if (!data) {
+    return;
+  }
+
+  // Resolve promise if necessary
+  let mesh = null;
+  let texture = null;
+  if (Array.isArray(data)) {
+    mesh = data[0];
+    texture = data[1];
+  } else if (data) {
+    mesh = data.then(result => result && result[0]);
+    texture = data.then(result => result && result[1]);
+  }
+
   return [
     new SimpleMeshLayer(props, {
       // NOTE: currently you need to set each sublayer id so they don't conflict

@@ -14,7 +14,7 @@ import '../../css/mapbox-gl.css';
 const INITIAL_VIEW_STATE = {
   latitude: 46.21,
   longitude: -122.18,
-  zoom: 11.5,
+  zoom: 12.5,
   bearing: 140,
   pitch: 60,
 };
@@ -26,18 +26,32 @@ const vibranceEffect = new PostProcessEffect(vibrance, {
 export default class Map extends React.Component {
   state = {
     gl: null,
+    viewState: INITIAL_VIEW_STATE,
+    useNaip: true,
   };
 
   _onWebGLInitialized = gl => {
     this.setState({ gl });
   };
 
+  onViewStateChange = ({ viewState }) => {
+    this.setState({ viewState });
+  };
+
   render() {
-    const { gl } = this.state;
+    const { gl, viewState, useNaip } = this.state;
+
     let layers = gl && [
-      MODISTerrainTileLayer(),
-      LandsatTerrainTileLayer({ gl }),
-      NAIPTerrainTileLayer(),
+      MODISTerrainTileLayer({
+        visible: viewState.zoom <= 7,
+      }),
+      LandsatTerrainTileLayer({
+        gl,
+        visible: viewState.zoom >= 7 && (viewState.zoom <= 12 || !useNaip),
+      }),
+      NAIPTerrainTileLayer({
+        visible: viewState.zoom >= 12 && useNaip,
+      }),
     ];
 
     // TODO: only use effects for landsat
@@ -45,6 +59,7 @@ export default class Map extends React.Component {
       <DeckGL
         onWebGLInitialized={this._onWebGLInitialized}
         initialViewState={INITIAL_VIEW_STATE}
+        onViewStateChange={this.onViewStateChange}
         controller
         layers={layers}
         effects={[vibranceEffect]}

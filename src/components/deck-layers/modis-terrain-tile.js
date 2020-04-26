@@ -3,7 +3,7 @@ import { TERRAIN_IMAGE, ELEVATION_DECODER } from './util';
 import { getModisUrls } from '../util';
 
 export default function MODISTerrainTileLayer(props) {
-  const { dateStr, minZoom = 0, maxZoom = 7 } = props || {};
+  const { dateStr, minZoom = 0, maxZoom = 7, visible } = props || {};
   const tileUrls = getModisUrls({ dateStr });
 
   return new TerrainLayer({
@@ -12,8 +12,11 @@ export default function MODISTerrainTileLayer(props) {
     maxZoom,
     strategy: 'no-overlap',
     elevationDecoder: ELEVATION_DECODER,
-    elevationData: TERRAIN_IMAGE,
-    texture: tileUrls[0],
+    
+    // Take away image/elevation url to stop loading
+    elevationData: visible ? TERRAIN_IMAGE : '',
+    texture: visible ? tileUrls[0] : '',
     color: [255, 255, 255],
+    visible,
   });
 }

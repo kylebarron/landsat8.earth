@@ -31,22 +31,29 @@ export default function LandsatTerrainTileLayer(props) {
     meshMultiplier,
     color_ops,
     rgbBands,
+    visible,
   } = props || {};
+
+  const _getTileData = args =>
+    getTileData(
+      Object.assign(args, {
+        gl,
+        mosaicUrl,
+        meshMultiplier,
+        color_ops,
+        rgbBands,
+      })
+    );
+
   return new TileLayer({
     id,
     minZoom,
     maxZoom,
-    getTileData: args =>
-      getTileData(
-        Object.assign(args, {
-          gl,
-          mosaicUrl,
-          meshMultiplier,
-          color_ops,
-          rgbBands,
-        })
-      ),
+    
+    // Don't load data when visibility off
+    getTileData: visible ? _getTileData : () => Promise.resolve(null),
     renderSubLayers,
+    visible,
   });
 }
 
@@ -100,16 +107,34 @@ function renderSubLayers(props) {
   const { z } = tile;
   const pan = z >= 12;
 
-  // Resolve (separate?) promises
-  const textures = data.then(result => result && result[0]);
-  const image_r = textures.then(result => result && result[0]);
-  const image_g = textures.then(result => result && result[1]);
-  const image_b = textures.then(result => result && result[2]);
-  let image_pan;
-  if (pan) {
-    image_pan = textures.then(result => result && result[3]);
+  if (!data) {
+    return;
   }
-  const mesh = data.then(result => result && result[1]);
+
+  // Resolve promise if needed
+  // Apparently when overzooming, data is provided not as a promise
+  let image_r, image_g, image_b, image_pan, mesh, textures = null;
+  if (Array.isArray(data)) {
+    textures = data[0];
+    mesh = data[1];
+
+    image_r = textures[0];
+    image_g = textures[1];
+    image_b = textures[2];
+    if (pan && textures.length === 4) {
+      image_pan = textures[3];
+    }
+  } else if (data) {
+    textures = data.then(result => result && result[0]);
+    mesh = data.then(result => result && result[1]);
+
+    image_r = textures.then(result => result && result[0]);
+    image_g = textures.then(result => result && result[1]);
+    image_b = textures.then(result => result && result[2]);
+    if (pan) {
+      image_pan = textures.then(result => result && result[3]);
+    }
+  }
 
   return [
     new BandsSimpleMeshLayer(props, {
