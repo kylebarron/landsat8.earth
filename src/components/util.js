@@ -30,21 +30,15 @@ function landsatColorOps(nBands) {
  * color_ops: Custom color_ops rio-color string
  */
 export function getLandsatUrl(options) {
-  const {
-    bands,
-    mosaicUrl = DEFAULT_LANDSAT_MOSAIC_URL,
-    x,
-    y,
-    z,
-    color_ops,
-  } = options || {};
+  const { bands, mosaicUrl = DEFAULT_LANDSAT_MOSAIC_URL, x, y, z, color_ops } =
+    options || {};
   const bandsArray = Array.isArray(bands) ? bands : [bands];
   const params = new URLSearchParams({
     bands: bandsArray.join(','),
     color_ops: color_ops || landsatColorOps(bandsArray.length),
     url: mosaicUrl,
   });
-  let baseUrl = `https://landsat-lambda.kylebarron.dev/tiles/${z}/${x}/${y}@2x.jpg?`;
+  let baseUrl = `https://lambda.kylebarron.dev/landsat/tiles/${z}/${x}/${y}@2x.jpg?`;
   return baseUrl + params.toString();
 }
 
@@ -71,7 +65,7 @@ export function getNaipUrl(options) {
   });
   // Don't replace string by default, so that it can be passed as a Mapbox tile
   // url
-  let baseUrl = `https://naip-lambda.kylebarron.dev/{z}/{x}/{y}.jpg?`;
+  let baseUrl = `https://lambda.kylebarron.dev/naip/{z}/{x}/{y}@2x.jpg?`;
 
   // If x, y, z are passsed fill them into url template
   if (x && y && z) {
