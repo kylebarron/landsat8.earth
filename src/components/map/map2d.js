@@ -1,7 +1,7 @@
 import React from 'react';
 import DeckGL from '@deck.gl/react';
 import { MapboxLayer } from '@deck.gl/mapbox';
-import { PostProcessEffect } from '@deck.gl/core';
+import { PostProcessEffect, View, MapView } from '@deck.gl/core';
 import { StaticMap } from 'react-map-gl';
 import { getNaipUrl } from '../util';
 import { NAIPLayer, MODISLayer } from '../mapbox-layers';
@@ -73,36 +73,76 @@ export default class Map extends React.Component {
           this._deck = ref && ref.deck;
         }}
         layers={layers}
-        initialViewState={initialViewState}
+        viewState={viewState}
         onViewStateChange={this.onViewStateChange}
-        controller
+        // controller
+        views={[
+          new MapView({
+            id: 'left-view',
+            width: '50%',
+            controller: true,
+          }),
+          new MapView({
+            id: 'right-view',
+            width: '50%',
+            x: '50%',
+            controller: true,
+          }),
+        ]}
         onWebGLInitialized={this._onWebGLInitialized}
         glOptions={{ stencil: true }}
         // Weird effects with MapboxLayer
         // effects={[vibranceEffect]}
       >
         {gl && (
-          <StaticMap
-            ref={ref => {
-              // save a reference to the mapboxgl.Map instance
-              this._map = ref && ref.getMap();
-            }}
-            gl={gl}
-            onLoad={this._onMapLoad}
-            mapStyle={mapStyle}
-            mapOptions={{ hash: true }}
-          >
-            <MODISLayer
-              dateStr="2018-06-01"
-              visible={true}
-              beforeId="waterway_other"
-            />
-            <NAIPLayer
-              tileUrl={naipTileUrl}
-              visible={useNaip}
-              beforeId="waterway_other"
-            />
-          </StaticMap>
+          <View id="left-view">
+            <StaticMap
+              ref={ref => {
+                // save a reference to the mapboxgl.Map instance
+                this._map = ref && ref.getMap();
+              }}
+              gl={gl}
+              onLoad={this._onMapLoad}
+              mapStyle={mapStyle}
+              mapOptions={{ hash: true }}
+            >
+              <MODISLayer
+                dateStr="2018-06-01"
+                visible={true}
+                beforeId="waterway_other"
+              />
+              <NAIPLayer
+                tileUrl={naipTileUrl}
+                visible={useNaip}
+                beforeId="waterway_other"
+              />
+            </StaticMap>
+          </View>
+        )}
+        {gl && (
+          <View id="right-view">
+            <StaticMap
+              ref={ref => {
+                // save a reference to the mapboxgl.Map instance
+                this._map = ref && ref.getMap();
+              }}
+              gl={gl}
+              onLoad={this._onMapLoad}
+              mapStyle={mapStyle}
+              mapOptions={{ hash: true }}
+            >
+              <MODISLayer
+                dateStr="2018-06-01"
+                visible={true}
+                beforeId="waterway_other"
+              />
+              <NAIPLayer
+                tileUrl={naipTileUrl}
+                visible={useNaip}
+                beforeId="waterway_other"
+              />
+            </StaticMap>
+          </View>
         )}
       </DeckGL>
     );
