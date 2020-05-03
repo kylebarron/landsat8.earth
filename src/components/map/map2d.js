@@ -77,6 +77,7 @@ export default class Map extends React.Component {
         onViewStateChange={this.onViewStateChange}
         controller
         onWebGLInitialized={this._onWebGLInitialized}
+        glOptions={{ stencil: true }}
         // Weird effects with MapboxLayer
         // effects={[vibranceEffect]}
       >
