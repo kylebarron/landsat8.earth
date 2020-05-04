@@ -1,6 +1,10 @@
 // Attempt at worldwide mosaic
+// export const DEFAULT_LANDSAT_MOSAIC_URL =
+//   's3://kylebarron-landsat-test/mosaics/8113f57876010a63aadacef4eac6d010d10c9aafcf36a5ece064ea7f.json.gz';
+// export const DEFAULT_LANDSAT_MOSAIC_URL =
+//   's3://kylebarron-landsat-test/mosaics/0a5ee236fc34b57dfabf6ad7a2571f51b5b151847781a8f3be02c95f.json.gz';
 export const DEFAULT_LANDSAT_MOSAIC_URL =
-  's3://kylebarron-landsat-test/mosaics/8113f57876010a63aadacef4eac6d010d10c9aafcf36a5ece064ea7f.json.gz';
+  'dynamodb://us-west-2/landsat-auto-update';
 
 export const DEFAULT_NAIP_MOSAIC_URL =
   'dynamodb://us-west-2/7610d6d77fca346802fb21b89668cb12ef3162a31eb71734a8aaf5de';
@@ -38,7 +42,7 @@ export function getLandsatUrl(options) {
     color_ops: color_ops || landsatColorOps(bandsArray.length),
     url: mosaicUrl,
   });
-  let baseUrl = `https://lambda.kylebarron.dev/landsat/tiles/${z}/${x}/${y}@2x.jpg?`;
+  let baseUrl = `https://us-west-2-lambda.kylebarron.dev/landsat/tiles/${z}/${x}/${y}@2x.jpg?`;
   return baseUrl + params.toString();
 }
 
@@ -65,7 +69,7 @@ export function getNaipUrl(options) {
   });
   // Don't replace string by default, so that it can be passed as a Mapbox tile
   // url
-  let baseUrl = `https://lambda.kylebarron.dev/naip/{z}/{x}/{y}@2x.jpg?`;
+  let baseUrl = `https://us-west-2-lambda.kylebarron.dev/naip/{z}/{x}/{y}@2x.jpg?`;
 
   // If x, y, z are passsed fill them into url template
   if (x && y && z) {
