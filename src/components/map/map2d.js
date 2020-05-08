@@ -61,7 +61,7 @@ export default class Map extends React.Component {
     // This id has to match the id of the Deck layer
     map.addLayer(
       new MapboxLayer({ id: 'landsat-tile-layer', deck }),
-      'waterway_other'
+      'aeroway_fill'
     );
   };
 
@@ -113,12 +113,12 @@ export default class Map extends React.Component {
             <MODISLayer
               dateStr="2018-06-01"
               visible={true}
-              beforeId="waterway_other"
+              beforeId="aeroway_fill"
             />
             <NAIPLayer
               tileUrl={getNaipUrl({ mosaicUrl: naipMosaicUrl })}
               visible={useNaip}
-              beforeId="waterway_other"
+              beforeId="aeroway_fill"
             />
           </StaticMap>
         )}
