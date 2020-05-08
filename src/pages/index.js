@@ -47,6 +47,8 @@ class IndexPage extends React.Component {
     landsatMosaicUrl: LANDSAT_MOSAICS[DEFAULT_LANDSAT_MOSAIC_ID].url,
     landsatMosaicBounds: LANDSAT_MOSAICS[DEFAULT_LANDSAT_MOSAIC_ID].bounds,
     landsatBands: [4, 3, 2],
+    landsatColormapName: 'cfastie',
+    landsatBandCombination: 'rgb', 
 
     // NAIP options
     // Show NAIP imagery at zoom >= 12
@@ -61,7 +63,9 @@ class IndexPage extends React.Component {
 
   render() {
     const {
+      landsatBandCombination,
       landsatBands,
+      landsatColormapName,
       landsatMosaicUrl,
       map2d,
       naipMosaicUrl,
@@ -78,6 +82,8 @@ class IndexPage extends React.Component {
             naipMosaicUrl={naipMosaicUrl}
             landsatMosaicUrl={landsatMosaicUrl}
             landsatBands={landsatBands}
+            landsatColormapName={landsatColormapName}
+            landsatBandCombination={landsatBandCombination}
           />
         ) : (
           <Map3d
@@ -87,6 +93,8 @@ class IndexPage extends React.Component {
             naipMosaicUrl={naipMosaicUrl}
             landsatMosaicUrl={landsatMosaicUrl}
             landsatBands={landsatBands}
+            landsatColormapName={landsatColormapName}
+            landsatBandCombination={landsatBandCombination}
           />
         )}
       </div>
