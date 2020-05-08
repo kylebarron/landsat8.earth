@@ -1,13 +1,5 @@
-// Attempt at worldwide mosaic
-// export const DEFAULT_LANDSAT_MOSAIC_URL =
-//   's3://kylebarron-landsat-test/mosaics/8113f57876010a63aadacef4eac6d010d10c9aafcf36a5ece064ea7f.json.gz';
-// export const DEFAULT_LANDSAT_MOSAIC_URL =
-//   's3://kylebarron-landsat-test/mosaics/0a5ee236fc34b57dfabf6ad7a2571f51b5b151847781a8f3be02c95f.json.gz';
-export const DEFAULT_LANDSAT_MOSAIC_URL =
-  'dynamodb://us-west-2/landsat-auto-update';
-
-export const DEFAULT_NAIP_MOSAIC_URL =
-  'dynamodb://us-west-2/7610d6d77fca346802fb21b89668cb12ef3162a31eb71734a8aaf5de';
+export const DEFAULT_LANDSAT_MOSAIC_ID = 'winter2020';
+export const DEFAULT_NAIP_MOSAIC_ID = '2016-2018';
 
 /**
  * Get color operations string for landsat bands
@@ -34,8 +26,7 @@ function landsatColorOps(nBands) {
  * color_ops: Custom color_ops rio-color string
  */
 export function getLandsatUrl(options) {
-  const { bands, mosaicUrl = DEFAULT_LANDSAT_MOSAIC_URL, x, y, z, color_ops } =
-    options || {};
+  const { bands, mosaicUrl, x, y, z, color_ops } = options || {};
   const bandsArray = Array.isArray(bands) ? bands : [bands];
   const params = new URLSearchParams({
     bands: bandsArray.join(','),
@@ -57,7 +48,7 @@ export function getLandsatUrl(options) {
  */
 export function getNaipUrl(options) {
   const {
-    mosaicUrl = DEFAULT_NAIP_MOSAIC_URL,
+    mosaicUrl,
     x = null,
     y = null,
     z = null,

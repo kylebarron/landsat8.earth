@@ -3,16 +3,20 @@ import DeckGL from '@deck.gl/react';
 import { MapboxLayer } from '@deck.gl/mapbox';
 import { PostProcessEffect } from '@deck.gl/core';
 import { StaticMap } from 'react-map-gl';
-import { getNaipUrl } from '../util';
 import { NAIPLayer, MODISLayer } from '../mapbox-layers';
 import { LandsatTileLayer } from '../deck-layers';
 import { vibrance } from '@luma.gl/shadertools';
-import { getViewStateFromHash } from '../util';
-
-// You'll get obscure errors without including the Mapbox GL CSS
+import {
+  getNaipUrl,
+  getViewStateFromHash,
+  DEFAULT_LANDSAT_MOSAIC_ID,
+  DEFAULT_NAIP_MOSAIC_ID,
+} from '../util';
 import '../../css/mapbox-gl.css';
 
 const mapStyle = require('./style.json');
+const prebuiltLandsatMosaics = require('../landsat_mosaics.json');
+const NAIPMosaics = require('../naip_mosaics.json');
 
 const initialViewState = {
   longitude: -112.1861,
@@ -31,12 +35,18 @@ export default class Map extends React.Component {
     gl: null,
     viewState: {
       ...initialViewState,
-      ...getViewStateFromHash(window.location.hash)
+      ...getViewStateFromHash(window.location.hash),
     },
-    naipTileUrl: getNaipUrl(),
-    
+    // URL to Landsat Mosaic (not tile endpoint)
+    landsatMosaicUrl: prebuiltLandsatMosaics[DEFAULT_LANDSAT_MOSAIC_ID].url,
+    landsatMosaicBounds:
+      prebuiltLandsatMosaics[DEFAULT_LANDSAT_MOSAIC_ID].bounds,
+
+    // URL to NAIP Mosaic (not tile endpoint)
+    naipMosaicUrl: NAIPMosaics[DEFAULT_NAIP_MOSAIC_ID].url,
+
     // Show NAIP imagery at zoom >= 12
-    useNaip: true
+    useNaip: true,
   };
 
   // DeckGL and mapbox will both draw into this WebGL context
@@ -55,16 +65,24 @@ export default class Map extends React.Component {
     );
   };
 
-  onViewStateChange = ({viewState}) => {
-    this.setState({viewState})
-  }
+  onViewStateChange = ({ viewState }) => {
+    this.setState({ viewState });
+  };
 
   render() {
-    const { gl, naipTileUrl, viewState, useNaip } = this.state;
+    const {
+      gl,
+      naipMosaicUrl,
+      viewState,
+      useNaip,
+      landsatMosaicUrl,
+    } = this.state;
+
     const layers = [
       new LandsatTileLayer({
         id: 'landsat-tile-layer',
         gl,
+        mosaicUrl: landsatMosaicUrl,
         rgbBands: [4, 3, 2],
         visible: viewState.zoom >= 7 && (viewState.zoom <= 12 || !useNaip),
       }),
@@ -73,7 +91,6 @@ export default class Map extends React.Component {
     return (
       <DeckGL
         ref={ref => {
-          // save a reference to the Deck instance
           this._deck = ref && ref.deck;
         }}
         layers={layers}
@@ -82,13 +99,10 @@ export default class Map extends React.Component {
         controller
         onWebGLInitialized={this._onWebGLInitialized}
         glOptions={{ stencil: true }}
-        // Weird effects with MapboxLayer
-        // effects={[vibranceEffect]}
       >
         {gl && (
           <StaticMap
             ref={ref => {
-              // save a reference to the mapboxgl.Map instance
               this._map = ref && ref.getMap();
             }}
             gl={gl}
@@ -102,7 +116,7 @@ export default class Map extends React.Component {
               beforeId="waterway_other"
             />
             <NAIPLayer
-              tileUrl={naipTileUrl}
+              tileUrl={getNaipUrl({ mosaicUrl: naipMosaicUrl })}
               visible={useNaip}
               beforeId="waterway_other"
             />
