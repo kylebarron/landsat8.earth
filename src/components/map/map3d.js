@@ -9,16 +9,7 @@ import {
   MODISTerrainTileLayer,
 } from '../deck-layers';
 import { vibrance } from '@luma.gl/shadertools';
-import { getViewStateFromHash } from '../util';
 import '../../css/mapbox-gl.css';
-
-const INITIAL_VIEW_STATE = {
-  latitude: 46.21,
-  longitude: -122.18,
-  zoom: 12.5,
-  bearing: 140,
-  pitch: 60,
-};
 
 const vibranceEffect = new PostProcessEffect(vibrance, {
   amount: 1,
