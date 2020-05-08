@@ -59,7 +59,7 @@ async function getTileData(options) {
     getLandsatUrl({ x, y, z, bands: rgbBands[2], mosaicUrl, color_ops }),
   ];
   if (pan) {
-    urls.push(getLandsatUrl({ x, y, z, bands: 8, url: mosaicUrl, color_ops }));
+    urls.push(getLandsatUrl({ x, y, z, bands: 8, mosaicUrl, color_ops }));
   }
 
   const images = await loadImageArray(urls.length, ({ index }) => urls[index]);
