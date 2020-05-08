@@ -46,6 +46,7 @@ class IndexPage extends React.Component {
     // URL to Landsat Mosaic (not tile endpoint)
     landsatMosaicUrl: LANDSAT_MOSAICS[DEFAULT_LANDSAT_MOSAIC_ID].url,
     landsatMosaicBounds: LANDSAT_MOSAICS[DEFAULT_LANDSAT_MOSAIC_ID].bounds,
+    landsatBands: [4, 3, 2],
 
     // NAIP options
     // Show NAIP imagery at zoom >= 12
@@ -60,11 +61,12 @@ class IndexPage extends React.Component {
 
   render() {
     const {
-      viewState,
-      map2d,
-      useNaip,
-      naipMosaicUrl,
+      landsatBands,
       landsatMosaicUrl,
+      map2d,
+      naipMosaicUrl,
+      useNaip,
+      viewState,
     } = this.state;
     return (
       <div>
@@ -75,6 +77,7 @@ class IndexPage extends React.Component {
             useNaip={useNaip}
             naipMosaicUrl={naipMosaicUrl}
             landsatMosaicUrl={landsatMosaicUrl}
+            landsatBands={landsatBands}
           />
         ) : (
           <Map3d
@@ -83,6 +86,7 @@ class IndexPage extends React.Component {
             useNaip={useNaip}
             naipMosaicUrl={naipMosaicUrl}
             landsatMosaicUrl={landsatMosaicUrl}
+            landsatBands={landsatBands}
           />
         )}
       </div>

@@ -39,11 +39,12 @@ export default class Map extends React.Component {
   render() {
     const { gl } = this.state;
     const {
-      viewState,
+      landsatBands,
+      landsatMosaicUrl,
+      naipMosaicUrl,
       onViewStateChange,
       useNaip,
-      naipMosaicUrl,
-      landsatMosaicUrl,
+      viewState,
     } = this.props;
 
     const layers = [
@@ -51,7 +52,7 @@ export default class Map extends React.Component {
         id: 'landsat-tile-layer',
         gl,
         mosaicUrl: landsatMosaicUrl,
-        rgbBands: [4, 3, 2],
+        rgbBands: landsatBands,
         visible: viewState.zoom >= 7 && (viewState.zoom <= 12 || !useNaip),
       }),
     ];
