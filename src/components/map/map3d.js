@@ -27,23 +27,22 @@ const vibranceEffect = new PostProcessEffect(vibrance, {
 export default class Map extends React.Component {
   state = {
     gl: null,
-    viewState: {
-      ...INITIAL_VIEW_STATE,
-      ...getViewStateFromHash(window.location.hash)
-    },
-    useNaip: false,
   };
 
   _onWebGLInitialized = gl => {
     this.setState({ gl });
   };
 
-  onViewStateChange = ({ viewState }) => {
-    this.setState({ viewState });
-  };
-
   render() {
-    const { gl, viewState, useNaip } = this.state;
+    const { gl } = this.state;
+    const {
+      viewState,
+      onViewStateChange,
+      landsatMosaicUrl,
+      landsatBands,
+      naipMosaicUrl,
+      useNaip,
+    } = this.props;
 
     let layers = gl && [
       MODISTerrainTileLayer({
@@ -51,9 +50,12 @@ export default class Map extends React.Component {
       }),
       LandsatTerrainTileLayer({
         gl,
+        mosaicUrl: landsatMosaicUrl,
+        rgbBands: landsatBands,
         visible: viewState.zoom >= 7 && (viewState.zoom <= 12 || !useNaip),
       }),
       NAIPTerrainTileLayer({
+        mosaicUrl: naipMosaicUrl,
         visible: viewState.zoom >= 12 && useNaip,
       }),
     ];
@@ -63,7 +65,7 @@ export default class Map extends React.Component {
       <DeckGL
         onWebGLInitialized={this._onWebGLInitialized}
         viewState={viewState}
-        onViewStateChange={this.onViewStateChange}
+        onViewStateChange={onViewStateChange}
         controller
         layers={layers}
         effects={[vibranceEffect]}
