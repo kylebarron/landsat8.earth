@@ -7,6 +7,7 @@ import { getNaipUrl } from '../util';
 import { NAIPLayer, MODISLayer } from '../mapbox-layers';
 import { LandsatTileLayer } from '../deck-layers';
 import { vibrance } from '@luma.gl/shadertools';
+import { getViewStateFromHash } from '../util';
 
 // You'll get obscure errors without including the Mapbox GL CSS
 import '../../css/mapbox-gl.css';
@@ -28,7 +29,10 @@ const vibranceEffect = new PostProcessEffect(vibrance, {
 export default class Map extends React.Component {
   state = {
     gl: null,
-    viewState: initialViewState,
+    viewState: {
+      ...initialViewState,
+      ...getViewStateFromHash(window.location.hash)
+    },
     naipTileUrl: getNaipUrl(),
     
     // Show NAIP imagery at zoom >= 12
@@ -73,7 +77,7 @@ export default class Map extends React.Component {
           this._deck = ref && ref.deck;
         }}
         layers={layers}
-        initialViewState={initialViewState}
+        viewState={viewState}
         onViewStateChange={this.onViewStateChange}
         controller
         onWebGLInitialized={this._onWebGLInitialized}

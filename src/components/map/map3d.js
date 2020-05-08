@@ -9,6 +9,7 @@ import {
   MODISTerrainTileLayer,
 } from '../deck-layers';
 import { vibrance } from '@luma.gl/shadertools';
+import { getViewStateFromHash } from '../util';
 import '../../css/mapbox-gl.css';
 
 const INITIAL_VIEW_STATE = {
@@ -26,8 +27,11 @@ const vibranceEffect = new PostProcessEffect(vibrance, {
 export default class Map extends React.Component {
   state = {
     gl: null,
-    viewState: INITIAL_VIEW_STATE,
-    useNaip: true,
+    viewState: {
+      ...INITIAL_VIEW_STATE,
+      ...getViewStateFromHash(window.location.hash)
+    },
+    useNaip: false,
   };
 
   _onWebGLInitialized = gl => {
@@ -58,7 +62,7 @@ export default class Map extends React.Component {
     return (
       <DeckGL
         onWebGLInitialized={this._onWebGLInitialized}
-        initialViewState={INITIAL_VIEW_STATE}
+        viewState={viewState}
         onViewStateChange={this.onViewStateChange}
         controller
         layers={layers}
