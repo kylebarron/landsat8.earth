@@ -29,6 +29,7 @@ const initialViewState = {
 
 class IndexPage extends React.Component {
   state = {
+    map2d: true,
     viewState: {
       ...initialViewState,
       ...getViewStateFromHash(window.location.hash),
@@ -40,14 +41,20 @@ class IndexPage extends React.Component {
   };
 
   render() {
-    const { viewState } = this.state;
+    const { viewState, map2d } = this.state;
     return (
       <div>
-        <Map2d
-          viewState={viewState}
-          onViewStateChange={this.onViewStateChange}
-        />
-        {/* <Map3d /> */}
+        {map2d ? (
+          <Map2d
+            viewState={viewState}
+            onViewStateChange={this.onViewStateChange}
+          />
+        ) : (
+          <Map3d
+            viewState={viewState}
+            onViewStateChange={this.onViewStateChange}
+          />
+        )}
       </div>
     );
   }
