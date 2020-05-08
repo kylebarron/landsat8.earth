@@ -6,16 +6,10 @@ import { StaticMap } from 'react-map-gl';
 import { NAIPLayer, MODISLayer } from '../mapbox-layers';
 import { LandsatTileLayer } from '../deck-layers';
 import { vibrance } from '@luma.gl/shadertools';
-import {
-  getNaipUrl,
-  DEFAULT_LANDSAT_MOSAIC_ID,
-  DEFAULT_NAIP_MOSAIC_ID,
-} from '../util';
+import { getNaipUrl } from '../util';
 import '../../css/mapbox-gl.css';
 
 const mapStyle = require('./style.json');
-const prebuiltLandsatMosaics = require('../landsat_mosaics.json');
-const NAIPMosaics = require('../naip_mosaics.json');
 
 const vibranceEffect = new PostProcessEffect(vibrance, {
   amount: 1,
@@ -24,16 +18,6 @@ const vibranceEffect = new PostProcessEffect(vibrance, {
 export default class Map extends React.Component {
   state = {
     gl: null,
-    // URL to Landsat Mosaic (not tile endpoint)
-    landsatMosaicUrl: prebuiltLandsatMosaics[DEFAULT_LANDSAT_MOSAIC_ID].url,
-    landsatMosaicBounds:
-      prebuiltLandsatMosaics[DEFAULT_LANDSAT_MOSAIC_ID].bounds,
-
-    // URL to NAIP Mosaic (not tile endpoint)
-    naipMosaicUrl: NAIPMosaics[DEFAULT_NAIP_MOSAIC_ID].url,
-
-    // Show NAIP imagery at zoom >= 12
-    useNaip: true,
   };
 
   // DeckGL and mapbox will both draw into this WebGL context
@@ -53,8 +37,14 @@ export default class Map extends React.Component {
   };
 
   render() {
-    const { gl, naipMosaicUrl, useNaip, landsatMosaicUrl } = this.state;
-    const { viewState, onViewStateChange } = this.props;
+    const { gl } = this.state;
+    const {
+      viewState,
+      onViewStateChange,
+      useNaip,
+      naipMosaicUrl,
+      landsatMosaicUrl,
+    } = this.props;
 
     const layers = [
       new LandsatTileLayer({
