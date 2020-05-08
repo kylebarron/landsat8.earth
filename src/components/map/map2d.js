@@ -8,7 +8,6 @@ import { LandsatTileLayer } from '../deck-layers';
 import { vibrance } from '@luma.gl/shadertools';
 import {
   getNaipUrl,
-  getViewStateFromHash,
   DEFAULT_LANDSAT_MOSAIC_ID,
   DEFAULT_NAIP_MOSAIC_ID,
 } from '../util';
@@ -18,14 +17,6 @@ const mapStyle = require('./style.json');
 const prebuiltLandsatMosaics = require('../landsat_mosaics.json');
 const NAIPMosaics = require('../naip_mosaics.json');
 
-const initialViewState = {
-  longitude: -112.1861,
-  latitude: 36.1284,
-  zoom: 11.5,
-  pitch: 0,
-  bearing: 0,
-};
-
 const vibranceEffect = new PostProcessEffect(vibrance, {
   amount: 1,
 });
@@ -33,10 +24,6 @@ const vibranceEffect = new PostProcessEffect(vibrance, {
 export default class Map extends React.Component {
   state = {
     gl: null,
-    viewState: {
-      ...initialViewState,
-      ...getViewStateFromHash(window.location.hash),
-    },
     // URL to Landsat Mosaic (not tile endpoint)
     landsatMosaicUrl: prebuiltLandsatMosaics[DEFAULT_LANDSAT_MOSAIC_ID].url,
     landsatMosaicBounds:
@@ -65,18 +52,9 @@ export default class Map extends React.Component {
     );
   };
 
-  onViewStateChange = ({ viewState }) => {
-    this.setState({ viewState });
-  };
-
   render() {
-    const {
-      gl,
-      naipMosaicUrl,
-      viewState,
-      useNaip,
-      landsatMosaicUrl,
-    } = this.state;
+    const { gl, naipMosaicUrl, useNaip, landsatMosaicUrl } = this.state;
+    const { viewState, onViewStateChange } = this.props;
 
     const layers = [
       new LandsatTileLayer({
@@ -95,7 +73,7 @@ export default class Map extends React.Component {
         }}
         layers={layers}
         viewState={viewState}
-        onViewStateChange={this.onViewStateChange}
+        onViewStateChange={onViewStateChange}
         controller
         onWebGLInitialized={this._onWebGLInitialized}
         glOptions={{ stencil: true }}
