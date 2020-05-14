@@ -102,12 +102,12 @@ export function landsatParser(sceneid) {
       processingCorrectionLevel,
       path,
       row,
-      acquisitionYear: Number(acquisitionYear),
-      acquisitionMonth: Number(acquisitionMonth),
-      acquisitionDay: Number(acquisitionDay),
-      processingYear: Number(processingYear),
-      processingMonth: Number(processingMonth),
-      processingDay: Number(processingDay),
+      acquisitionYear,
+      acquisitionMonth,
+      acquisitionDay,
+      processingYear,
+      processingMonth,
+      processingDay,
       collectionNumber,
       collectionCategory,
       acquisitionDate,
@@ -131,7 +131,7 @@ export function landsatParser(sceneid) {
 
     // Note, this might be in local timezone
     var acquisitionDate = dayjs(new Date(acquisitionYear, 0, 1)).add(
-      acquisitionJulianDay,
+      Number(acquisitionJulianDay) - 1,
       'day'
     );
 
