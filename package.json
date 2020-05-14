@@ -32,6 +32,9 @@
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "jest": "^26.0.1",
     "prettier": "^1.19.1"
   },
   "keywords": [
@@ -44,7 +47,7 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
