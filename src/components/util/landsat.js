@@ -1,4 +1,4 @@
-var dayjs = require('dayjs');
+import dayjs from "dayjs"; 
 
 /**
  * Parse Landsat-8 scene id
@@ -10,7 +10,7 @@ var dayjs = require('dayjs');
  */
 export function landsatParser(sceneid) {
   // double escaped, since no raw string
-  var precollection_pattern = new RegExp(
+  const precollection_pattern = new RegExp(
     '^L' +
       // <sensor>
       '(\\w{1})' +
@@ -31,7 +31,7 @@ export function landsatParser(sceneid) {
   );
 
   // double escaped, since no raw string
-  var collection_pattern = new RegExp(
+  const collection_pattern = new RegExp(
     '^L' +
       // <sensor>
       '(\\w{1})' +
@@ -68,10 +68,10 @@ export function landsatParser(sceneid) {
   );
 
   // Collection match first, as it's more common
-  var collection_match = collection_pattern.exec(sceneid);
+  const collection_match = collection_pattern.exec(sceneid);
   // Extract groups and return
   if (collection_match) {
-    var [
+    const [
       scene,
       sensor,
       satellite,
@@ -88,10 +88,10 @@ export function landsatParser(sceneid) {
       collectionCategory,
     ] = collection_match;
 
-    var acquisitionDate = dayjs(
+    const acquisitionDate = dayjs(
       new Date(acquisitionYear, acquisitionMonth - 1, acquisitionDay)
     );
-    var processingDate = dayjs(
+    const processingDate = dayjs(
       new Date(processingYear, processingMonth - 1, processingDay)
     );
 
@@ -115,9 +115,9 @@ export function landsatParser(sceneid) {
     };
   }
 
-  var precollection_match = precollection_pattern.exec(sceneid);
+  const precollection_match = precollection_pattern.exec(sceneid);
   if (precollection_match) {
-    var [
+    const [
       scene,
       sensor,
       satellite,
@@ -130,7 +130,7 @@ export function landsatParser(sceneid) {
     ] = precollection_match;
 
     // Note, this might be in local timezone
-    var acquisitionDate = dayjs(new Date(acquisitionYear, 0, 1)).add(
+    const acquisitionDate = dayjs(new Date(acquisitionYear, 0, 1)).add(
       Number(acquisitionJulianDay) - 1,
       'day'
     );
