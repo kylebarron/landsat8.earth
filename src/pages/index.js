@@ -39,7 +39,9 @@ class IndexPage extends React.Component {
     map2d: true,
     viewState: {
       ...initialViewState,
-      ...getViewStateFromHash(window.location.hash),
+      ...getViewStateFromHash(
+        typeof window !== 'undefined' ? window.location.hash : ''
+      ),
     },
 
     // Landsat 8 options
@@ -48,7 +50,7 @@ class IndexPage extends React.Component {
     landsatMosaicBounds: LANDSAT_MOSAICS[DEFAULT_LANDSAT_MOSAIC_ID].bounds,
     landsatBands: [4, 3, 2],
     landsatColormapName: 'cfastie',
-    landsatBandCombination: 'rgb', 
+    landsatBandCombination: 'rgb',
 
     // NAIP options
     // Show NAIP imagery at zoom >= 12
