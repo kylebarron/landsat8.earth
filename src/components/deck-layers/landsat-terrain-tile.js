@@ -1,9 +1,12 @@
 import { COORDINATE_SYSTEM } from '@deck.gl/core';
-import { load } from '@loaders.gl/core';
-import { TerrainLoader } from '@loaders.gl/terrain';
 import { TileLayer } from '@deck.gl/geo-layers';
-import { ELEVATION_DECODER, getTerrainUrl, getMeshMaxError } from './util';
-import { Matrix4 } from 'math.gl';
+import {
+  ELEVATION_DECODER,
+  getTerrainUrl,
+  getMeshMaxError,
+  getMercatorModelMatrix,
+  loadTerrain,
+} from './util';
 import { BandsSimpleMeshLayer } from '@kylebarron/deck.gl-extended-layers';
 import { getLandsatUrl } from '../util';
 import { imageUrlsToTextures } from '../util/webgl';
@@ -137,49 +140,10 @@ function renderSubLayers(props) {
       image_pan,
       getPolygonOffset: null,
       coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
-      modelMatrix: getModelMatrix(tile),
+      modelMatrix: getMercatorModelMatrix(tile),
       getPosition: d => [0, 0, 0],
       // Color to use if surfaceImage is unavailable
       getColor: [255, 255, 255],
     }),
   ];
-}
-
-// From https://github.com/uber/deck.gl/blob/b1901b11cbdcb82b317e1579ff236d1ca1d03ea7/modules/geo-layers/src/mvt-tile-layer/mvt-tile-layer.js#L41-L52
-function getModelMatrix(tile) {
-  const WORLD_SIZE = 512;
-  const worldScale = Math.pow(2, tile.z);
-
-  const xScale = WORLD_SIZE / worldScale;
-  const yScale = -xScale;
-
-  const xOffset = (WORLD_SIZE * tile.x) / worldScale;
-  const yOffset = WORLD_SIZE * (1 - tile.y / worldScale);
-
-  return new Matrix4()
-    .translate([xOffset, yOffset, 0])
-    .scale([xScale, yScale, 1]);
-}
-
-function loadTerrain({
-  terrainImage,
-  bounds,
-  elevationDecoder,
-  meshMaxError,
-  workerUrl,
-}) {
-  if (!terrainImage) {
-    return null;
-  }
-  const options = {
-    terrain: {
-      bounds,
-      meshMaxError,
-      elevationDecoder,
-    },
-  };
-  if (workerUrl) {
-    options.terrain.workerUrl = workerUrl;
-  }
-  return load(terrainImage, TerrainLoader, options);
 }
