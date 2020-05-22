@@ -5,17 +5,8 @@ import { TileLayer } from '@deck.gl/geo-layers';
 import { ELEVATION_DECODER, getTerrainUrl, getMeshMaxError } from './util';
 import { Matrix4 } from 'math.gl';
 import { BandsSimpleMeshLayer } from '@kylebarron/deck.gl-extended-layers';
-import { loadImageArray } from '@loaders.gl/images';
-import GL from '@luma.gl/constants';
-import { Texture2D } from '@luma.gl/core';
 import { getLandsatUrl } from '../util';
-
-const DEFAULT_TEXTURE_PARAMETERS = {
-  [GL.TEXTURE_MIN_FILTER]: GL.LINEAR_MIPMAP_LINEAR,
-  [GL.TEXTURE_MAG_FILTER]: GL.LINEAR,
-  [GL.TEXTURE_WRAP_S]: GL.CLAMP_TO_EDGE,
-  [GL.TEXTURE_WRAP_T]: GL.CLAMP_TO_EDGE,
-};
+import { imageUrlsToTextures } from '../util/webgl';
 
 const DUMMY_DATA = [1];
 
@@ -94,16 +85,8 @@ async function getTileData(options) {
   if (pan) {
     urls.push(getLandsatUrl({ x, y, z, bands: 8, mosaicUrl, color_ops }));
   }
-  const images = await loadImageArray(urls.length, ({ index }) => urls[index]);
 
-  const textures = images.map(image => {
-    return new Texture2D(gl, {
-      data: image,
-      parameters: DEFAULT_TEXTURE_PARAMETERS,
-      format: GL.RGB,
-    });
-  });
-
+  const textures = imageUrlsToTextures(gl, urls);
   return Promise.all([textures, terrain]);
 }
 

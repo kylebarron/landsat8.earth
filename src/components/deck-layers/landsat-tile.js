@@ -3,17 +3,8 @@ import {
   BandsBitmapLayer,
   PanBandsBitmapLayer,
 } from '@kylebarron/deck.gl-extended-layers';
-import { loadImageArray } from '@loaders.gl/images';
-import { Texture2D } from '@luma.gl/core';
-import GL from '@luma.gl/constants';
 import { getLandsatUrl } from '../util';
-
-const DEFAULT_TEXTURE_PARAMETERS = {
-  [GL.TEXTURE_MIN_FILTER]: GL.LINEAR_MIPMAP_LINEAR,
-  [GL.TEXTURE_MAG_FILTER]: GL.LINEAR,
-  [GL.TEXTURE_WRAP_S]: GL.CLAMP_TO_EDGE,
-  [GL.TEXTURE_WRAP_T]: GL.CLAMP_TO_EDGE,
-};
+import { imageUrlsToTextures } from '../util/webgl';
 
 export default function LandsatTileLayer(props) {
   const {
@@ -62,17 +53,7 @@ async function getTileData(options) {
     urls.push(getLandsatUrl({ x, y, z, bands: 8, mosaicUrl, color_ops }));
   }
 
-  const images = await loadImageArray(urls.length, ({ index }) => urls[index]);
-
-  const textures = images.map(image => {
-    return new Texture2D(gl, {
-      data: image,
-      parameters: DEFAULT_TEXTURE_PARAMETERS,
-      format: GL.RGB,
-    });
-  });
-
-  return textures;
+  return imageUrlsToTextures(gl, urls);
 }
 
 function renderSubLayers(props) {
