@@ -9,15 +9,20 @@ const DEFAULT_TEXTURE_PARAMETERS = {
   [GL.TEXTURE_WRAP_T]: GL.CLAMP_TO_EDGE,
 };
 
-export async function bytesToTextures(gl, urls, ArrayType = Uint8Array) {
+export async function bytesToTextures(
+  gl,
+  urls,
+  { ArrayType = Uint8Array, scale = 1 }
+) {
+  const tileSize = scale * 256;
   const arrays = await Promise.all(
     urls.map(url => fetch(url).then(res => res.arrayBuffer()))
   );
   const textures = arrays.map(array => {
     return new Texture2D(gl, {
       data: new ArrayType(array),
-      width: 512,
-      height: 512,
+      width: tileSize,
+      height: tileSize,
       parameters: DEFAULT_TEXTURE_PARAMETERS,
       format: GL.LUMINANCE,
       mipmaps: true,
