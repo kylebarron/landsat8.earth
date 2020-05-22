@@ -13,7 +13,7 @@ export async function bytesToTextures(gl, urls, ArrayType = Uint8Array) {
   const arrays = await Promise.all(
     urls.map(url => fetch(url).then(res => res.arrayBuffer()))
   );
-  return (textures = arrays.map(array => {
+  const textures = arrays.map(array => {
     return new Texture2D(gl, {
       data: new ArrayType(array),
       width: 512,
@@ -22,7 +22,8 @@ export async function bytesToTextures(gl, urls, ArrayType = Uint8Array) {
       format: GL.LUMINANCE,
       mipmaps: true,
     });
-  }));
+  });
+  return textures;
 }
 
 export async function imageUrlsToTextures(gl, urls) {
@@ -33,11 +34,12 @@ export async function imageUrlsToTextures(gl, urls) {
     imageOptions
   );
 
-  return (textures = images.map(image => {
+  const textures = images.map(image => {
     return new Texture2D(gl, {
       data: image,
       parameters: DEFAULT_TEXTURE_PARAMETERS,
       format: GL.LUMINANCE,
     });
-  }));
+  });
+  return textures;
 }
