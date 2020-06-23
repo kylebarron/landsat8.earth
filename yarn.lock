@@ -1824,13 +1824,6 @@
   dependencies:
     core-js "^2.5.7"
 
-"@kylebarron/deck.gl-extended-layers@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@kylebarron/deck.gl-extended-layers/-/deck.gl-extended-layers-0.1.0.tgz#4b01d8e33f157e6750d22619305330292357b066"
-  integrity sha512-n6B1q5vPy4NnYnm93J9Q7uQL106P2dfaBXQ5ruTHv7+jRAw2vJYfZ96tzIVCSyxdcAeQJ/gvOtnOB/dVEgifxw==
-  dependencies:
-    "@luma.gl/constants" "^8.1.0"
-
 "@kylebarron/deck.gl-raster@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@kylebarron/deck.gl-raster/-/deck.gl-raster-0.2.0.tgz#63b83629ade1f92902b1c142574caf9d0805bdf3"
