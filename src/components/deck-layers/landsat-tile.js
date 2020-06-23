@@ -42,11 +42,10 @@ export default function LandsatTileLayer(props) {
 async function getTileData(options) {
   const { gl, x, y, z, mosaicUrl, color_ops, rgbBands = [4, 3, 2] } =
     options || {};
-  const pan = z >= 12;
 
   const modules = [combineBands];
   let imagePan;
-  if (pan) {
+  if (z >= 12) {
     const panUrl = getLandsatUrl({ x, y, z, bands: 8, mosaicUrl, color_ops });
     // TODO: need to await all images together
     imagePan = await imageUrlsToTextures(gl, panUrl);

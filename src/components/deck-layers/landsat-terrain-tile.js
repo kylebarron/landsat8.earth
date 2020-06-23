@@ -1,5 +1,3 @@
-import { registerLoaders } from '@loaders.gl/core';
-import { ImageLoader } from '@loaders.gl/images';
 import { COORDINATE_SYSTEM } from '@deck.gl/core';
 import { TileLayer } from '@deck.gl/geo-layers';
 import { QuantizedMeshLoader } from '@loaders.gl/terrain';
@@ -14,7 +12,6 @@ import { getLandsatUrl } from '../util';
 import { imageUrlsToTextures } from '../util/webgl';
 
 const DUMMY_DATA = [1];
-registerLoaders(ImageLoader);
 
 // TODO: update to have one terrain tile layer switching image urls at different
 // z's instead of separate tile layers?
@@ -63,7 +60,6 @@ async function getTileData(options) {
     color_ops,
     rgbBands = [4, 3, 2],
   } = options || {};
-  const pan = z >= 12;
 
   // TODO: don't load unnecessary tiles
   // NOTE: if I return false, that gets cached, so that when you zoom out you
@@ -76,56 +72,41 @@ async function getTileData(options) {
   const terrainUrl = getTerrainUrl({ x, y, z });
   const terrain = load(terrainUrl, QuantizedMeshLoader);
 
+  const modules = [combineBands];
+  let imagePan;
+  if (z >= 12) {
+    const panUrl = getLandsatUrl({ x, y, z, bands: 8, mosaicUrl, color_ops });
+    // TODO: need to await all images together
+    imagePan = await imageUrlsToTextures(gl, panUrl);
+    modules.push(pansharpenBrovey);
+  }
+
   // Load landsat urls
   const urls = [
-    pan ? getLandsatUrl({ x, y, z, bands: 8, mosaicUrl, color_ops }) : null,
     getLandsatUrl({ x, y, z, bands: rgbBands[0], mosaicUrl, color_ops }),
     getLandsatUrl({ x, y, z, bands: rgbBands[1], mosaicUrl, color_ops }),
     getLandsatUrl({ x, y, z, bands: rgbBands[2], mosaicUrl, color_ops }),
   ];
 
-  // const { textures, assets } = await imageUrlsToTextures(gl, urls);
-  // const [awaited_textures, awaited_terrain] = Promise.all([
-  //   textures,
-  //   terrain,
-  // ]);
-  // return { assets, textures: awaited_textures, terrain: awaited_terrain };
-
-  const [imagePan, ...imageBands] = await imageUrlsToTextures(gl, urls);
-  return Promise.all([{ imageBands, imagePan }, terrain]);
+  const imageBands = await imageUrlsToTextures(gl, urls);
+  return Promise.all([{ imageBands, imagePan, modules }, terrain]);
 }
 
 function renderSubLayers(props) {
   const { data, tile } = props;
-  const { z } = tile;
-  const pan = z >= 12;
 
   if (!data) {
     return;
   }
 
-  // Resolve promise if needed
-  // Apparently when overzooming, data is provided not as a promise
-  let textures;
-  let mesh;
-  if (Array.isArray(data)) {
-    textures = data[0];
-    mesh = data[1];
-  } else if (data) {
-    textures = data.then(result => result && result[0]);
-    mesh = data.then(result => result && result[1]);
-  }
-
-  const modules = [combineBands];
-  if (pan) {
-    modules.push(pansharpenBrovey);
-  }
+  const [textures, mesh] = data;
+  const { modules, ...moduleProps } = textures;
 
   return new RasterMeshLayer(props, {
     data: DUMMY_DATA,
     mesh,
     modules,
-    asyncModuleProps: textures,
+    moduleProps,
     getPolygonOffset: null,
     coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
     modelMatrix: getMercatorModelMatrix(tile),
