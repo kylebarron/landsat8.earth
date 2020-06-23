@@ -1,3 +1,5 @@
+import { registerLoaders } from '@loaders.gl/core';
+import { ImageLoader } from '@loaders.gl/images';
 import { COORDINATE_SYSTEM } from '@deck.gl/core';
 import { TileLayer } from '@deck.gl/geo-layers';
 import {
@@ -12,6 +14,7 @@ import { getLandsatUrl } from '../util';
 import { imageUrlsToTextures } from '../util/webgl';
 
 const DUMMY_DATA = [1];
+registerLoaders(ImageLoader);
 
 // TODO: update to have one terrain tile layer switching image urls at different
 // z's instead of separate tile layers?
@@ -89,6 +92,13 @@ async function getTileData(options) {
     urls.push(getLandsatUrl({ x, y, z, bands: 8, mosaicUrl, color_ops }));
   }
 
+  // const { textures, assets } = await imageUrlsToTextures(gl, urls);
+  // const [awaited_textures, awaited_terrain] = Promise.all([
+  //   textures,
+  //   terrain,
+  // ]);
+  // return { assets, textures: awaited_textures, terrain: awaited_terrain };
+
   const textures = imageUrlsToTextures(gl, urls);
   return Promise.all([textures, terrain]);
 }
@@ -104,7 +114,12 @@ function renderSubLayers(props) {
 
   // Resolve promise if needed
   // Apparently when overzooming, data is provided not as a promise
-  let image_r, image_g, image_b, image_pan, mesh, textures = null;
+  let image_r;
+  let image_g;
+  let image_b;
+  let image_pan;
+  let mesh;
+  let textures;
   if (Array.isArray(data)) {
     textures = data[0];
     mesh = data[1];
