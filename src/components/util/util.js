@@ -1,4 +1,4 @@
-export const DEFAULT_LANDSAT_MOSAIC_ID = 'winter2020';
+export const DEFAULT_LANDSAT_MOSAIC_ID = 'summer2019';
 export const DEFAULT_NAIP_MOSAIC_ID = '2016-2018';
 
 /**
@@ -99,7 +99,7 @@ export function getModisUrls(options) {
  */
 export function getViewStateFromHash(hash) {
   if (!hash || hash.charAt(0) !== '#') {
-    return;
+    return {};
   }
 
   // Split the hash into an array of numbers

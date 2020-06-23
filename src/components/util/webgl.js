@@ -1,4 +1,5 @@
-import { loadImageArray } from '@loaders.gl/images';
+import { ImageLoader } from '@loaders.gl/images';
+import { parse } from '@loaders.gl/core';
 import { Texture2D } from '@luma.gl/core';
 import GL from '@luma.gl/constants';
 
@@ -9,6 +10,8 @@ const DEFAULT_TEXTURE_PARAMETERS = {
   [GL.TEXTURE_WRAP_T]: GL.CLAMP_TO_EDGE,
 };
 
+// WIP: Intended to work with 16 bit textures, but doesn't currently work
+// See https://github.com/kylebarron/deck.gl-raster/issues/16
 export async function bytesToTextures(
   gl,
   urls,
@@ -19,12 +22,16 @@ export async function bytesToTextures(
     urls.map(url => fetch(url).then(res => res.arrayBuffer()))
   );
   const textures = arrays.map(array => {
+    const data = new ArrayType(array);
     return new Texture2D(gl, {
-      data: new ArrayType(array),
+      data,
       width: tileSize,
       height: tileSize,
-      parameters: DEFAULT_TEXTURE_PARAMETERS,
-      format: GL.LUMINANCE,
+      // Need to change these params to work with uints
+      // parameters: DEFAULT_TEXTURE_PARAMETERS,
+      format: GL.RED_INTEGER,
+      dataFormat: GL.R16UI,
+      type: GL.UNSIGNED_SHORT,
       mipmaps: true,
     });
   });
@@ -32,14 +39,9 @@ export async function bytesToTextures(
 }
 
 export async function imageUrlsToTextures(gl, urls) {
-  const imageOptions = { image: { type: 'imagebitmap' } };
-  const images = await loadImageArray(
-    urls.length,
-    ({ index }) => urls[index],
-    imageOptions
-  );
-
-  const textures = images.map(image => {
+  const outputs = await Promise.all(urls.map(url => loadImageUrl(url)));
+  const assets = new Set(...outputs.map(({ header }) => header));
+  const textures = outputs.map(({ image }) => {
     return new Texture2D(gl, {
       data: image,
       parameters: DEFAULT_TEXTURE_PARAMETERS,
@@ -47,4 +49,14 @@ export async function imageUrlsToTextures(gl, urls) {
     });
   });
   return textures;
+}
+
+async function loadImageUrl(url) {
+  const res = await fetch(url);
+  const header = JSON.parse(res.headers.get('x-assets') || '[]');
+  const imageOptions = { image: { type: 'imagebitmap' } };
+  return {
+    header,
+    image: await parse(res.arrayBuffer(), ImageLoader, imageOptions),
+  };
 }

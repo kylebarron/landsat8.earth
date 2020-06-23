@@ -48,6 +48,7 @@ export default class Map extends React.Component {
       NAIPTerrainTileLayer({
         mosaicUrl: naipMosaicUrl,
         visible: viewState.zoom >= 12 && useNaip,
+        // color_ops: ''
       }),
     ];
 
