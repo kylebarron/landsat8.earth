@@ -6,7 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@emotion/core": "^10.0.22",
-    "@kylebarron/deck.gl-raster": "^0.2.0",
+    "@kylebarron/deck.gl-raster": "^0.2.1",
     "@loaders.gl/core": "^2.2.3",
     "@loaders.gl/images": "^2.2.3",
     "@loaders.gl/terrain": "^2.2.3",
@@ -14,7 +14,7 @@
     "@theme-ui/components": "^0.3.1",
     "@theme-ui/presets": "^0.3.0",
     "dayjs": "^1.8.26",
-    "deck.gl": "^8.1.4",
+    "deck.gl": "8.2.0-beta.1",
     "gatsby": "^2.17.11",
     "gatsby-image": "^2.2.31",
     "gatsby-plugin-manifest": "^2.2.27",

@@ -39,6 +39,16 @@ export async function bytesToTextures(
 }
 
 export async function imageUrlsToTextures(gl, urls) {
+  // Single image, not array
+  if (!Array.isArray(urls)) {
+    const { image } = await loadImageUrl(urls);
+    return new Texture2D(gl, {
+      data: image,
+      parameters: DEFAULT_TEXTURE_PARAMETERS,
+      format: GL.LUMINANCE,
+    });
+  }
+
   const outputs = await Promise.all(urls.map(url => loadImageUrl(url)));
   const assets = new Set(...outputs.map(({ header }) => header));
   const textures = outputs.map(({ image }) => {

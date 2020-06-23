@@ -45,19 +45,22 @@ async function getTileData(options) {
     options || {};
   const pan = z >= 12;
 
+  let imagePan;
+  if (pan) {
+    const panUrl = getLandsatUrl({ x, y, z, bands: 8, mosaicUrl, color_ops });
+    // TODO: need to await all images together
+    imagePan = await imageUrlsToTextures(gl, panUrl);
+  }
+
   // Load landsat urls
   const urls = [
-    pan ? getLandsatUrl({ x, y, z, bands: 8, mosaicUrl, color_ops }) : null,
     getLandsatUrl({ x, y, z, bands: rgbBands[0], mosaicUrl, color_ops }),
     getLandsatUrl({ x, y, z, bands: rgbBands[1], mosaicUrl, color_ops }),
     getLandsatUrl({ x, y, z, bands: rgbBands[2], mosaicUrl, color_ops }),
   ];
 
-  const [imagePan, ...imageBands] = await imageUrlsToTextures(gl, urls);
-  return promiseAllObject({
-    imageBands,
-    imagePan,
-  });
+  const imageBands = await imageUrlsToTextures(gl, urls);
+  return { imageBands, imagePan };
 }
 
 function renderSubLayers(props) {
@@ -75,7 +78,7 @@ function renderSubLayers(props) {
 
   return new RasterLayer(props, {
     modules,
-    asyncModuleProps: data,
+    moduleProps: data,
     bounds: [west, south, east, north],
   });
 }
