@@ -69,7 +69,7 @@ async function getTileData(options) {
   // }
 
   // Load terrain
-  const terrainUrl = getTerrainUrl({ x, y, z });
+  const terrainUrl = getTerrainUrl({ x, y, z, meshMultiplier });
   const terrain = load(terrainUrl, QuantizedMeshLoader);
 
   const modules = [combineBands];

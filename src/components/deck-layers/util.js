@@ -3,8 +3,9 @@ import { Matrix4 } from 'math.gl';
 export const TERRAIN_IMAGE = `https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png`;
 
 export function getTerrainUrl(opts) {
-  const { x, y, z, mosaicUrl = 'terrarium' } = opts;
-  const meshMaxError = opts.meshMaxError || getMeshMaxError(z).toFixed(2);
+  const { x, y, z, mosaicUrl = 'terrarium', meshMultiplier } = opts;
+  const meshMaxError =
+    opts.meshMaxError || getMeshMaxError(z, meshMultiplier).toFixed(2);
   const params = {
     url: mosaicUrl,
     mesh_max_error: meshMaxError,
