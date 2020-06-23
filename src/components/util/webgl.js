@@ -54,9 +54,8 @@ export async function imageUrlsToTextures(gl, urls) {
 async function loadImageUrl(url) {
   const res = await fetch(url);
   const header = JSON.parse(res.headers.get('x-assets') || '[]');
-  const imageOptions = { image: { type: 'imagebitmap' } };
   return {
     header,
-    image: await parse(res.arrayBuffer(), ImageLoader, imageOptions),
+    image: await parse(res.arrayBuffer(), ImageLoader),
   };
 }
