@@ -1,122 +1,126 @@
 {
   "autoUpdate": {
-    "url": "dynamodb://us-west-2/landsat-auto-update",
+    "url": "dynamodb://us-west-2/landsat-mosaic-latest",
+    "bounds": [-180, -90, 180, 90]
+  },
+  "autoUpdateCloudless": {
+    "url": "dynamodb://us-west-2/landsat-mosaic-latest-cloudless",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2013": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2013-05-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2013-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2014": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2014-05-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2014-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2015": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2015-05-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2015-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2016": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2016-05-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2016-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2017": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2017-05-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2017-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2018": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2018-05-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2018-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2019": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2019-05-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2019-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2020": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2020-05-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2020-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2013": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2013-08-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2013-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2014": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2014-08-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2014-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2015": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2015-08-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2015-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2016": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2016-08-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2016-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2017": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2017-08-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2017-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2018": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2018-08-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2018-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2019": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2019-08-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2019-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2013": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2013-11-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2013-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2014": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2014-11-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2014-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2015": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2015-11-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2015-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2016": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2016-11-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2016-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2017": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2017-11-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2017-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2018": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2018-11-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2018-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2019": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2019-11-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2019-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2014": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2014-02-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2014-winter",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2015": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2015-02-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2015-winter",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2016": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2016-02-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2016-winter",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2017": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2017-02-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2017-winter",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2018": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2018-02-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2018-winter",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2019": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2019-02-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2019-winter",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2020": {
-    "url": "dynamodb://us-west-2/landsat8-cloudless-2020-02-01.v1",
+    "url": "dynamodb://us-west-2/landsat8-2020-winter",
     "bounds": [-180, -90, 180, 90]
   }
 }
