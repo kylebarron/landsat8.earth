@@ -7,8 +7,9 @@
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@kylebarron/deck.gl-raster": "^0.2.0",
-    "@loaders.gl/core": "^2.1.6",
-    "@loaders.gl/images": "^2.1.6",
+    "@loaders.gl/core": "^2.2.3",
+    "@loaders.gl/images": "^2.2.3",
+    "@loaders.gl/terrain": "^2.2.3",
     "@mdx-js/react": "^1.5.1",
     "@theme-ui/components": "^0.3.1",
     "@theme-ui/presets": "^0.3.0",

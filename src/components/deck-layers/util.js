@@ -1,13 +1,17 @@
 import { Matrix4 } from 'math.gl';
-import { TerrainLoader } from '@loaders.gl/terrain';
-import { load } from '@loaders.gl/core';
 
 export const TERRAIN_IMAGE = `https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png`;
 
-export function getTerrainUrl({ x, y, z }) {
-  return TERRAIN_IMAGE.replace('{x}', x)
-    .replace('{y}', y)
-    .replace('{z}', z);
+export function getTerrainUrl(opts) {
+  const { x, y, z, mosaicUrl = 'terrarium' } = opts;
+  const meshMaxError = opts.meshMaxError || getMeshMaxError(z).toFixed(2);
+  const params = {
+    url: mosaicUrl,
+    mesh_max_error: meshMaxError,
+  };
+  const searchParams = new URLSearchParams(params);
+  let baseUrl = `https://us-east-1-lambda.kylebarron.dev/dem/mesh/${z}/${x}/${y}.terrain?`;
+  return baseUrl + searchParams.toString();
 }
 
 // From https://github.com/uber/deck.gl/blob/b1901b11cbdcb82b317e1579ff236d1ca1d03ea7/modules/geo-layers/src/mvt-tile-layer/mvt-tile-layer.js#L41-L52
@@ -26,39 +30,6 @@ export function getMercatorModelMatrix(tile) {
     .scale([xScale, yScale, 1]);
 }
 
-export function loadTerrain({
-  terrainImage,
-  bounds,
-  elevationDecoder = ELEVATION_DECODER,
-  meshMaxError,
-  workerUrl,
-}) {
-  if (!terrainImage) {
-    return null;
-  }
-  const options = {
-    terrain: {
-      bounds,
-      meshMaxError,
-      elevationDecoder,
-    },
-  };
-  if (workerUrl !== null) {
-    options.terrain.workerUrl = workerUrl;
-  }
-  return load(terrainImage, TerrainLoader, options);
-}
-
-/**
- * Decoder for AWS Terrain Tiles
- */
-export const ELEVATION_DECODER = {
-  rScaler: 256,
-  gScaler: 1,
-  bScaler: 1 / 256,
-  offset: -32768,
-};
-
 /**
  * get mesh max error for z value
  * @param {int} z mercator tile z coord
@@ -67,6 +38,6 @@ export const ELEVATION_DECODER = {
  * Uses suggestion from here
  * https://www.linkedin.com/pulse/fast-cesium-terrain-rendering-new-quantized-mesh-output-alvaro-huarte/
  */
-export function getMeshMaxError(z, multiplier = 1) {
+function getMeshMaxError(z, multiplier = 1) {
   return (77067.34 / (1 << z)) * multiplier;
 }

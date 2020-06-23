@@ -2,13 +2,9 @@ import { registerLoaders } from '@loaders.gl/core';
 import { ImageLoader } from '@loaders.gl/images';
 import { COORDINATE_SYSTEM } from '@deck.gl/core';
 import { TileLayer } from '@deck.gl/geo-layers';
-import {
-  ELEVATION_DECODER,
-  getTerrainUrl,
-  getMeshMaxError,
-  getMercatorModelMatrix,
-  loadTerrain,
-} from './util';
+import { QuantizedMeshLoader } from '@loaders.gl/terrain';
+import { load } from '@loaders.gl/core';
+import { getTerrainUrl, getMercatorModelMatrix } from './util';
 import {
   RasterMeshLayer,
   combineBands,
@@ -77,14 +73,8 @@ async function getTileData(options) {
   // }
 
   // Load terrain
-  const terrainImage = getTerrainUrl({ x, y, z });
-  const bounds = [0, 1, 1, 0];
-  const terrain = loadTerrain({
-    terrainImage,
-    bounds,
-    elevationDecoder: ELEVATION_DECODER,
-    meshMaxError: getMeshMaxError(z, meshMultiplier),
-  });
+  const terrainUrl = getTerrainUrl({ x, y, z });
+  const terrain = load(terrainUrl, QuantizedMeshLoader);
 
   // Load landsat urls
   const urls = [

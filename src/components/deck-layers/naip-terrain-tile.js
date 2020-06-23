@@ -2,13 +2,9 @@ import { SimpleMeshLayer } from '@deck.gl/mesh-layers';
 import { COORDINATE_SYSTEM } from '@deck.gl/core';
 import { load } from '@loaders.gl/core';
 import { TileLayer } from '@deck.gl/geo-layers';
+import { QuantizedMeshLoader } from '@loaders.gl/terrain';
 import { getNaipUrl } from '../util';
-import {
-  getTerrainUrl,
-  loadTerrain,
-  getMeshMaxError,
-  getMercatorModelMatrix,
-} from './util';
+import { getTerrainUrl, getMercatorModelMatrix } from './util';
 
 const DUMMY_DATA = [1];
 
@@ -44,19 +40,10 @@ function getTileData(options) {
   const { x, y, z, mosaicUrl, meshMultiplier, color_ops } = options || {};
 
   const terrainUrl = getTerrainUrl({ x, y, z });
-  const textureUrl = getNaipUrl({ x, y, z, mosaicUrl, color_ops });
+  const terrain = load(terrainUrl, QuantizedMeshLoader);
 
-  // minx, miny, maxx, maxy
-  // This is used to flip the image so that the origin is at the top left
-  const bounds = [0, 1, 1, 0];
-
-  // Load terrain tile
-  const terrain = loadTerrain({
-    terrainImage: terrainUrl,
-    bounds,
-    meshMaxError: getMeshMaxError(z, meshMultiplier),
-  });
   // Load satellite image
+  const textureUrl = getNaipUrl({ x, y, z, mosaicUrl, color_ops });
   const texture = textureUrl
     ? // If surface image fails to load, the tile should still be displayed
       load(textureUrl).catch(_ => null)

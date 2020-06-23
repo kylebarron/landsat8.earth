@@ -74,7 +74,7 @@ function renderSubLayers(props) {
   }
 
   return new RasterLayer(props, {
-    modules: modules,
+    modules,
     asyncModuleProps: data,
     bounds: [west, south, east, north],
   });
