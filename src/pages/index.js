@@ -32,6 +32,7 @@ const initialViewState = {
   zoom: 11.5,
   pitch: 0,
   bearing: 0,
+  maxPitch: 85
 };
 
 class IndexPage extends React.Component {
