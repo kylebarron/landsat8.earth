@@ -1,8 +1,10 @@
 import { TileLayer } from '@deck.gl/geo-layers';
 import {
-  BandsBitmapLayer,
-  PanBandsBitmapLayer,
-} from '@kylebarron/deck.gl-extended-layers';
+  RasterLayer,
+  combineBands,
+  promiseAllObject,
+  pansharpenBrovey,
+} from '@kylebarron/deck.gl-raster';
 import { getLandsatUrl } from '../util';
 import { imageUrlsToTextures } from '../util/webgl';
 
@@ -45,15 +47,17 @@ async function getTileData(options) {
 
   // Load landsat urls
   const urls = [
+    pan ? getLandsatUrl({ x, y, z, bands: 8, mosaicUrl, color_ops }) : null,
     getLandsatUrl({ x, y, z, bands: rgbBands[0], mosaicUrl, color_ops }),
     getLandsatUrl({ x, y, z, bands: rgbBands[1], mosaicUrl, color_ops }),
     getLandsatUrl({ x, y, z, bands: rgbBands[2], mosaicUrl, color_ops }),
   ];
-  if (pan) {
-    urls.push(getLandsatUrl({ x, y, z, bands: 8, mosaicUrl, color_ops }));
-  }
 
-  return imageUrlsToTextures(gl, urls);
+  const [imagePan, ...imageBands] = await imageUrlsToTextures(gl, urls);
+  return promiseAllObject({
+    imageBands,
+    imagePan,
+  });
 }
 
 function renderSubLayers(props) {
@@ -64,39 +68,14 @@ function renderSubLayers(props) {
   const { data } = props;
   const pan = z >= 12;
 
-  let image_r, image_g, image_b, image_pan;
-  if (Array.isArray(data)) {
-    image_r = data[0];
-    image_g = data[1];
-    image_b = data[2];
-    if (pan) {
-      image_pan = data[3];
-    }
-  } else if (data) {
-    image_r = data.then(result => result && result[0]);
-    image_g = data.then(result => result && result[1]);
-    image_b = data.then(result => result && result[2]);
-    if (pan) {
-      image_pan = data.then(result => result && result[3]);
-    }
-  }
-
+  const modules = [combineBands];
   if (pan) {
-    return new PanBandsBitmapLayer(props, {
-      data: null,
-      image_r,
-      image_g,
-      image_b,
-      image_pan,
-      bounds: [west, south, east, north],
-    });
+    modules.push(pansharpenBrovey);
   }
 
-  return new BandsBitmapLayer(props, {
-    data: null,
-    image_r,
-    image_g,
-    image_b,
+  return new RasterLayer(props, {
+    modules: modules,
+    asyncModuleProps: data,
     bounds: [west, south, east, north],
   });
 }
