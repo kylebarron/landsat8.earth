@@ -2,7 +2,6 @@ import { TileLayer } from '@deck.gl/geo-layers';
 import {
   RasterLayer,
   combineBands,
-  promiseAllObject,
   pansharpenBrovey,
 } from '@kylebarron/deck.gl-raster';
 import { getLandsatUrl } from '../util';
@@ -45,11 +44,13 @@ async function getTileData(options) {
     options || {};
   const pan = z >= 12;
 
+  const modules = [combineBands];
   let imagePan;
   if (pan) {
     const panUrl = getLandsatUrl({ x, y, z, bands: 8, mosaicUrl, color_ops });
     // TODO: need to await all images together
     imagePan = await imageUrlsToTextures(gl, panUrl);
+    modules.push(pansharpenBrovey);
   }
 
   // Load landsat urls
@@ -60,25 +61,18 @@ async function getTileData(options) {
   ];
 
   const imageBands = await imageUrlsToTextures(gl, urls);
-  return { imageBands, imagePan };
+  return { imageBands, imagePan, modules };
 }
 
 function renderSubLayers(props) {
   const {
     bbox: { west, south, east, north },
-    z,
   } = props.tile;
-  const { data } = props;
-  const pan = z >= 12;
-
-  const modules = [combineBands];
-  if (pan) {
-    modules.push(pansharpenBrovey);
-  }
+  const { modules, ...moduleProps } = props.data;
 
   return new RasterLayer(props, {
     modules,
-    moduleProps: data,
+    moduleProps,
     bounds: [west, south, east, north],
   });
 }
