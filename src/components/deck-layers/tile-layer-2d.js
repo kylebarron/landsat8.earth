@@ -2,7 +2,7 @@ import { TileLayer } from '@deck.gl/geo-layers';
 import { RasterLayer } from '@kylebarron/deck.gl-raster';
 import { loadImages } from '../util/image';
 
-export default function TileLayer2d(props) {
+export function TileLayer2d(props) {
   const { id = 'tile-layer-2d', tileSize = 256 } = props || {};
 
   return new TileLayer({

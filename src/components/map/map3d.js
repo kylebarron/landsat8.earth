@@ -1,13 +1,7 @@
-/* eslint-disable max-statements */
 import React from 'react';
 import DeckGL from '@deck.gl/react';
 import { PostProcessEffect } from '@deck.gl/core';
-import { StaticMap } from 'react-map-gl';
-import {
-  LandsatTerrainTileLayer,
-  NAIPTerrainTileLayer,
-  MODISTerrainTileLayer,
-} from '../deck-layers';
+import { TileLayer3d } from '../deck-layers/tile-layer-3d';
 import { vibrance } from '@luma.gl/shadertools';
 import '../../css/mapbox-gl.css';
 
@@ -27,28 +21,24 @@ export default class Map extends React.Component {
   render() {
     const { gl } = this.state;
     const {
-      viewState,
-      onViewStateChange,
-      landsatMosaicUrl,
       landsatBands,
+      landsatMosaicUrl,
       naipMosaicUrl,
+      onViewStateChange,
       useNaip,
+      viewState,
     } = this.props;
 
     let layers = gl && [
-      MODISTerrainTileLayer({
-        visible: viewState.zoom <= 7,
-      }),
-      LandsatTerrainTileLayer({
+      TileLayer3d({
         gl,
-        mosaicUrl: landsatMosaicUrl,
-        rgbBands: landsatBands,
-        visible: viewState.zoom >= 7 && (viewState.zoom <= 12 || !useNaip),
-      }),
-      NAIPTerrainTileLayer({
-        mosaicUrl: naipMosaicUrl,
-        visible: viewState.zoom >= 12 && useNaip,
-        // color_ops: ''
+        landsatBands,
+        landsatMosaicUrl,
+        modisDateStr: '2018-06-01',
+        naipMosaicUrl,
+        useNaip,
+        tileSize: 256,
+        visible: true,
       }),
     ];
 
@@ -61,12 +51,7 @@ export default class Map extends React.Component {
         controller
         layers={layers}
         effects={[vibranceEffect]}
-      >
-        <StaticMap
-          mapStyle="https://raw.githubusercontent.com/kylebarron/fiord-color-gl-style/master/style.json"
-          mapOptions={{ hash: true }}
-        />
-      </DeckGL>
+      />
     );
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import DeckGL from '@deck.gl/react';
 import { MapboxLayer } from '@deck.gl/mapbox';
 import { StaticMap } from 'react-map-gl';
-import { TileLayer2d } from '../deck-layers';
+import { TileLayer2d } from '../deck-layers/tile-layer-2d';
 import '../../css/mapbox-gl.css';
 
 const mapStyle = require('./style.json');

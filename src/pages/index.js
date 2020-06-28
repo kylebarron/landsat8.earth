@@ -37,7 +37,7 @@ const initialViewState = {
 
 class IndexPage extends React.Component {
   state = {
-    map2d: true,
+    map3d: false,
     viewState: {
       ...initialViewState,
       ...getViewStateFromHash(
@@ -70,15 +70,15 @@ class IndexPage extends React.Component {
       landsatBands,
       landsatColormapName,
       landsatMosaicUrl,
-      map2d,
+      map3d,
       naipMosaicUrl,
       useNaip,
       viewState,
     } = this.state;
     return (
       <div>
-        {map2d ? (
-          <Map2d
+        {map3d ? (
+          <Map3d
             viewState={viewState}
             onViewStateChange={this.onViewStateChange}
             useNaip={useNaip}
@@ -89,7 +89,7 @@ class IndexPage extends React.Component {
             landsatBandCombination={landsatBandCombination}
           />
         ) : (
-          <Map3d
+          <Map2d
             viewState={viewState}
             onViewStateChange={this.onViewStateChange}
             useNaip={useNaip}

@@ -1979,10 +1979,10 @@
   dependencies:
     debug "^4.1.1"
 
-"@kylebarron/deck.gl-raster@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@kylebarron/deck.gl-raster/-/deck.gl-raster-0.2.2.tgz#a1f1b1cae855e5415e85f403d7afa8eea8596627"
-  integrity sha512-ng0wYa25ZQ1Maf5OOYurM9l5GyR8mj76fUaS2CTXAp6wkII1Ieu9B3JeNLm4nDF3WLVDnkEbta0pkZ76m2t9jw==
+"@kylebarron/deck.gl-raster@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@kylebarron/deck.gl-raster/-/deck.gl-raster-0.2.3.tgz#1f69a6587f14b8042a469fb8def96e7636b64413"
+  integrity sha512-nSV/gdQRRlGkXCSzpMJ7cbMptEXFe7/FmrxSNXi6TVJWxPdPunVB4nMDw1i/k/bNzdko2HnzYau/Klof4vD84A==
 
 "@loaders.gl/3d-tiles@^2.2.3":
   version "2.2.5"
