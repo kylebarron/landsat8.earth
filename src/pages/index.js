@@ -21,7 +21,10 @@ import {
   DEFAULT_NAIP_MOSAIC_ID,
   DEFAULT_LANDSAT_MOSAIC_ID,
 } from '../components/util/url';
-import { getViewStateFromHash } from '../components/util/view-state';
+import {
+  getViewStateFromHash,
+  getHashFromViewState,
+} from '../components/util/view-state';
 
 const NAIP_MOSAICS = require('../components/naip_mosaics.json');
 const LANDSAT_MOSAICS = require('../components/landsat_mosaics.json');
@@ -61,6 +64,14 @@ class IndexPage extends React.Component {
   };
 
   onViewStateChange = ({ viewState }) => {
+    // Set page hash based on view state
+    // eslint-disable-next-line no-restricted-globals
+    if (typeof history !== undefined) {
+      const hash = getHashFromViewState(viewState);
+      // eslint-disable-next-line no-restricted-globals
+      history.replaceState(null, null, hash);
+    }
+
     this.setState({ viewState });
   };
 

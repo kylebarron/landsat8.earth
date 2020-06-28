@@ -73,7 +73,6 @@ export default class Map extends React.Component {
             gl={gl}
             onLoad={this._onMapLoad}
             mapStyle={mapStyle}
-            mapOptions={{ hash: true }}
           />
         )}
       </DeckGL>

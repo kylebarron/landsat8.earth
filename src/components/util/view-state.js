@@ -37,3 +37,18 @@ export function getViewStateFromHash(hash) {
 
   return viewState;
 }
+
+export function getHashFromViewState(viewState) {
+  const { zoom, latitude, longitude, bearing, pitch } = viewState;
+  const parts = [zoom.toFixed(2), latitude.toFixed(4), longitude.toFixed(4)];
+
+  if (bearing) {
+    parts.push(bearing.toFixed(4));
+  }
+
+  if (pitch) {
+    parts.push(pitch.toFixed(4));
+  }
+
+  return `#${parts.join('/')}`;
+}
