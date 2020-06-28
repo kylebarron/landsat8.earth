@@ -39,7 +39,7 @@ export default class Map extends React.Component {
       viewState,
     } = this.props;
 
-    const layers = [
+    const layers = gl && [
       new TileLayer2d({
         id: 'tile-layer-2d',
         gl,
