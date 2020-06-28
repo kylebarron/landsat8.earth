@@ -1,4 +1,4 @@
-import dayjs from "dayjs"; 
+import dayjs from 'dayjs';
 
 /**
  * Parse Landsat-8 scene id
@@ -148,4 +148,16 @@ export function landsatParser(sceneid) {
       acquisitionDate,
     };
   }
+}
+
+export function isTrueColor(landsatBands) {
+  if (!Array.isArray(landsatBands) || landsatBands.length !== 3) {
+    return false;
+  }
+
+  if (landsatBands[0] === 4 && landsatBands[1] === 3 && landsatBands[2] === 2) {
+    return true;
+  }
+
+  return false;
 }

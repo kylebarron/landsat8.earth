@@ -18,10 +18,10 @@ import Layout from '../components/layout';
 import Image from '../components/image';
 import SEO from '../components/seo';
 import {
-  getViewStateFromHash,
   DEFAULT_NAIP_MOSAIC_ID,
   DEFAULT_LANDSAT_MOSAIC_ID,
-} from '../components/util';
+} from '../components/util/url';
+import { getViewStateFromHash } from '../components/util/view-state';
 
 const NAIP_MOSAICS = require('../components/naip_mosaics.json');
 const LANDSAT_MOSAICS = require('../components/landsat_mosaics.json');
@@ -32,7 +32,7 @@ const initialViewState = {
   zoom: 11.5,
   pitch: 0,
   bearing: 0,
-  maxPitch: 85
+  maxPitch: 85,
 };
 
 class IndexPage extends React.Component {

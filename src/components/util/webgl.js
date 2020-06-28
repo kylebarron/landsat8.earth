@@ -38,34 +38,56 @@ export async function bytesToTextures(
   return textures;
 }
 
-export async function imageUrlsToTextures(gl, urls) {
-  // Single image, not array
-  if (!Array.isArray(urls)) {
-    const { image } = await loadImageUrl(urls);
-    return new Texture2D(gl, {
-      data: image,
-      parameters: DEFAULT_TEXTURE_PARAMETERS,
-      format: GL.LUMINANCE,
-    });
-  }
-
-  const outputs = await Promise.all(urls.map(url => loadImageUrl(url)));
-  const assets = new Set(...outputs.map(({ header }) => header));
-  const textures = outputs.map(({ image }) => {
-    return new Texture2D(gl, {
-      data: image,
-      parameters: DEFAULT_TEXTURE_PARAMETERS,
-      format: GL.LUMINANCE,
-    });
+export async function loadRgbImage(gl, url) {
+  const { image, assets } = await loadImageUrl(url);
+  // Can I use GL.RGB here instead of GL.RGBA?
+  const texture = new Texture2D(gl, {
+    data: image,
+    parameters: DEFAULT_TEXTURE_PARAMETERS,
+    format: GL.RGBA,
   });
-  return textures;
+  return { texture, assets };
 }
+
+export async function loadSingleBandImage(gl, url) {
+  const { image, assets } = await loadImageUrl(url);
+  const texture = new Texture2D(gl, {
+    data: image,
+    parameters: DEFAULT_TEXTURE_PARAMETERS,
+    format: GL.LUMINANCE,
+  });
+  // return { texture, assets };
+  return texture;
+}
+
+// export async function imageUrlsToTextures(gl, urls) {
+//   // Single image, not array
+//   if (!Array.isArray(urls)) {
+//     const { image } = await loadImageUrl(urls);
+//     return new Texture2D(gl, {
+//       data: image,
+//       parameters: DEFAULT_TEXTURE_PARAMETERS,
+//       format: GL.LUMINANCE,
+//     });
+//   }
+
+//   const outputs = await Promise.all(urls.map(url => loadImageUrl(url)));
+//   const assets = new Set(...outputs.map(({ header }) => header));
+//   const textures = outputs.map(({ image }) => {
+//     return new Texture2D(gl, {
+//       data: image,
+//       parameters: DEFAULT_TEXTURE_PARAMETERS,
+//       format: GL.LUMINANCE,
+//     });
+//   });
+//   return textures;
+// }
 
 async function loadImageUrl(url) {
   const res = await fetch(url);
-  const header = JSON.parse(res.headers.get('x-assets') || '[]');
+  const assets = JSON.parse(res.headers.get('x-assets')) || [];
   return {
-    header,
+    assets,
     image: await parse(res.arrayBuffer(), ImageLoader),
   };
 }
