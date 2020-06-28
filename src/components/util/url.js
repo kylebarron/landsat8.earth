@@ -116,7 +116,7 @@ export function getModisUrls(options) {
   // From https://github.com/nasa-gibs/gibs-web-examples/blob/8cd157424abd98d0b3463b457579eb0e62e1cdd2/examples/mapbox-gl/webmercator-epsg3857.js#L22-L24
   let tilePath =
     'wmts/epsg3857/best/' +
-    'MODIS_Terra_CorrectedReflectance_TrueColor/default/' +
+    'VIIRS_SNPP_CorrectedReflectance_TrueColor/default/' +
     `${modisDateStr}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg`;
 
   // If x, y, z are passsed fill them into url template
