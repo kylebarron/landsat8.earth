@@ -15,6 +15,7 @@ export function TileLayer3d(props) {
     onViewportLoad = x => null,
     tileSize = 256,
     maxZoom = props.useNaip ? 17 : 13,
+    zRange,
   } = props || {};
 
   return new TileLayer({
@@ -22,11 +23,13 @@ export function TileLayer3d(props) {
     minZoom: 0,
     maxZoom,
     getTileData: args => getTileData(Object.assign(args, props)),
-    // getTileData: _getTileData,
     renderSubLayers,
+    onViewportLoad,
     tileSize,
     // It doesn't look like this necessarily is working?
     maxRequests: 10,
+    refinementStrategy: 'no-overlap',
+    zRange,
   });
 }
 
@@ -59,7 +62,6 @@ function renderSubLayers(props) {
     moduleProps,
     getPolygonOffset: null,
     coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
-    // Note: not sure if this works with tilesize 256 as well as 512?
     modelMatrix: getMercatorModelMatrix(tile),
     getPosition: d => [0, 0, 0],
     // Color to use if surfaceImage is unavailable

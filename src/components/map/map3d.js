@@ -12,14 +12,34 @@ const vibranceEffect = new PostProcessEffect(vibrance, {
 export default class Map extends React.Component {
   state = {
     gl: null,
+    zRange: null,
   };
 
   _onWebGLInitialized = gl => {
     this.setState({ gl });
   };
 
+  // Update zRange of viewport
+  onViewportLoad = data => {
+    if (!data || data.length === 0 || data.every(x => !x)) {
+      return;
+    }
+
+    const { zRange } = this.state;
+    const ranges = data.filter(Boolean).map(arr => {
+      const bounds = arr[1].header.boundingBox;
+      return bounds.map(bound => bound[2]);
+    });
+    const minZ = Math.min(...ranges.map(x => x[0]));
+    const maxZ = Math.max(...ranges.map(x => x[1]));
+
+    if (!zRange || minZ < zRange[0] || maxZ > zRange[1]) {
+      this.setState({ zRange: [minZ, maxZ] });
+    }
+  };
+
   render() {
-    const { gl } = this.state;
+    const { gl, zRange } = this.state;
     const {
       landsatBands,
       landsatMosaicUrl,
@@ -38,7 +58,8 @@ export default class Map extends React.Component {
         naipMosaicUrl,
         useNaip,
         tileSize: 256,
-        visible: true,
+        zRange,
+        onViewportLoad: this.onViewportLoad,
       }),
     ];
 
