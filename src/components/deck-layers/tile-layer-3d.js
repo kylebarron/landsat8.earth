@@ -10,12 +10,17 @@ import { getTerrainUrl } from '../util/terrain';
 const DUMMY_DATA = [1];
 
 export function TileLayer3d(props) {
-  const { id = 'tile-layer-3d', tileSize = 256 } = props || {};
+  const {
+    id = 'tile-layer-3d',
+    onViewportLoad = x => null,
+    tileSize = 256,
+    maxZoom = props.useNaip ? 17 : 13,
+  } = props || {};
 
   return new TileLayer({
     id,
     minZoom: 0,
-    maxZoom: 17,
+    maxZoom,
     getTileData: args => getTileData(Object.assign(args, props)),
     // getTileData: _getTileData,
     renderSubLayers,

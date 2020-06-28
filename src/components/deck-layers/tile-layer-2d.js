@@ -3,12 +3,16 @@ import { RasterLayer } from '@kylebarron/deck.gl-raster';
 import { loadImages } from '../util/image';
 
 export function TileLayer2d(props) {
-  const { id = 'tile-layer-2d', tileSize = 256 } = props || {};
+  const {
+    id = 'tile-layer-2d',
+    tileSize = 256,
+    maxZoom = props.useNaip ? 17 : 13,
+  } = props || {};
 
   return new TileLayer({
     id,
     minZoom: 0,
-    maxZoom: 17,
+    maxZoom,
     tileSize,
     getTileData: args => getTileData(Object.assign(args, props)),
     renderSubLayers,
