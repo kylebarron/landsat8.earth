@@ -21,7 +21,7 @@ import { loadRgbImage, loadSingleBandImage } from './webgl';
 export function loadImages(options) {
   const { z, useNaip = false } = options || {};
 
-  if (z < 7) {
+  if (z < 8) {
     return loadModisImages(options);
   }
 
