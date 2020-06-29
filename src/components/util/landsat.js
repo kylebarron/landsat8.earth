@@ -1,5 +1,7 @@
 import dayjs from 'dayjs';
 
+// NOTE change this to switch between precollection/collection based on string length, use substrings instead of regexp
+
 /**
  * Parse Landsat-8 scene id
  * Ported from rio-tiler
