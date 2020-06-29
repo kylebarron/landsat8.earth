@@ -63,6 +63,7 @@ class IndexPage extends React.Component {
     // Show NAIP imagery at zoom >= 12
     useNaip: true,
     // URL to NAIP Mosaic (not tile endpoint)
+    naipMosaic: DEFAULT_NAIP_MOSAIC_ID,
     naipMosaicUrl: NAIP_MOSAICS[DEFAULT_NAIP_MOSAIC_ID].url,
   };
 
@@ -71,6 +72,12 @@ class IndexPage extends React.Component {
     const landsatMosaicUrl = LANDSAT_MOSAICS[landsatMosaic].url;
     const landsatMosaicBounds = LANDSAT_MOSAICS[landsatMosaic].bounds;
     this.setState({ landsatMosaic, landsatMosaicUrl, landsatMosaicBounds });
+  };
+
+  onNaipMosaicChange = naipMosaic => {
+    // TODO: just pass naipMosaic down to the map
+    const naipMosaicUrl = NAIP_MOSAICS[naipMosaic].url;
+    this.setState({ naipMosaic, naipMosaicUrl });
   };
 
   onViewStateChange = ({ viewState }) => {
@@ -93,6 +100,7 @@ class IndexPage extends React.Component {
       landsatMosaic,
       landsatMosaicUrl,
       map3d,
+      naipMosaic,
       naipMosaicUrl,
       useNaip,
       viewState,
@@ -126,7 +134,10 @@ class IndexPage extends React.Component {
 
         <Options
           landsatMosaic={landsatMosaic}
+          naipMosaic={naipMosaic}
           onLandsatMosaicChange={this.onLandsatMosaicChange}
+          onNaipMosaicChange={this.onNaipMosaicChange}
+          useNaip={useNaip}
         />
       </div>
     );

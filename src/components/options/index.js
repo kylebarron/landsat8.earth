@@ -17,7 +17,13 @@ export default class Options extends React.Component {
 
   render() {
     const { activeIndex } = this.state;
-    const { landsatMosaic, onLandsatMosaicChange } = this.props;
+    const {
+      landsatMosaic,
+      naipMosaic,
+      onLandsatMosaicChange,
+      onNaipMosaicChange,
+      useNaip,
+    } = this.props;
 
     return (
       <div
@@ -62,7 +68,10 @@ export default class Options extends React.Component {
           <Accordion.Content active={activeIndex === 1}>
             <MosaicSelection
               landsatMosaic={landsatMosaic}
+              naipMosaic={naipMosaic}
               onLandsatMosaicChange={onLandsatMosaicChange}
+              onNaipMosaicChange={onNaipMosaicChange}
+              useNaip={useNaip}
             />
           </Accordion.Content>
         </Accordion>
