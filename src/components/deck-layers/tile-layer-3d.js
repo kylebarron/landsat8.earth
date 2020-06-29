@@ -16,6 +16,8 @@ export function TileLayer3d(props) {
     tileSize = 256,
     maxZoom = props.useNaip ? 17 : 13,
     zRange,
+    landsatMosaicUrl,
+    naipMosaicUrl,
   } = props || {};
 
   return new TileLayer({
@@ -26,10 +28,12 @@ export function TileLayer3d(props) {
     renderSubLayers,
     onViewportLoad,
     tileSize,
-    // It doesn't look like this necessarily is working?
     maxRequests: 10,
-    refinementStrategy: 'no-overlap',
+    // refinementStrategy: 'no-overlap',
     zRange,
+    updateTriggers: {
+      getTileData: [landsatMosaicUrl, naipMosaicUrl],
+    },
   });
 }
 

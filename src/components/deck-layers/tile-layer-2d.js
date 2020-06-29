@@ -7,6 +7,8 @@ export function TileLayer2d(props) {
     id = 'tile-layer-2d',
     tileSize = 256,
     maxZoom = props.useNaip ? 17 : 13,
+    landsatMosaicUrl,
+    naipMosaicUrl,
   } = props || {};
 
   return new TileLayer({
@@ -17,6 +19,9 @@ export function TileLayer2d(props) {
     getTileData: args => getTileData(Object.assign(args, props)),
     renderSubLayers,
     maxRequests: 15,
+    updateTriggers: {
+      getTileData: [landsatMosaicUrl, naipMosaicUrl],
+    },
   });
 }
 
