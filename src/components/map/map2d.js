@@ -32,7 +32,9 @@ export default class Map extends React.Component {
     const { gl } = this.state;
     const {
       landsatBands,
+      landsatBandCombination,
       landsatMosaicUrl,
+      landsatColormapName,
       naipMosaicUrl,
       onViewStateChange,
       useNaip,
@@ -44,6 +46,8 @@ export default class Map extends React.Component {
         id: 'tile-layer-2d',
         gl,
         landsatBands,
+        landsatBandCombination,
+        landsatColormapName,
         landsatMosaicUrl,
         modisDateStr: '2018-06-01',
         naipMosaicUrl,

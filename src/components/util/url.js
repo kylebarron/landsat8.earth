@@ -136,3 +136,7 @@ export function getModisUrls(options) {
 
 // Choose random url for request
 function chooseRandom(urls, z) {}
+
+export function getColormapUrl(colormapName) {
+  return `https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/${colormapName}.png`;
+}

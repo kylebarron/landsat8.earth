@@ -57,8 +57,8 @@ class IndexPage extends React.Component {
 
   // TODO: consolidate into one helper function to set a key's state
   onLandsatBandsChange = landsatBands => {
-    this.setState({landsatBands})
-  }
+    this.setState({ landsatBands });
+  };
 
   onLandsatMosaicChange = landsatMosaic => {
     // TODO: just pass landsatMosaic down to the map
