@@ -1,125 +1,218 @@
 {
   "autoUpdate": {
+    "key": "autoUpdate",
+    "text": "Latest Available",
+    "value": "autoUpdate",
     "url": "dynamodb://us-west-2/landsat-mosaic-latest",
     "bounds": [-180, -90, 180, 90]
   },
   "autoUpdateCloudless": {
+    "key": "autoUpdateCloudless",
+    "text": "Latest Available (Cloudless)",
+    "value": "autoUpdateCloudless",
     "url": "dynamodb://us-west-2/landsat-mosaic-latest-cloudless",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2013": {
+    "key": "spring2013",
+    "text": "Spring 2013",
+    "value": "spring2013",
     "url": "dynamodb://us-west-2/landsat8-2013-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2014": {
+    "key": "spring2014",
+    "text": "Spring 2014",
+    "value": "spring2014",
     "url": "dynamodb://us-west-2/landsat8-2014-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2015": {
+    "key": "spring2015",
+    "text": "Spring 2015",
+    "value": "spring2015",
     "url": "dynamodb://us-west-2/landsat8-2015-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2016": {
+    "key": "spring2016",
+    "text": "Spring 2016",
+    "value": "spring2016",
     "url": "dynamodb://us-west-2/landsat8-2016-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2017": {
+    "key": "spring2017",
+    "text": "Spring 2017",
+    "value": "spring2017",
     "url": "dynamodb://us-west-2/landsat8-2017-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2018": {
+    "key": "spring2018",
+    "text": "Spring 2018",
+    "value": "spring2018",
     "url": "dynamodb://us-west-2/landsat8-2018-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2019": {
+    "key": "spring2019",
+    "text": "Spring 2019",
+    "value": "spring2019",
     "url": "dynamodb://us-west-2/landsat8-2019-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "spring2020": {
+    "key": "spring2020",
+    "text": "Spring 2020",
+    "value": "spring2020",
     "url": "dynamodb://us-west-2/landsat8-2020-spring",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2013": {
+    "key": "summer2013",
+    "text": "Summer 2013",
+    "value": "summer2013",
     "url": "dynamodb://us-west-2/landsat8-2013-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2014": {
+    "key": "summer2014",
+    "text": "Summer 2014",
+    "value": "summer2014",
     "url": "dynamodb://us-west-2/landsat8-2014-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2015": {
+    "key": "summer2015",
+    "text": "Summer 2015",
+    "value": "summer2015",
     "url": "dynamodb://us-west-2/landsat8-2015-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2016": {
+    "key": "summer2016",
+    "text": "Summer 2016",
+    "value": "summer2016",
     "url": "dynamodb://us-west-2/landsat8-2016-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2017": {
+    "key": "summer2017",
+    "text": "Summer 2017",
+    "value": "summer2017",
     "url": "dynamodb://us-west-2/landsat8-2017-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2018": {
+    "key": "summer2018",
+    "text": "Summer 2018",
+    "value": "summer2018",
     "url": "dynamodb://us-west-2/landsat8-2018-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "summer2019": {
+    "key": "summer2019",
+    "text": "Summer 2019",
+    "value": "summer2019",
     "url": "dynamodb://us-west-2/landsat8-2019-summer",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2013": {
+    "key": "fall2013",
+    "text": "Fall 2013",
+    "value": "fall2013",
     "url": "dynamodb://us-west-2/landsat8-2013-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2014": {
+    "key": "fall2014",
+    "text": "Fall 2014",
+    "value": "fall2014",
     "url": "dynamodb://us-west-2/landsat8-2014-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2015": {
+    "key": "fall2015",
+    "text": "Fall 2015",
+    "value": "fall2015",
     "url": "dynamodb://us-west-2/landsat8-2015-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2016": {
+    "key": "fall2016",
+    "text": "Fall 2016",
+    "value": "fall2016",
     "url": "dynamodb://us-west-2/landsat8-2016-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2017": {
+    "key": "fall2017",
+    "text": "Fall 2017",
+    "value": "fall2017",
     "url": "dynamodb://us-west-2/landsat8-2017-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2018": {
+    "key": "fall2018",
+    "text": "Fall 2018",
+    "value": "fall2018",
     "url": "dynamodb://us-west-2/landsat8-2018-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "fall2019": {
+    "key": "fall2019",
+    "text": "Fall 2019",
+    "value": "fall2019",
     "url": "dynamodb://us-west-2/landsat8-2019-fall",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2014": {
+    "key": "winter2014",
+    "text": "Winter 2014",
+    "value": "winter2014",
     "url": "dynamodb://us-west-2/landsat8-2014-winter",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2015": {
+    "key": "winter2015",
+    "text": "Winter 2015",
+    "value": "winter2015",
     "url": "dynamodb://us-west-2/landsat8-2015-winter",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2016": {
+    "key": "winter2016",
+    "text": "Winter 2016",
+    "value": "winter2016",
     "url": "dynamodb://us-west-2/landsat8-2016-winter",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2017": {
+    "key": "winter2017",
+    "text": "Winter 2017",
+    "value": "winter2017",
     "url": "dynamodb://us-west-2/landsat8-2017-winter",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2018": {
+    "key": "winter2018",
+    "text": "Winter 2018",
+    "value": "winter2018",
     "url": "dynamodb://us-west-2/landsat8-2018-winter",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2019": {
+    "key": "winter2019",
+    "text": "Winter 2019",
+    "value": "winter2019",
     "url": "dynamodb://us-west-2/landsat8-2019-winter",
     "bounds": [-180, -90, 180, 90]
   },
   "winter2020": {
+    "key": "winter2020",
+    "text": "Winter 2020",
+    "value": "winter2020",
     "url": "dynamodb://us-west-2/landsat8-2020-winter",
     "bounds": [-180, -90, 180, 90]
   }
