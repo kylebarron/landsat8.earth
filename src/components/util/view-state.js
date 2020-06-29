@@ -38,7 +38,7 @@ export function getViewStateFromHash(hash) {
   return viewState;
 }
 
-export function getHashFromViewState(viewState) {
+function getHashFromViewState(viewState) {
   const { zoom, latitude, longitude, bearing, pitch } = viewState;
   const parts = [zoom.toFixed(2), latitude.toFixed(4), longitude.toFixed(4)];
 
@@ -51,4 +51,10 @@ export function getHashFromViewState(viewState) {
   }
 
   return `#${parts.join('/')}`;
+}
+
+export function setHashFromViewState(viewState) {
+  const hash = getHashFromViewState(viewState);
+  // eslint-disable-next-line no-restricted-globals
+  if (typeof history !== undefined) history.replaceState(null, null, hash);
 }
