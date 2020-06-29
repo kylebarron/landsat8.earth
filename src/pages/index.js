@@ -17,6 +17,7 @@ import { Map2d, Map3d } from '../components/map/index';
 import Layout from '../components/layout';
 import Image from '../components/image';
 import SEO from '../components/seo';
+import Options from '../components/options';
 import {
   DEFAULT_NAIP_MOSAIC_ID,
   DEFAULT_LANDSAT_MOSAIC_ID,
@@ -25,9 +26,10 @@ import {
   getViewStateFromHash,
   getHashFromViewState,
 } from '../components/util/view-state';
+import '../css/semantic-ui.css';
 
-const NAIP_MOSAICS = require('../components/naip_mosaics.json');
-const LANDSAT_MOSAICS = require('../components/landsat_mosaics.json');
+import LANDSAT_MOSAICS from '../components/landsat_mosaics.json';
+import NAIP_MOSAICS from '../components/naip_mosaics.json';
 
 const initialViewState = {
   longitude: -112.1861,
@@ -50,6 +52,7 @@ class IndexPage extends React.Component {
 
     // Landsat 8 options
     // URL to Landsat Mosaic (not tile endpoint)
+    landsatMosaic: DEFAULT_LANDSAT_MOSAIC_ID,
     landsatMosaicUrl: LANDSAT_MOSAICS[DEFAULT_LANDSAT_MOSAIC_ID].url,
     landsatMosaicBounds: LANDSAT_MOSAICS[DEFAULT_LANDSAT_MOSAIC_ID].bounds,
     landsatBands: [4, 3, 2],
@@ -61,6 +64,13 @@ class IndexPage extends React.Component {
     useNaip: true,
     // URL to NAIP Mosaic (not tile endpoint)
     naipMosaicUrl: NAIP_MOSAICS[DEFAULT_NAIP_MOSAIC_ID].url,
+  };
+
+  onLandsatMosaicChange = landsatMosaic => {
+    // TODO: just pass landsatMosaic down to the map
+    const landsatMosaicUrl = LANDSAT_MOSAICS[landsatMosaic].url;
+    const landsatMosaicBounds = LANDSAT_MOSAICS[landsatMosaic].bounds;
+    this.setState({ landsatMosaic, landsatMosaicUrl, landsatMosaicBounds });
   };
 
   onViewStateChange = ({ viewState }) => {
@@ -80,12 +90,14 @@ class IndexPage extends React.Component {
       landsatBandCombination,
       landsatBands,
       landsatColormapName,
+      landsatMosaic,
       landsatMosaicUrl,
       map3d,
       naipMosaicUrl,
       useNaip,
       viewState,
     } = this.state;
+
     return (
       <div>
         {map3d ? (
@@ -111,6 +123,11 @@ class IndexPage extends React.Component {
             landsatBandCombination={landsatBandCombination}
           />
         )}
+
+        <Options
+          landsatMosaic={landsatMosaic}
+          onLandsatMosaicChange={this.onLandsatMosaicChange}
+        />
       </div>
     );
   }
