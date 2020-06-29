@@ -1,17 +1,5 @@
-/** @jsx jsx */
 import React from 'react';
 import { Link } from 'gatsby';
-import { Styled, jsx } from 'theme-ui';
-import {
-  Container,
-  Accordion,
-  Checkbox,
-  Card,
-  Grid,
-  List,
-  Icon,
-  Header,
-} from 'semantic-ui-react';
 
 import { Map2d, Map3d } from '../components/map/index';
 import Layout from '../components/layout';
