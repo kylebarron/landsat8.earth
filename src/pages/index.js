@@ -55,6 +55,11 @@ class IndexPage extends React.Component {
     naipMosaicUrl: NAIP_MOSAICS[DEFAULT_NAIP_MOSAIC_ID].url,
   };
 
+  // TODO: consolidate into one helper function to set a key's state
+  onLandsatBandsChange = landsatBands => {
+    this.setState({landsatBands})
+  }
+
   onLandsatMosaicChange = landsatMosaic => {
     // TODO: just pass landsatMosaic down to the map
     const landsatMosaicUrl = LANDSAT_MOSAICS[landsatMosaic].url;
@@ -116,6 +121,8 @@ class IndexPage extends React.Component {
         )}
 
         <Options
+          landsatBands={landsatBands}
+          onLandsatBandsChange={this.onLandsatBandsChange}
           landsatMosaic={landsatMosaic}
           naipMosaic={naipMosaic}
           onLandsatMosaicChange={this.onLandsatMosaicChange}

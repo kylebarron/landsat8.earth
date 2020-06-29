@@ -9,6 +9,7 @@ export function TileLayer2d(props) {
     maxZoom = props.useNaip ? 17 : 13,
     landsatMosaicUrl,
     naipMosaicUrl,
+    landsatBands,
   } = props || {};
 
   return new TileLayer({
@@ -20,7 +21,8 @@ export function TileLayer2d(props) {
     renderSubLayers,
     maxRequests: 15,
     updateTriggers: {
-      getTileData: [landsatMosaicUrl, naipMosaicUrl],
+      // Need to expand array since comparison is shallow
+      getTileData: [landsatMosaicUrl, naipMosaicUrl, ...landsatBands],
     },
   });
 }

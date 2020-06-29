@@ -23,6 +23,8 @@ export default class Options extends React.Component {
       onLandsatMosaicChange,
       onNaipMosaicChange,
       useNaip,
+      landsatBands,
+      onLandsatBandsChange,
     } = this.props;
 
     return (
@@ -54,7 +56,10 @@ export default class Options extends React.Component {
             Band Selection
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 0}>
-            <BandSelection />
+            <BandSelection
+              landsatBands={landsatBands}
+              onLandsatBandsChange={onLandsatBandsChange}
+            />
           </Accordion.Content>
 
           <Accordion.Title

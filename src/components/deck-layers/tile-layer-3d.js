@@ -17,6 +17,7 @@ export function TileLayer3d(props) {
     maxZoom = props.useNaip ? 17 : 13,
     zRange,
     landsatMosaicUrl,
+    landsatBands,
     naipMosaicUrl,
   } = props || {};
 
@@ -32,7 +33,8 @@ export function TileLayer3d(props) {
     // refinementStrategy: 'no-overlap',
     zRange,
     updateTriggers: {
-      getTileData: [landsatMosaicUrl, naipMosaicUrl],
+      // Need to expand array since comparison is shallow
+      getTileData: [landsatMosaicUrl, naipMosaicUrl, ...landsatBands],
     },
   });
 }
@@ -70,5 +72,6 @@ function renderSubLayers(props) {
     getPosition: d => [0, 0, 0],
     // Color to use if surfaceImage is unavailable
     getColor: [255, 255, 255],
+    // material: false
   });
 }
