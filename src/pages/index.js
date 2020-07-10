@@ -16,9 +16,6 @@ import {
 } from '../components/util/view-state';
 import '../css/semantic-ui.css';
 
-import LANDSAT_MOSAICS from '../components/landsat_mosaics.json';
-import NAIP_MOSAICS from '../components/naip_mosaics.json';
-
 const initialViewState = {
   longitude: -112.1861,
   latitude: 36.1284,
@@ -39,10 +36,7 @@ class IndexPage extends React.Component {
     },
 
     // Landsat 8 options
-    // URL to Landsat Mosaic (not tile endpoint)
-    landsatMosaic: DEFAULT_LANDSAT_MOSAIC_ID,
-    landsatMosaicUrl: LANDSAT_MOSAICS[DEFAULT_LANDSAT_MOSAIC_ID].url,
-    landsatMosaicBounds: LANDSAT_MOSAICS[DEFAULT_LANDSAT_MOSAIC_ID].bounds,
+    landsatMosaicId: DEFAULT_LANDSAT_MOSAIC_ID,
     landsatBands: [4, 3, 2],
     landsatColormapName: 'cfastie',
     landsatBandCombination: 'rgb',
@@ -50,9 +44,7 @@ class IndexPage extends React.Component {
     // NAIP options
     // Show NAIP imagery at zoom >= 12
     useNaip: true,
-    // URL to NAIP Mosaic (not tile endpoint)
-    naipMosaic: DEFAULT_NAIP_MOSAIC_ID,
-    naipMosaicUrl: NAIP_MOSAICS[DEFAULT_NAIP_MOSAIC_ID].url,
+    naipMosaicId: DEFAULT_NAIP_MOSAIC_ID,
   };
 
   // TODO: consolidate into one helper function to set a key's state
@@ -60,23 +52,17 @@ class IndexPage extends React.Component {
     this.setState({ landsatBands });
   };
 
-  onLandsatMosaicChange = landsatMosaic => {
-    // TODO: just pass landsatMosaic down to the map
-    const landsatMosaicUrl = LANDSAT_MOSAICS[landsatMosaic].url;
-    const landsatMosaicBounds = LANDSAT_MOSAICS[landsatMosaic].bounds;
-    this.setState({ landsatMosaic, landsatMosaicUrl, landsatMosaicBounds });
+  onLandsatMosaicChange = landsatMosaicId => {
+    this.setState({ landsatMosaicId });
   };
 
-  onNaipMosaicChange = naipMosaic => {
-    // TODO: just pass naipMosaic down to the map
-    const naipMosaicUrl = NAIP_MOSAICS[naipMosaic].url;
-    this.setState({ naipMosaic, naipMosaicUrl });
+  onNaipMosaicChange = naipMosaicId => {
+    this.setState({ naipMosaicId });
   };
 
   onViewStateChange = ({ viewState }) => {
     // Set page hash based on view state
     setHashFromViewState(viewState);
-
     this.setState({ viewState });
   };
 
@@ -85,11 +71,9 @@ class IndexPage extends React.Component {
       landsatBandCombination,
       landsatBands,
       landsatColormapName,
-      landsatMosaic,
-      landsatMosaicUrl,
+      landsatMosaicId,
       map3d,
-      naipMosaic,
-      naipMosaicUrl,
+      naipMosaicId,
       useNaip,
       viewState,
     } = this.state;
@@ -101,8 +85,8 @@ class IndexPage extends React.Component {
             viewState={viewState}
             onViewStateChange={this.onViewStateChange}
             useNaip={useNaip}
-            naipMosaicUrl={naipMosaicUrl}
-            landsatMosaicUrl={landsatMosaicUrl}
+            naipMosaicId={naipMosaicId}
+            landsatMosaicId={landsatMosaicId}
             landsatBands={landsatBands}
             landsatColormapName={landsatColormapName}
             landsatBandCombination={landsatBandCombination}
@@ -112,8 +96,8 @@ class IndexPage extends React.Component {
             viewState={viewState}
             onViewStateChange={this.onViewStateChange}
             useNaip={useNaip}
-            naipMosaicUrl={naipMosaicUrl}
-            landsatMosaicUrl={landsatMosaicUrl}
+            landsatMosaicId={landsatMosaicId}
+            naipMosaicId={naipMosaicId}
             landsatBands={landsatBands}
             landsatColormapName={landsatColormapName}
             landsatBandCombination={landsatBandCombination}
@@ -123,8 +107,8 @@ class IndexPage extends React.Component {
         <Options
           landsatBands={landsatBands}
           onLandsatBandsChange={this.onLandsatBandsChange}
-          landsatMosaic={landsatMosaic}
-          naipMosaic={naipMosaic}
+          landsatMosaicId={landsatMosaicId}
+          naipMosaicId={naipMosaicId}
           onLandsatMosaicChange={this.onLandsatMosaicChange}
           onNaipMosaicChange={this.onNaipMosaicChange}
           useNaip={useNaip}
