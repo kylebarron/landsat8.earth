@@ -19,7 +19,7 @@ export function TileLayer2d(props) {
     tileSize,
     getTileData: args => getTileData(Object.assign(args, props)),
     renderSubLayers,
-    maxRequests: 15,
+    maxRequests: 8,
     updateTriggers: {
       // Need to expand array since comparison is shallow
       getTileData: [landsatMosaicId, naipMosaicId, ...landsatBands],

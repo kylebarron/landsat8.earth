@@ -29,7 +29,7 @@ export function TileLayer3d(props) {
     renderSubLayers,
     onViewportLoad,
     tileSize,
-    maxRequests: 10,
+    maxRequests: 8,
     // refinementStrategy: 'no-overlap',
     zRange,
     updateTriggers: {
