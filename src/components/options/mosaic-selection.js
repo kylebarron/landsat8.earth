@@ -1,7 +1,8 @@
 import React from 'react';
-import LANDSAT_MOSAICS from '../landsat_mosaics.json';
-import NAIP_MOSAICS from '../naip_mosaics.json';
 import { Select } from 'semantic-ui-react';
+
+import LANDSAT_MOSAICS from '../constants/landsat_mosaics.json';
+import NAIP_MOSAICS from '../constants/naip_mosaics.json';
 
 export default function MosaicSelection(props) {
   const {
