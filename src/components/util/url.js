@@ -1,5 +1,8 @@
 /* Utilities for creating request urls */
 
+import LANDSAT_MOSAICS from '../landsat_mosaics.json';
+import NAIP_MOSAICS from '../naip_mosaics.json';
+
 export const DEFAULT_LANDSAT_MOSAIC_ID = 'summer2019';
 export const DEFAULT_NAIP_MOSAIC_ID = '2016-2018';
 
@@ -38,7 +41,7 @@ function defaultLandsatColorOps(nBands) {
  * Get URL including query string to fetch Landsat tile
  * @param {object} options:
  * landsatBands: array of band numbers
- * landsatMosaicUrl: url to mosaicJSON, parsed by backend
+ * landsatMosaicId: identifier for Landsat Mosaicjson
  * x: mercator tile x
  * y: mercator tile y
  * z: mercator tile z
@@ -47,17 +50,20 @@ function defaultLandsatColorOps(nBands) {
 export function getLandsatUrl(options) {
   const {
     landsatBands,
-    landsatMosaicUrl,
+    landsatMosaicId,
     x,
     y,
     z,
     landsatColorOps,
     tileSize = 256,
   } = options || {};
+
   const scale = getScale(tileSize);
   const bandsArray = Array.isArray(landsatBands)
     ? landsatBands
     : [landsatBands];
+  const landsatMosaicUrl = LANDSAT_MOSAICS[landsatMosaicId].url;
+
   const params = new URLSearchParams({
     bands: bandsArray.join(','),
     color_ops: landsatColorOps || defaultLandsatColorOps(bandsArray.length),
@@ -70,7 +76,7 @@ export function getLandsatUrl(options) {
 /**
  * Get URL including query string to fetch NAIP tile
  * @param {object} options:
- * naipMosaicUrl: url to mosaicJSON, parsed by backend
+ * naipMosaicId: identifier for NAIP Mosaicjson
  * x: mercator tile x
  * y: mercator tile y
  * z: mercator tile z
@@ -78,7 +84,7 @@ export function getLandsatUrl(options) {
  */
 export function getNaipUrl(options) {
   const {
-    naipMosaicUrl,
+    naipMosaicId,
     x = null,
     y = null,
     z = null,
@@ -87,10 +93,12 @@ export function getNaipUrl(options) {
   } = options || {};
 
   const scale = getScale(tileSize);
+  const naipMosaicUrl = NAIP_MOSAICS[naipMosaicId].url;
   const params = new URLSearchParams({
     color_ops: naipColorOps,
     url: naipMosaicUrl,
   });
+
   // Don't replace string by default, so that it can be passed as a Mapbox tile
   // url
   let baseUrl = `https://us-west-2-lambda.kylebarron.dev/naip/{z}/{x}/{y}${scale}.jpg?`;

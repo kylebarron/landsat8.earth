@@ -42,8 +42,8 @@ export default class Map extends React.Component {
     const { gl, zRange } = this.state;
     const {
       landsatBands,
-      landsatMosaicUrl,
-      naipMosaicUrl,
+      landsatMosaicId,
+      naipMosaicId,
       onViewStateChange,
       useNaip,
       viewState,
@@ -53,9 +53,9 @@ export default class Map extends React.Component {
       TileLayer3d({
         gl,
         landsatBands,
-        landsatMosaicUrl,
+        landsatMosaicId,
         modisDateStr: '2018-06-01',
-        naipMosaicUrl,
+        naipMosaicId,
         useNaip,
         tileSize: 256,
         zRange,

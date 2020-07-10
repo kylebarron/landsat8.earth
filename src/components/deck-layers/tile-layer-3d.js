@@ -16,9 +16,9 @@ export function TileLayer3d(props) {
     tileSize = 256,
     maxZoom = props.useNaip ? 17 : 13,
     zRange,
-    landsatMosaicUrl,
+    landsatMosaicId,
     landsatBands,
-    naipMosaicUrl,
+    naipMosaicId,
   } = props || {};
 
   return new TileLayer({
@@ -34,7 +34,7 @@ export function TileLayer3d(props) {
     zRange,
     updateTriggers: {
       // Need to expand array since comparison is shallow
-      getTileData: [landsatMosaicUrl, naipMosaicUrl, ...landsatBands],
+      getTileData: [landsatMosaicId, naipMosaicId, ...landsatBands],
     },
   });
 }
@@ -42,7 +42,7 @@ export function TileLayer3d(props) {
 async function getTileData(options) {
   const { x, y, z, meshMultiplier = 1 } = options || {};
 
-  // NOTE: when below zoom ~5 you can skip loading terrain
+  // TODO: when below zoom ~5 you can skip loading terrain
   // Load terrain
   const terrainUrl = getTerrainUrl({ x, y, z, meshMultiplier });
   const terrain = load(terrainUrl, QuantizedMeshLoader);

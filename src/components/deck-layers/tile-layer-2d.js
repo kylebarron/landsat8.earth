@@ -7,8 +7,8 @@ export function TileLayer2d(props) {
     id = 'tile-layer-2d',
     tileSize = 256,
     maxZoom = props.useNaip ? 17 : 13,
-    landsatMosaicUrl,
-    naipMosaicUrl,
+    landsatMosaicId,
+    naipMosaicId,
     landsatBands,
   } = props || {};
 
@@ -22,7 +22,7 @@ export function TileLayer2d(props) {
     maxRequests: 15,
     updateTriggers: {
       // Need to expand array since comparison is shallow
-      getTileData: [landsatMosaicUrl, naipMosaicUrl, ...landsatBands],
+      getTileData: [landsatMosaicId, naipMosaicId, ...landsatBands],
     },
   });
 }
