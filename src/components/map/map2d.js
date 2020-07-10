@@ -3,9 +3,8 @@ import DeckGL from '@deck.gl/react';
 import { MapboxLayer } from '@deck.gl/mapbox';
 import { StaticMap } from 'react-map-gl';
 import { TileLayer2d } from '../deck-layers/tile-layer-2d';
+import mapStyle from './style.json';
 import '../../css/mapbox-gl.css';
-
-const mapStyle = require('./style.json');
 
 export default class Map extends React.Component {
   state = {
