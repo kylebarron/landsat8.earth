@@ -45,6 +45,7 @@ export default class Map extends React.Component {
       landsatMosaicId,
       naipMosaicId,
       onViewStateChange,
+      onDragEnd,
       useNaip,
       viewState,
     } = this.props;
@@ -69,6 +70,7 @@ export default class Map extends React.Component {
         onWebGLInitialized={this._onWebGLInitialized}
         viewState={viewState}
         onViewStateChange={onViewStateChange}
+        onDragEnd={onDragEnd}
         controller
         layers={layers}
         effects={[vibranceEffect]}

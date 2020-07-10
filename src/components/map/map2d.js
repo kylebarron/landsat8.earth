@@ -37,6 +37,7 @@ export default class Map extends React.Component {
       landsatColormapName,
       naipMosaicId,
       onViewStateChange,
+      onDragEnd,
       useNaip,
       viewState,
     } = this.props;
@@ -64,6 +65,7 @@ export default class Map extends React.Component {
         layers={layers}
         viewState={viewState}
         onViewStateChange={onViewStateChange}
+        onDragEnd={onDragEnd}
         controller
         onWebGLInitialized={this._onWebGLInitialized}
         // For correct Mapbox rendering of polygons
