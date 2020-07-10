@@ -47,19 +47,6 @@ class IndexPage extends React.Component {
     naipMosaicId: DEFAULT_NAIP_MOSAIC_ID,
   };
 
-  // TODO: consolidate into one helper function to set a key's state
-  onLandsatBandsChange = landsatBands => {
-    this.setState({ landsatBands });
-  };
-
-  onLandsatMosaicChange = landsatMosaicId => {
-    this.setState({ landsatMosaicId });
-  };
-
-  onNaipMosaicChange = naipMosaicId => {
-    this.setState({ naipMosaicId });
-  };
-
   onViewStateChange = ({ viewState, interactionState }) => {
     const { isDragging } = interactionState;
     // Set page hash based on view state
@@ -117,11 +104,13 @@ class IndexPage extends React.Component {
 
         <Options
           landsatBands={landsatBands}
-          onLandsatBandsChange={this.onLandsatBandsChange}
+          onLandsatBandsChange={landsatBands => this.setState({ landsatBands })}
           landsatMosaicId={landsatMosaicId}
           naipMosaicId={naipMosaicId}
-          onLandsatMosaicChange={this.onLandsatMosaicChange}
-          onNaipMosaicChange={this.onNaipMosaicChange}
+          onLandsatMosaicChange={landsatMosaicId =>
+            this.setState({ landsatMosaicId })
+          }
+          onNaipMosaicChange={naipMosaicId => this.setState({ naipMosaicId })}
           useNaip={useNaip}
         />
       </div>
