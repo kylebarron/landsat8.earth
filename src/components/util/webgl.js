@@ -54,7 +54,9 @@ export async function loadSingleBandImage(gl, url) {
   const texture = new Texture2D(gl, {
     data: image,
     parameters: DEFAULT_TEXTURE_PARAMETERS,
-    format: GL.LUMINANCE,
+    // Colormaps are 10 pixels high
+    // Load colormaps as RGB; all others as LUMINANCE
+    format: image && image.height === 10 ? GL.RGB : GL.LUMINANCE,
   });
   // return { texture, assets };
   return texture;
