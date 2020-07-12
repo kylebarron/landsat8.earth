@@ -13,16 +13,6 @@ import { getModisUrls, getNaipUrl, getLandsatUrl, getColormapUrl } from './url';
 import { isTrueColor } from './landsat';
 import { loadRgbImage, loadSingleBandImage } from './webgl';
 
-/**
- *
- * @param {x} options
- * @param {y} options
- * @param {z} options
- * @param {x} options
- * @param {x} options
- * @param {x} options
- * @param {x} options
- */
 export function loadImages(options) {
   const { z, useNaip = false } = options || {};
 

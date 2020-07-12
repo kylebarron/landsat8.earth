@@ -146,5 +146,9 @@ export function getModisUrls(options) {
 function chooseRandom(urls, z) {}
 
 export function getColormapUrl(colormapName) {
+  if (!colormapName) {
+    return null;
+  }
+
   return `https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/${colormapName}.png`;
 }
