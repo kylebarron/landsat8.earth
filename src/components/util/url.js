@@ -142,9 +142,6 @@ export function getModisUrls(options) {
   ];
 }
 
-// Choose random url for request
-function chooseRandom(urls, z) {}
-
 export function getColormapUrl(colormapName) {
   if (!colormapName) {
     return null;
