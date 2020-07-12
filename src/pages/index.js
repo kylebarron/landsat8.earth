@@ -120,6 +120,8 @@ class IndexPage extends React.Component {
           }
           onNaipMosaicChange={naipMosaicId => this.setState({ naipMosaicId })}
           useNaip={useNaip}
+          onChange={value => this.setState(value)}
+          map3d={map3d}
         />
       </div>
     );
