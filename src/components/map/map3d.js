@@ -48,12 +48,16 @@ export default class Map extends React.Component {
       onDragEnd,
       useNaip,
       viewState,
+      landsatBandCombination,
+      landsatColormapName,
     } = this.props;
 
     let layers = gl && [
       TileLayer3d({
         gl,
         landsatBands,
+        landsatBandCombination,
+        landsatColormapName,
         landsatMosaicId,
         modisDateStr: '2018-06-01',
         naipMosaicId,
