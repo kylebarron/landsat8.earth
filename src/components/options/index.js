@@ -2,6 +2,7 @@ import React from 'react';
 import { Header, Accordion, Icon } from 'semantic-ui-react';
 import BandSelection from './band-selection';
 import MosaicSelection from './mosaic-selection';
+import DimensionSelection from './dimension-selection';
 
 export default class Options extends React.Component {
   state = {
@@ -29,6 +30,8 @@ export default class Options extends React.Component {
       landsatBandPreset,
       onLandsatBandPresetChange,
       onLandsatBandsChange,
+      onChange,
+      map3d
     } = this.props;
 
     return (
@@ -50,6 +53,7 @@ export default class Options extends React.Component {
         }}
       >
         <Header as="h3">Options</Header>
+        <DimensionSelection map3d={map3d} onChange={onChange} />
         <Accordion>
           <Accordion.Title
             active={activeIndex === 0}
