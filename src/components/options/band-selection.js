@@ -1,8 +1,7 @@
 import React from 'react';
-import { Select, Grid, Dropdown } from 'semantic-ui-react';
-import { getColormapUrl } from '../util/url';
+import { Select, Grid } from 'semantic-ui-react';
 import bandPresets from '../constants/rgb_band_presets.json';
-import colormapOptions from '../constants/colormaps.json';
+import ColormapSelection from './colormap';
 
 const bandOptions = [...Array(8).keys()].map(k => {
   const key = k + 1;
@@ -40,6 +39,10 @@ export default function BandSelection(props) {
   return (
     <div>
       <p>Spectral Bands Selection</p>
+      <BandPresetSelection
+        landsatBandPreset={landsatBandPreset}
+        onLandsatBandPresetChange={onLandsatBandPresetChange}
+      />
       <Grid>
         <Grid.Column key={0}>
           <SingleBandSelector
@@ -67,32 +70,6 @@ export default function BandSelection(props) {
         landsatColormapName={landsatColormapName}
         onLandsatColormapNameChange={onLandsatColormapNameChange}
       />
-    </div>
-  );
-}
-
-function ColormapSelection(props) {
-  const { landsatColormapName, onLandsatColormapNameChange } = props;
-  const colormapUrl = getColormapUrl(landsatColormapName);
-  if (!colormapUrl) {
-    return null;
-  }
-
-  return (
-    <div>
-      <Dropdown
-        value={landsatColormapName}
-        placeholder="Select Colormap"
-        fluid
-        selection
-        options={colormapOptions}
-        onChange={(event, object) => {
-          onLandsatColormapNameChange(object.value);
-        }}
-      />
-
-      <p>Selected colormap: from minimum to maximum:</p>
-      <img src={colormapUrl} />
     </div>
   );
 }
