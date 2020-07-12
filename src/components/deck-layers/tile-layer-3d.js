@@ -18,6 +18,7 @@ export function TileLayer3d(props) {
     zRange,
     landsatMosaicId,
     landsatBands,
+    landsatColormapName,
     naipMosaicId,
   } = props || {};
 
@@ -33,8 +34,13 @@ export function TileLayer3d(props) {
     // refinementStrategy: 'no-overlap',
     zRange,
     updateTriggers: {
-      // Need to expand array since comparison is shallow
-      getTileData: [landsatMosaicId, naipMosaicId, ...landsatBands],
+      // Need to expand landsatBands array since comparison is shallow
+      getTileData: [
+        landsatMosaicId,
+        naipMosaicId,
+        landsatColormapName,
+        ...landsatBands,
+      ],
     },
   });
 }

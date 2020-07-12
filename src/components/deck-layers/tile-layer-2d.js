@@ -10,6 +10,7 @@ export function TileLayer2d(props) {
     landsatMosaicId,
     naipMosaicId,
     landsatBands,
+    landsatColormapName,
   } = props || {};
 
   return new TileLayer({
@@ -19,10 +20,15 @@ export function TileLayer2d(props) {
     tileSize,
     getTileData: args => getTileData(Object.assign(args, props)),
     renderSubLayers,
-    maxRequests: 8,
+    maxRequests: 10,
     updateTriggers: {
-      // Need to expand array since comparison is shallow
-      getTileData: [landsatMosaicId, naipMosaicId, ...landsatBands],
+      // Need to expand landsatBands array since comparison is shallow
+      getTileData: [
+        landsatMosaicId,
+        naipMosaicId,
+        landsatColormapName,
+        ...landsatBands,
+      ],
     },
   });
 }
