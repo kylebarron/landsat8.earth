@@ -1,0 +1,586 @@
+[
+  {
+    "key": "cfastie",
+    "text": "cfastie",
+    "value": "cfastie",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/cfastie.png"
+    }
+  },
+  {
+    "key": "rplumbo",
+    "text": "rplumbo",
+    "value": "rplumbo",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/rplumbo.png"
+    }
+  },
+  {
+    "key": "schwarzwald",
+    "text": "schwarzwald",
+    "value": "schwarzwald",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/schwarzwald.png"
+    }
+  },
+  {
+    "key": "viridis",
+    "text": "viridis",
+    "value": "viridis",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/viridis.png"
+    }
+  },
+  {
+    "key": "plasma",
+    "text": "plasma",
+    "value": "plasma",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/plasma.png"
+    }
+  },
+  {
+    "key": "inferno",
+    "text": "inferno",
+    "value": "inferno",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/inferno.png"
+    }
+  },
+  {
+    "key": "magma",
+    "text": "magma",
+    "value": "magma",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/magma.png"
+    }
+  },
+  {
+    "key": "cividis",
+    "text": "cividis",
+    "value": "cividis",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/cividis.png"
+    }
+  },
+  {
+    "key": "greys",
+    "text": "greys",
+    "value": "greys",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/greys.png"
+    }
+  },
+  {
+    "key": "purples",
+    "text": "purples",
+    "value": "purples",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/purples.png"
+    }
+  },
+  {
+    "key": "blues",
+    "text": "blues",
+    "value": "blues",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/blues.png"
+    }
+  },
+  {
+    "key": "greens",
+    "text": "greens",
+    "value": "greens",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/greens.png"
+    }
+  },
+  {
+    "key": "oranges",
+    "text": "oranges",
+    "value": "oranges",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/oranges.png"
+    }
+  },
+  {
+    "key": "reds",
+    "text": "reds",
+    "value": "reds",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/reds.png"
+    }
+  },
+  {
+    "key": "ylorbr",
+    "text": "ylorbr",
+    "value": "ylorbr",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/ylorbr.png"
+    }
+  },
+  {
+    "key": "ylorrd",
+    "text": "ylorrd",
+    "value": "ylorrd",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/ylorrd.png"
+    }
+  },
+  {
+    "key": "orrd",
+    "text": "orrd",
+    "value": "orrd",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/orrd.png"
+    }
+  },
+  {
+    "key": "purd",
+    "text": "purd",
+    "value": "purd",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/purd.png"
+    }
+  },
+  {
+    "key": "rdpu",
+    "text": "rdpu",
+    "value": "rdpu",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/rdpu.png"
+    }
+  },
+  {
+    "key": "bupu",
+    "text": "bupu",
+    "value": "bupu",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/bupu.png"
+    }
+  },
+  {
+    "key": "gnbu",
+    "text": "gnbu",
+    "value": "gnbu",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/gnbu.png"
+    }
+  },
+  {
+    "key": "pubu",
+    "text": "pubu",
+    "value": "pubu",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/pubu.png"
+    }
+  },
+  {
+    "key": "ylgnbu",
+    "text": "ylgnbu",
+    "value": "ylgnbu",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/ylgnbu.png"
+    }
+  },
+  {
+    "key": "pubugn",
+    "text": "pubugn",
+    "value": "pubugn",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/pubugn.png"
+    }
+  },
+  {
+    "key": "bugn",
+    "text": "bugn",
+    "value": "bugn",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/bugn.png"
+    }
+  },
+  {
+    "key": "ylgn",
+    "text": "ylgn",
+    "value": "ylgn",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/ylgn.png"
+    }
+  },
+  {
+    "key": "binary",
+    "text": "binary",
+    "value": "binary",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/binary.png"
+    }
+  },
+  {
+    "key": "gist_yarg",
+    "text": "gist_yarg",
+    "value": "gist_yarg",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/gist_yarg.png"
+    }
+  },
+  {
+    "key": "gist_gray",
+    "text": "gist_gray",
+    "value": "gist_gray",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/gist_gray.png"
+    }
+  },
+  {
+    "key": "gray",
+    "text": "gray",
+    "value": "gray",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/gray.png"
+    }
+  },
+  {
+    "key": "bone",
+    "text": "bone",
+    "value": "bone",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/bone.png"
+    }
+  },
+  {
+    "key": "pink",
+    "text": "pink",
+    "value": "pink",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/pink.png"
+    }
+  },
+  {
+    "key": "spring",
+    "text": "spring",
+    "value": "spring",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/spring.png"
+    }
+  },
+  {
+    "key": "summer",
+    "text": "summer",
+    "value": "summer",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/summer.png"
+    }
+  },
+  {
+    "key": "autumn",
+    "text": "autumn",
+    "value": "autumn",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/autumn.png"
+    }
+  },
+  {
+    "key": "winter",
+    "text": "winter",
+    "value": "winter",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/winter.png"
+    }
+  },
+  {
+    "key": "cool",
+    "text": "cool",
+    "value": "cool",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/cool.png"
+    }
+  },
+  {
+    "key": "wistia",
+    "text": "wistia",
+    "value": "wistia",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/wistia.png"
+    }
+  },
+  {
+    "key": "hot",
+    "text": "hot",
+    "value": "hot",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/hot.png"
+    }
+  },
+  {
+    "key": "afmhot",
+    "text": "afmhot",
+    "value": "afmhot",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/afmhot.png"
+    }
+  },
+  {
+    "key": "gist_heat",
+    "text": "gist_heat",
+    "value": "gist_heat",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/gist_heat.png"
+    }
+  },
+  {
+    "key": "copper",
+    "text": "copper",
+    "value": "copper",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/copper.png"
+    }
+  },
+  {
+    "key": "piyg",
+    "text": "piyg",
+    "value": "piyg",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/piyg.png"
+    }
+  },
+  {
+    "key": "prgn",
+    "text": "prgn",
+    "value": "prgn",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/prgn.png"
+    }
+  },
+  {
+    "key": "brbg",
+    "text": "brbg",
+    "value": "brbg",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/brbg.png"
+    }
+  },
+  {
+    "key": "puor",
+    "text": "puor",
+    "value": "puor",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/puor.png"
+    }
+  },
+  {
+    "key": "rdgy",
+    "text": "rdgy",
+    "value": "rdgy",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/rdgy.png"
+    }
+  },
+  {
+    "key": "rdbu",
+    "text": "rdbu",
+    "value": "rdbu",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/rdbu.png"
+    }
+  },
+  {
+    "key": "rdylbu",
+    "text": "rdylbu",
+    "value": "rdylbu",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/rdylbu.png"
+    }
+  },
+  {
+    "key": "rdylgn",
+    "text": "rdylgn",
+    "value": "rdylgn",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/rdylgn.png"
+    }
+  },
+  {
+    "key": "spectral",
+    "text": "spectral",
+    "value": "spectral",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/spectral.png"
+    }
+  },
+  {
+    "key": "coolwarm",
+    "text": "coolwarm",
+    "value": "coolwarm",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/coolwarm.png"
+    }
+  },
+  {
+    "key": "bwr",
+    "text": "bwr",
+    "value": "bwr",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/bwr.png"
+    }
+  },
+  {
+    "key": "seismic",
+    "text": "seismic",
+    "value": "seismic",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/seismic.png"
+    }
+  },
+  {
+    "key": "twilight",
+    "text": "twilight",
+    "value": "twilight",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/twilight.png"
+    }
+  },
+  {
+    "key": "twilight_shifted",
+    "text": "twilight_shifted",
+    "value": "twilight_shifted",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/twilight_shifted.png"
+    }
+  },
+  {
+    "key": "hsv",
+    "text": "hsv",
+    "value": "hsv",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/hsv.png"
+    }
+  },
+  {
+    "key": "flag",
+    "text": "flag",
+    "value": "flag",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/flag.png"
+    }
+  },
+  {
+    "key": "prism",
+    "text": "prism",
+    "value": "prism",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/prism.png"
+    }
+  },
+  {
+    "key": "ocean",
+    "text": "ocean",
+    "value": "ocean",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/ocean.png"
+    }
+  },
+  {
+    "key": "gist_earth",
+    "text": "gist_earth",
+    "value": "gist_earth",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/gist_earth.png"
+    }
+  },
+  {
+    "key": "terrain",
+    "text": "terrain",
+    "value": "terrain",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/terrain.png"
+    }
+  },
+  {
+    "key": "gist_stern",
+    "text": "gist_stern",
+    "value": "gist_stern",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/gist_stern.png"
+    }
+  },
+  {
+    "key": "gnuplot",
+    "text": "gnuplot",
+    "value": "gnuplot",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/gnuplot.png"
+    }
+  },
+  {
+    "key": "gnuplot2",
+    "text": "gnuplot2",
+    "value": "gnuplot2",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/gnuplot2.png"
+    }
+  },
+  {
+    "key": "cmrmap",
+    "text": "cmrmap",
+    "value": "cmrmap",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/cmrmap.png"
+    }
+  },
+  {
+    "key": "cubehelix",
+    "text": "cubehelix",
+    "value": "cubehelix",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/cubehelix.png"
+    }
+  },
+  {
+    "key": "brg",
+    "text": "brg",
+    "value": "brg",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/brg.png"
+    }
+  },
+  {
+    "key": "gist_rainbow",
+    "text": "gist_rainbow",
+    "value": "gist_rainbow",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/gist_rainbow.png"
+    }
+  },
+  {
+    "key": "rainbow",
+    "text": "rainbow",
+    "value": "rainbow",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/rainbow.png"
+    }
+  },
+  {
+    "key": "jet",
+    "text": "jet",
+    "value": "jet",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/jet.png"
+    }
+  },
+  {
+    "key": "nipy_spectral",
+    "text": "nipy_spectral",
+    "value": "nipy_spectral",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/nipy_spectral.png"
+    }
+  },
+  {
+    "key": "gist_ncar",
+    "text": "gist_ncar",
+    "value": "gist_ncar",
+    "image": {
+      "src": "https://cdn.jsdelivr.net/gh/kylebarron/deck.gl-raster/assets/colormaps/gist_ncar.png"
+    }
+  }
+]
