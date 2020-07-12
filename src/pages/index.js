@@ -105,20 +105,9 @@ class IndexPage extends React.Component {
         <Options
           landsatBands={landsatBands}
           landsatBandPreset={landsatBandPreset}
-          onLandsatBandPresetChange={landsatBandPreset =>
-            this.setState({ landsatBandPreset })
-          }
-          onLandsatBandsChange={landsatBands => this.setState({ landsatBands })}
           landsatMosaicId={landsatMosaicId}
           naipMosaicId={naipMosaicId}
           landsatColormapName={landsatColormapName}
-          onLandsatColormapNameChange={landsatColormapName =>
-            this.setState({ landsatColormapName })
-          }
-          onLandsatMosaicChange={landsatMosaicId =>
-            this.setState({ landsatMosaicId })
-          }
-          onNaipMosaicChange={naipMosaicId => this.setState({ naipMosaicId })}
           useNaip={useNaip}
           onChange={value => this.setState(value)}
           map3d={map3d}

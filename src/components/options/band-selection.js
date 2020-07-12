@@ -13,14 +13,14 @@ const bandOptions = [...Array(8).keys()].map(k => {
 });
 
 function SingleBandSelector(props) {
-  const { i, landsatBands, onLandsatBandsChange } = props;
+  const { i, landsatBands, onChange } = props;
   return (
     <Select
       value={landsatBands[i] || 1}
       options={bandOptions}
       onChange={(event, object) => {
         landsatBands[i] = object.value;
-        onLandsatBandsChange(landsatBands);
+        onChange({ landsatBands });
       }}
     />
   );
@@ -29,11 +29,9 @@ function SingleBandSelector(props) {
 export default function BandSelection(props) {
   const {
     landsatBands,
-    onLandsatBandsChange,
     landsatBandPreset,
-    onLandsatBandPresetChange,
     landsatColormapName,
-    onLandsatColormapNameChange,
+    onChange,
   } = props;
 
   return (
@@ -41,41 +39,41 @@ export default function BandSelection(props) {
       <p>Spectral Bands Selection</p>
       <BandPresetSelection
         landsatBandPreset={landsatBandPreset}
-        onLandsatBandPresetChange={onLandsatBandPresetChange}
+        onChange={onChange}
       />
       <Grid>
         <Grid.Column key={0}>
           <SingleBandSelector
             landsatBands={landsatBands}
-            onLandsatBandsChange={onLandsatBandsChange}
+            onChange={onChange}
             i={0}
           />
         </Grid.Column>
         <Grid.Column key={1}>
           <SingleBandSelector
             landsatBands={landsatBands}
-            onLandsatBandsChange={onLandsatBandsChange}
+            onChange={onChange}
             i={1}
           />
         </Grid.Column>
         <Grid.Column key={2}>
           <SingleBandSelector
             landsatBands={landsatBands}
-            onLandsatBandsChange={onLandsatBandsChange}
+            onChange={onChange}
             i={2}
           />
         </Grid.Column>
       </Grid>
       <ColormapSelection
         landsatColormapName={landsatColormapName}
-        onLandsatColormapNameChange={onLandsatColormapNameChange}
+        onChange={onChange}
       />
     </div>
   );
 }
 
 function BandPresetSelection(props) {
-  const { landsatBandPreset, onLandsatBandPresetChange } = props;
+  const { landsatBandPreset, onChange } = props;
 
   // console.log(landsatBandPreset);
   return (
@@ -85,7 +83,7 @@ function BandPresetSelection(props) {
         value={landsatBandPreset}
         options={Object.values(bandPresets)}
         onChange={(event, object) => {
-          onLandsatBandPresetChange(object.value);
+          onChange({ landsatBandPreset: object.value });
         }}
       />
       <p>Hello world {landsatBandPreset} </p>

@@ -21,17 +21,12 @@ export default class Options extends React.Component {
     const {
       landsatMosaic,
       naipMosaic,
-      onLandsatMosaicChange,
-      onNaipMosaicChange,
       useNaip,
       landsatBands,
       landsatColormapName,
-      onLandsatColormapNameChange,
       landsatBandPreset,
-      onLandsatBandPresetChange,
-      onLandsatBandsChange,
       onChange,
-      map3d
+      map3d,
     } = this.props;
 
     return (
@@ -67,10 +62,8 @@ export default class Options extends React.Component {
             <BandSelection
               landsatBands={landsatBands}
               landsatBandPreset={landsatBandPreset}
-              onLandsatBandsChange={onLandsatBandsChange}
-              onLandsatBandPresetChange={onLandsatBandPresetChange}
               landsatColormapName={landsatColormapName}
-              onLandsatColormapNameChange={onLandsatColormapNameChange}
+              onChange={onChange}
             />
           </Accordion.Content>
 
@@ -86,9 +79,8 @@ export default class Options extends React.Component {
             <MosaicSelection
               landsatMosaic={landsatMosaic}
               naipMosaic={naipMosaic}
-              onLandsatMosaicChange={onLandsatMosaicChange}
-              onNaipMosaicChange={onNaipMosaicChange}
               useNaip={useNaip}
+              onChange={onChange}
             />
           </Accordion.Content>
         </Accordion>

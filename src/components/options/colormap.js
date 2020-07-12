@@ -5,7 +5,7 @@ import { getColormapUrl } from '../util/url';
 import colormapOptions from '../constants/colormaps.json';
 
 export default function ColormapSelection(props) {
-  const { landsatColormapName, onLandsatColormapNameChange } = props;
+  const { landsatColormapName, onChange } = props;
   const colormapUrl = getColormapUrl(landsatColormapName);
   if (!colormapUrl) {
     return null;
@@ -20,7 +20,7 @@ export default function ColormapSelection(props) {
         selection
         options={colormapOptions}
         onChange={(event, object) => {
-          onLandsatColormapNameChange(object.value);
+          onChange({landsatColormapName: object.value});
         }}
       />
 
