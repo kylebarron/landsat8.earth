@@ -54,11 +54,17 @@ export default function BandSelection(props) {
         landsatBandCombination={landsatBandCombination}
         onChange={onChange}
       />
-      <Header as="h5">Colormap</Header>
-      <ColormapSelection
-        landsatColormapName={landsatColormapName}
-        onChange={onChange}
-      />
+
+      {/* Only show ColormapSelection when creating index of some kind */}
+      {landsatBandCombination !== 'rgb' && (
+        <div>
+          <Header as="h5">Colormap</Header>
+          <ColormapSelection
+            landsatColormapName={landsatColormapName}
+            onChange={onChange}
+          />
+        </div>
+      )}
     </div>
   );
 }
