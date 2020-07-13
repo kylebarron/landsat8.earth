@@ -7,6 +7,62 @@
     "bandCombination": "rgb",
     "desc": "Red, green, and blue light as our eyes see them."
   },
+  "ndvi": {
+    "key": "ndvi",
+    "text": "Normalized Difference Vegetation Index (NDVI)",
+    "value": "ndvi",
+    "landsatBands": [5, 4],
+    "bandCombination": "normalizedDifference",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "enhancedVegetationIndex": {
+    "key": "enhancedVegetationIndex",
+    "text": "Enhanced Vegetation Index (EVI)",
+    "value": "enhancedVegetationIndex",
+    "landsatBands": [5, 4, 2],
+    "bandCombination": "enhancedVegetationIndex",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "savi": {
+    "key": "savi",
+    "text": "Soil Adjusted Vegetation Index (SAVI)",
+    "value": "savi",
+    "landsatBands": [5, 4],
+    "bandCombination": "soilAdjustedVegetationIndex",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "msavi": {
+    "key": "msavi",
+    "text": "Modified Soil Adjusted Vegetation Index (MSAVI)",
+    "value": "msavi",
+    "landsatBands": [5, 4],
+    "bandCombination": "modifiedSoilAdjustedVegetationIndex",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "ndmi": {
+    "key": "ndmi",
+    "text": "Normalized Difference Moisture Index (NDMI)",
+    "value": "ndmi",
+    "landsatBands": [5, 6],
+    "bandCombination": "normalizedDifference",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "nbr": {
+    "key": "nbr",
+    "text": "Normalized Burn Ratio (NBR)",
+    "value": "nbr",
+    "landsatBands": [5, 7],
+    "bandCombination": "normalizedDifference",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "nbr2": {
+    "key": "nbr2",
+    "text": "Normalized Burn Ratio 2 (NBR2)",
+    "value": "nbr2",
+    "landsatBands": [6, 7],
+    "bandCombination": "normalizedDifference",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
   "False Color Urban": {
     "key": "False Color Urban",
     "text": "False Color Urban",

@@ -89,7 +89,7 @@ function BandPresetSelection(props) {
           onChange({
             landsatBandPreset: newLandsatBandPreset,
             landsatBands,
-            bandCombination,
+            landsatBandCombination: bandCombination,
           });
         }}
       />
