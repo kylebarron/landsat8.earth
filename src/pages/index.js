@@ -37,6 +37,7 @@ class IndexPage extends React.Component {
 
     // Landsat 8 options
     landsatMosaicId: DEFAULT_LANDSAT_MOSAIC_ID,
+    landsatBandPreset: 'True Color',
     landsatBands: [4, 3, 2],
     landsatColormapName: 'cfastie',
     landsatBandCombination: 'rgb',
@@ -65,6 +66,7 @@ class IndexPage extends React.Component {
   render() {
     const {
       landsatBandCombination,
+      landsatBandPreset,
       landsatBands,
       landsatColormapName,
       landsatMosaicId,
@@ -105,6 +107,7 @@ class IndexPage extends React.Component {
         <Options
           landsatBands={landsatBands}
           landsatBandPreset={landsatBandPreset}
+          landsatBandCombination={landsatBandCombination}
           landsatMosaicId={landsatMosaicId}
           naipMosaicId={naipMosaicId}
           landsatColormapName={landsatColormapName}
