@@ -3,6 +3,7 @@ import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import { getColormapUrl } from '../util/url';
 import colormapOptions from '../constants/colormaps.json';
+import { arrayToProps } from '../util/util';
 
 export default function ColormapSelection(props) {
   const { landsatColormapName, onChange } = props;
@@ -18,7 +19,7 @@ export default function ColormapSelection(props) {
         placeholder="Select Colormap"
         fluid
         selection
-        options={colormapOptions}
+        options={arrayToProps(colormapOptions)}
         onChange={(event, object) => {
           onChange({ landsatColormapName: object.value });
         }}

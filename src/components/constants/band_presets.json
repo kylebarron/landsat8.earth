@@ -1,0 +1,82 @@
+{
+  "True Color": {
+    "key": "True Color",
+    "text": "True Color",
+    "value": "True Color",
+    "landsatBands": [4, 3, 2],
+    "bandCombination": "rgb",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "False Color Urban": {
+    "key": "False Color Urban",
+    "text": "False Color Urban",
+    "value": "False Color Urban",
+    "landsatBands": [7, 6, 4],
+    "bandCombination": "rgb",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "Infrared": {
+    "key": "Infrared",
+    "text": "Infrared",
+    "value": "Infrared",
+    "landsatBands": [5, 4, 3],
+    "bandCombination": "rgb",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "Agriculture": {
+    "key": "Agriculture",
+    "text": "Agriculture",
+    "value": "Agriculture",
+    "landsatBands": [6, 5, 2],
+    "bandCombination": "rgb",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "Atmospheric Penetration": {
+    "key": "Atmospheric Penetration",
+    "text": "Atmospheric Penetration",
+    "value": "Atmospheric Penetration",
+    "landsatBands": [7, 6, 5],
+    "bandCombination": "rgb",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "Healthy Vegetation": {
+    "key": "Healthy Vegetation",
+    "text": "Healthy Vegetation",
+    "value": "Healthy Vegetation",
+    "landsatBands": [5, 6, 2],
+    "bandCombination": "rgb",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "Forest Burn": {
+    "key": "Forest Burn",
+    "text": "Forest Burn",
+    "value": "Forest Burn",
+    "landsatBands": [7, 5, 2],
+    "bandCombination": "rgb",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "Land/Water": {
+    "key": "Land/Water",
+    "text": "Land/Water",
+    "value": "Land/Water",
+    "landsatBands": [5, 6, 4],
+    "bandCombination": "rgb",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "Natural with Atmo Removal": {
+    "key": "Natural with Atmo Removal",
+    "text": "Natural with Atmo Removal",
+    "value": "Natural with Atmo Removal",
+    "landsatBands": [7, 5, 3],
+    "bandCombination": "rgb",
+    "desc": "Red, green, and blue light as our eyes see them."
+  },
+  "Shortwave Infrared": {
+    "key": "Shortwave Infrared",
+    "text": "Shortwave Infrared",
+    "value": "Shortwave Infrared",
+    "landsatBands": [7, 5, 4],
+    "bandCombination": "rgb",
+    "desc": "Red, green, and blue light as our eyes see them."
+  }
+}

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Select, Grid, Header } from 'semantic-ui-react';
-import bandPresets from '../constants/rgb_band_presets.json';
+import bandPresets from '../constants/band_presets.json';
 import bandCombinations from '../constants/band_combinations.json';
 import ColormapSelection from './colormap';
+import { arrayToProps } from '../util/util';
 
 const bandOptions = [...Array(8).keys()].map(k => {
   const key = k + 1;
@@ -70,9 +71,16 @@ function BandPresetSelection(props) {
       <Select
         placeholder="custom"
         value={landsatBandPreset}
-        options={Object.values(bandPresets)}
+        options={arrayToProps(Object.values(bandPresets))}
         onChange={(event, object) => {
-          onChange({ landsatBandPreset: object.value });
+          const newLandsatBandPreset = object.value;
+          const presetData = bandPresets[newLandsatBandPreset];
+          const { landsatBands, bandCombination } = presetData;
+          onChange({
+            landsatBandPreset: newLandsatBandPreset,
+            landsatBands,
+            bandCombination,
+          });
         }}
       />
     </div>
@@ -110,13 +118,13 @@ function BandChoice(props) {
 }
 
 function BandCombinationSelection(props) {
-  const {landsatBandCombination, onChange} = props;
+  const { landsatBandCombination, onChange } = props;
 
   return (
     <Select
       placeholder="custom"
       value={landsatBandCombination}
-      options={bandCombinations}
+      options={arrayToProps(bandCombinations)}
       onChange={(event, object) => {
         onChange({ landsatBandCombination: object.value });
       }}
