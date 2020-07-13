@@ -9,7 +9,9 @@ export default function MosaicSelection(props) {
 
   return (
     <div>
-      <p>Landsat Mosaic Selection</p>
+      <p>
+        <b>Landsat Mosaic Selection</b>
+      </p>
       <Select
         value={landsatMosaicId}
         options={Object.values(LANDSAT_MOSAICS)}

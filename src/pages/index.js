@@ -44,7 +44,7 @@ class IndexPage extends React.Component {
 
     // NAIP options
     // Show NAIP imagery at zoom >= 12
-    useNaip: true,
+    useNaip: false,
     naipMosaicId: DEFAULT_NAIP_MOSAIC_ID,
   };
 
