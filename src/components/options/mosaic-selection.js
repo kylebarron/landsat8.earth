@@ -5,13 +5,13 @@ import LANDSAT_MOSAICS from '../constants/landsat_mosaics.json';
 import NAIP_MOSAICS from '../constants/naip_mosaics.json';
 
 export default function MosaicSelection(props) {
-  const { landsatMosaic, naipMosaic, useNaip, onChange } = props;
+  const { landsatMosaicId, naipMosaicId, useNaip, onChange } = props;
 
   return (
     <div>
       <p>Landsat Mosaic Selection</p>
       <Select
-        value={landsatMosaic}
+        value={landsatMosaicId}
         options={Object.values(LANDSAT_MOSAICS)}
         onChange={(event, object) =>
           onChange({ landsatMosaicId: object.value })
@@ -23,7 +23,7 @@ export default function MosaicSelection(props) {
         <div>
           <p>NAIP Mosaic Selection</p>
           <Select
-            value={naipMosaic}
+            value={naipMosaicId}
             options={Object.values(NAIP_MOSAICS)}
             onChange={(event, object) =>
               onChange({ naipMosaicId: object.value })

@@ -19,8 +19,8 @@ export default class Options extends React.Component {
   render() {
     const { activeIndex } = this.state;
     const {
-      landsatMosaic,
-      naipMosaic,
+      landsatMosaicId,
+      naipMosaicId,
       useNaip,
       landsatBands,
       landsatColormapName,
@@ -77,8 +77,8 @@ export default class Options extends React.Component {
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 1}>
             <MosaicSelection
-              landsatMosaic={landsatMosaic}
-              naipMosaic={naipMosaic}
+              landsatMosaicId={landsatMosaicId}
+              naipMosaicId={naipMosaicId}
               useNaip={useNaip}
               onChange={onChange}
             />
