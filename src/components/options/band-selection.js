@@ -23,7 +23,7 @@ function SingleBandSelector(props) {
       fluid
       onChange={(event, object) => {
         landsatBands[i] = object.value;
-        onChange({ landsatBands });
+        onChange({ landsatBands, landsatBandPreset: null });
       }}
     />
   );
@@ -79,7 +79,7 @@ function BandPresetSelection(props) {
   return (
     <div>
       <Select
-        placeholder="custom"
+        placeholder="Choose a Preset"
         value={landsatBandPreset}
         options={arrayToProps(Object.values(bandPresets))}
         onChange={(event, object) => {
@@ -120,11 +120,14 @@ function BandCombinationSelection(props) {
 
   return (
     <Select
-      placeholder="custom"
+      placeholder="Choose a Band Combination"
       value={landsatBandCombination}
       options={arrayToProps(Object.values(bandCombinations))}
       onChange={(event, object) => {
-        onChange({ landsatBandCombination: object.value });
+        onChange({
+          landsatBandCombination: object.value,
+          landsatBandPreset: null,
+        });
       }}
     />
   );
