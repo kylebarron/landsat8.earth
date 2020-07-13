@@ -18,6 +18,7 @@ function SingleBandSelector(props) {
     <Select
       value={landsatBands[i] || 1}
       options={bandOptions}
+      fluid
       onChange={(event, object) => {
         landsatBands[i] = object.value;
         onChange({ landsatBands });
