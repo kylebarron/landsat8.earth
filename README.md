@@ -2,7 +2,7 @@
 
 2D/3D WebGL-powered Landsat 8 satellite imagery analysis
 
-[![](assets/eastern_sierra_false_color.jpg)](https://landsat8.earth)
+[![](./assets/eastern_sierra_false_color.jpg)](https://landsat8.earth)
 
 3D, False-color Infrared Landsat visualization of the Eastern Sierra
 
