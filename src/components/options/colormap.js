@@ -20,12 +20,14 @@ export default function ColormapSelection(props) {
         selection
         options={colormapOptions}
         onChange={(event, object) => {
-          onChange({landsatColormapName: object.value});
+          onChange({ landsatColormapName: object.value });
         }}
       />
 
-      <p>Selected colormap: from minimum to maximum:</p>
-      <img src={colormapUrl} />
+      <p>
+        minimum to maximum:
+        <img src={colormapUrl} />
+      </p>
     </div>
   );
 }

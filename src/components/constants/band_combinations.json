@@ -1,0 +1,32 @@
+[
+  {
+    "key": "rgb",
+    "text": "RGB",
+    "value": "rgb",
+    "nBands": 3
+  },
+  {
+    "key": "normalizedDifference",
+    "text": "Normalized Difference",
+    "value": "normalizedDifference",
+    "nBands": 2
+  },
+  {
+    "key": "enhancedVegetationIndex",
+    "text": "Enhanced Vegetation Index (EVI)",
+    "value": "enhancedVegetationIndex",
+    "nBands": 3
+  },
+  {
+    "key": "soilAdjustedVegetationIndex",
+    "text": "Soil Adjusted Vegetation Index (SAVI)",
+    "value": "soilAdjustedVegetationIndex",
+    "nBands": 2
+  },
+  {
+    "key": "modifiedSoilAdjustedVegetationIndex",
+    "text": "Modified Soil Adjusted Vegetation Index (MSAVI)",
+    "value": "modifiedSoilAdjustedVegetationIndex",
+    "nBands": 3
+  }
+]

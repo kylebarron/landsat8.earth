@@ -24,6 +24,7 @@ export default class Options extends React.Component {
       useNaip,
       landsatBands,
       landsatColormapName,
+      landsatBandCombination,
       landsatBandPreset,
       onChange,
       map3d,
@@ -47,7 +48,8 @@ export default class Options extends React.Component {
           // overflow: 'visible',
         }}
       >
-        <Header as="h3">Options</Header>
+        <Header as="h2">Landsat8.earth</Header>
+        <Header as="h3">Map Options</Header>
         <DimensionSelection map3d={map3d} onChange={onChange} />
         <Accordion>
           <Accordion.Title
@@ -56,12 +58,13 @@ export default class Options extends React.Component {
             onClick={this.handleClick}
           >
             <Icon name="dropdown" />
-            Band Selection
+            <b>Band Selection</b>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 0}>
             <BandSelection
               landsatBands={landsatBands}
               landsatBandPreset={landsatBandPreset}
+              landsatBandCombination={landsatBandCombination}
               landsatColormapName={landsatColormapName}
               onChange={onChange}
             />
@@ -73,7 +76,7 @@ export default class Options extends React.Component {
             onClick={this.handleClick}
           >
             <Icon name="dropdown" />
-            Mosaic/Imagery Selection
+            <b>Mosaic/Imagery Selection</b>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 1}>
             <MosaicSelection
