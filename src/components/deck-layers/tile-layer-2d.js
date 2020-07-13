@@ -10,6 +10,7 @@ export function TileLayer2d(props) {
     landsatMosaicId,
     naipMosaicId,
     landsatBands,
+    landsatBandCombination,
     landsatColormapName,
   } = props || {};
 
@@ -27,6 +28,7 @@ export function TileLayer2d(props) {
         landsatMosaicId,
         naipMosaicId,
         landsatColormapName,
+        landsatBandCombination,
         ...landsatBands,
       ],
     },
