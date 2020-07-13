@@ -47,7 +47,11 @@ export default function BandSelection(props) {
       />
       <Header as="h4">Custom</Header>
       <Header as="h5">Band Choice</Header>
-      <BandChoice landsatBands={landsatBands} onChange={onChange} />
+      <BandChoice
+        nBands={bandCombinations[landsatBandCombination].nBands}
+        landsatBands={landsatBands}
+        onChange={onChange}
+      />
       {/* TODO: is this better named "Band Interpretation"? */}
       <Header as="h5">Band Combination</Header>
       <BandCombinationSelection
@@ -94,31 +98,19 @@ function BandPresetSelection(props) {
 }
 
 function BandChoice(props) {
-  const { landsatBands, onChange } = props;
+  const { nBands, landsatBands, onChange } = props;
 
   return (
     <Grid>
-      <Grid.Column key={0}>
-        <SingleBandSelector
-          landsatBands={landsatBands}
-          onChange={onChange}
-          i={0}
-        />
-      </Grid.Column>
-      <Grid.Column key={1}>
-        <SingleBandSelector
-          landsatBands={landsatBands}
-          onChange={onChange}
-          i={1}
-        />
-      </Grid.Column>
-      <Grid.Column key={2}>
-        <SingleBandSelector
-          landsatBands={landsatBands}
-          onChange={onChange}
-          i={2}
-        />
-      </Grid.Column>
+      {[...Array(nBands).keys()].map(i => (
+        <Grid.Column key={i}>
+          <SingleBandSelector
+            landsatBands={landsatBands}
+            onChange={onChange}
+            i={i}
+          />
+        </Grid.Column>
+      ))}
     </Grid>
   );
 }
@@ -130,7 +122,7 @@ function BandCombinationSelection(props) {
     <Select
       placeholder="custom"
       value={landsatBandCombination}
-      options={arrayToProps(bandCombinations)}
+      options={arrayToProps(Object.values(bandCombinations))}
       onChange={(event, object) => {
         onChange({ landsatBandCombination: object.value });
       }}
