@@ -6,7 +6,7 @@ import DimensionSelection from './dimension-selection';
 
 export default class Options extends React.Component {
   state = {
-    activeIndex: 0,
+    activeIndex: -1,
   };
   handleClick = (e, titleProps) => {
     const { index } = titleProps;
