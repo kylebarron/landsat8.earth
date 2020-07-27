@@ -22,8 +22,11 @@ function SingleBandSelector(props) {
       options={bandOptions}
       fluid
       onChange={(event, object) => {
-        landsatBands[i] = object.value;
-        onChange({ landsatBands, landsatBandPreset: null });
+        // Take copy of landsatBands array so that I don't modify the master
+        // bandPresets
+        const newLandsatBands = landsatBands.slice();
+        newLandsatBands[i] = object.value;
+        onChange({ landsatBands: newLandsatBands, landsatBandPreset: null });
       }}
     />
   );
@@ -51,8 +54,7 @@ export default function BandSelection(props) {
         landsatBands={landsatBands}
         onChange={onChange}
       />
-      {/* TODO: is this better named "Band Interpretation"? */}
-      <Header as="h5">Band Combination</Header>
+      <Header as="h5">Band Interpretation</Header>
       <BandCombinationSelection
         landsatBandCombination={landsatBandCombination}
         onChange={onChange}
