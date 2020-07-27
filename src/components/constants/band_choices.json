@@ -1,0 +1,47 @@
+[
+  {
+    "key": "1",
+    "text": "1: Coastal Aerosol",
+    "value": 1
+  },
+  {
+    "key": "2",
+    "text": "2: Blue",
+    "value": 2
+  },
+  {
+    "key": "3",
+    "text": "3: Green",
+    "value": 3
+  },
+  {
+    "key": "4",
+    "text": "4: Red",
+    "value": 4
+  },
+  {
+    "key": "5",
+    "text": "5: Near Infrared",
+    "value": 5
+  },
+  {
+    "key": "6",
+    "text": "6: Shortwave IR 1",
+    "value": 6
+  },
+  {
+    "key": "7",
+    "text": "7: Shortwave IR 2",
+    "value": 7
+  },
+  {
+    "key": "8",
+    "text": "8: Panchromatic",
+    "value": 8
+  },
+  {
+    "key": "9",
+    "text": "9: Cirrus",
+    "value": 9
+  }
+]

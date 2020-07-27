@@ -1,26 +1,17 @@
 import React from 'react';
 import { Select, Grid, Header } from 'semantic-ui-react';
+import bandChoices from '../constants/band_choices.json';
 import bandPresets from '../constants/band_presets.json';
 import bandCombinations from '../constants/band_combinations.json';
 import ColormapSelection from './colormap';
 import { arrayToProps } from '../util/util';
-
-const bandOptions = [...Array(8).keys()].map(k => {
-  const key = k + 1;
-  return {
-    key,
-    text: key,
-    value: key,
-  };
-});
 
 function SingleBandSelector(props) {
   const { i, landsatBands, onChange } = props;
   return (
     <Select
       value={landsatBands[i] || 1}
-      options={bandOptions}
-      fluid
+      options={bandChoices}
       onChange={(event, object) => {
         // Take copy of landsatBands array so that I don't modify the master
         // bandPresets
@@ -104,15 +95,17 @@ function BandChoice(props) {
 
   return (
     <Grid>
-      {[...Array(nBands).keys()].map(i => (
-        <Grid.Column key={i}>
-          <SingleBandSelector
-            landsatBands={landsatBands}
-            onChange={onChange}
-            i={i}
-          />
-        </Grid.Column>
-      ))}
+      <Grid.Column>
+        {[...Array(nBands).keys()].map(i => (
+          <Grid.Row key={i}>
+            <SingleBandSelector
+              landsatBands={landsatBands}
+              onChange={onChange}
+              i={i}
+            />
+          </Grid.Row>
+        ))}
+      </Grid.Column>
     </Grid>
   );
 }
