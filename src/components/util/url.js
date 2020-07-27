@@ -3,7 +3,7 @@
 import LANDSAT_MOSAICS from '../constants/landsat_mosaics.json';
 import NAIP_MOSAICS from '../constants/naip_mosaics.json';
 
-export const DEFAULT_LANDSAT_MOSAIC_ID = 'summer2019';
+export const DEFAULT_LANDSAT_MOSAIC_ID = 'autoUpdateCloudless';
 export const DEFAULT_NAIP_MOSAIC_ID = '2016-2018';
 
 export function getImageUrl(options) {
