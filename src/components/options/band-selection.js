@@ -81,6 +81,7 @@ function BandPresetSelection(props) {
         placeholder="Choose a Preset"
         value={landsatBandPreset}
         options={arrayToProps(Object.values(bandPresets))}
+        fluid
         onChange={(event, object) => {
           const newLandsatBandPreset = object.value;
           const presetData = bandPresets[newLandsatBandPreset];

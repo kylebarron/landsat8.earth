@@ -5,7 +5,11 @@
     "value": "True Color",
     "landsatBands": [4, 3, 2],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/true_color.jpg"
+    }
   },
   "ndvi": {
     "key": "ndvi",
@@ -13,7 +17,11 @@
     "value": "ndvi",
     "landsatBands": [5, 4],
     "bandCombination": "normalizedDifference",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/ndvi.jpg"
+    }
   },
   "enhancedVegetationIndex": {
     "key": "enhancedVegetationIndex",
@@ -21,7 +29,11 @@
     "value": "enhancedVegetationIndex",
     "landsatBands": [5, 4, 2],
     "bandCombination": "enhancedVegetationIndex",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/enhanced_vegetation_index.jpg"
+    }
   },
   "savi": {
     "key": "savi",
@@ -29,7 +41,11 @@
     "value": "savi",
     "landsatBands": [5, 4],
     "bandCombination": "soilAdjustedVegetationIndex",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/soil_adjusted_vegetation_index.jpg"
+    }
   },
   "msavi": {
     "key": "msavi",
@@ -37,7 +53,11 @@
     "value": "msavi",
     "landsatBands": [5, 4],
     "bandCombination": "modifiedSoilAdjustedVegetationIndex",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/modified_soil_adjusted_vegetation_index.jpg"
+    }
   },
   "ndmi": {
     "key": "ndmi",
@@ -45,7 +65,11 @@
     "value": "ndmi",
     "landsatBands": [5, 6],
     "bandCombination": "normalizedDifference",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/normalized_difference_moisture_index.jpg"
+    }
   },
   "nbr": {
     "key": "nbr",
@@ -53,7 +77,11 @@
     "value": "nbr",
     "landsatBands": [5, 7],
     "bandCombination": "normalizedDifference",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/normalized_burn_ratio.jpg"
+    }
   },
   "nbr2": {
     "key": "nbr2",
@@ -61,7 +89,11 @@
     "value": "nbr2",
     "landsatBands": [6, 7],
     "bandCombination": "normalizedDifference",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/normalized_burn_ratio2.jpg"
+    }
   },
   "False Color Urban": {
     "key": "False Color Urban",
@@ -69,7 +101,11 @@
     "value": "False Color Urban",
     "landsatBands": [7, 6, 4],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/false_color_urban.jpg"
+    }
   },
   "Infrared": {
     "key": "Infrared",
@@ -77,7 +113,11 @@
     "value": "Infrared",
     "landsatBands": [5, 4, 3],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/false_color_infrared.jpg"
+    }
   },
   "Agriculture": {
     "key": "Agriculture",
@@ -85,7 +125,11 @@
     "value": "Agriculture",
     "landsatBands": [6, 5, 2],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/false_color_agriculture.jpg"
+    }
   },
   "Atmospheric Penetration": {
     "key": "Atmospheric Penetration",
@@ -93,7 +137,11 @@
     "value": "Atmospheric Penetration",
     "landsatBands": [7, 6, 5],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/false_color_atmospheric_penetration.jpg"
+    }
   },
   "Healthy Vegetation": {
     "key": "Healthy Vegetation",
@@ -101,7 +149,11 @@
     "value": "Healthy Vegetation",
     "landsatBands": [5, 6, 2],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/false_color_healthy_vegetation.jpg"
+    }
   },
   "Forest Burn": {
     "key": "Forest Burn",
@@ -109,7 +161,11 @@
     "value": "Forest Burn",
     "landsatBands": [7, 5, 2],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/false_color_forest_burn.jpg"
+    }
   },
   "Land/Water": {
     "key": "Land/Water",
@@ -117,7 +173,11 @@
     "value": "Land/Water",
     "landsatBands": [5, 6, 4],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/false_color_land_water.jpg"
+    }
   },
   "Natural with Atmo Removal": {
     "key": "Natural with Atmo Removal",
@@ -125,7 +185,11 @@
     "value": "Natural with Atmo Removal",
     "landsatBands": [7, 5, 3],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/false_color_natural_atmo_removal.jpg"
+    }
   },
   "Shortwave Infrared": {
     "key": "Shortwave Infrared",
@@ -133,6 +197,10 @@
     "value": "Shortwave Infrared",
     "landsatBands": [7, 5, 4],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them."
+    "desc": "Red, green, and blue light as our eyes see them.",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/false_color_swir.jpg"
+    }
   }
 }
