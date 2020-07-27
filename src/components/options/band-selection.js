@@ -45,7 +45,6 @@ export default function BandSelection(props) {
         landsatBandPreset={landsatBandPreset}
         onChange={onChange}
       />
-      <Header as="h4">Custom</Header>
       <Header as="h5">Band Choice</Header>
       <BandChoice
         nBands={bandCombinations[landsatBandCombination].nBands}
