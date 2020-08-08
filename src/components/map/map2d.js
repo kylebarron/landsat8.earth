@@ -2,7 +2,9 @@ import React from 'react';
 import DeckGL from '@deck.gl/react';
 import { MapboxLayer } from '@deck.gl/mapbox';
 import { StaticMap } from 'react-map-gl';
+
 import { TileLayer2d } from '../deck-layers/tile-layer-2d';
+
 import mapStyle from './style.json';
 import '../../css/mapbox-gl.css';
 
@@ -29,32 +31,14 @@ export default class Map extends React.Component {
 
   render() {
     const { gl } = this.state;
-    const {
-      landsatBands,
-      landsatBandCombination,
-      landsatMosaicId,
-      landsatColormapName,
-      naipMosaicId,
-      onViewStateChange,
-      onDragEnd,
-      useNaip,
-      viewState,
-    } = this.props;
+    const { onViewStateChange, onDragEnd, viewState } = this.props;
 
-    const layers = gl && [
-      new TileLayer2d({
-        id: 'tile-layer-2d',
-        gl,
-        landsatBands,
-        landsatBandCombination,
-        landsatColormapName,
-        landsatMosaicId,
-        modisDateStr: '2018-06-01',
-        naipMosaicId,
-        useNaip,
-        tileSize: 256,
-      }),
-    ];
+    const layers = new TileLayer2d({
+      id: 'tile-layer-2d',
+      modisDateStr: '2018-06-01',
+      tileSize: 256,
+      ...this.props,
+    });
 
     return (
       <DeckGL

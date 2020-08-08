@@ -1,8 +1,9 @@
 import React from 'react';
 import DeckGL from '@deck.gl/react';
 import { PostProcessEffect } from '@deck.gl/core';
-import { TileLayer3d } from '../deck-layers/tile-layer-3d';
 import { vibrance } from '@luma.gl/shadertools';
+
+import { TileLayer3d } from '../deck-layers/tile-layer-3d';
 import '../../css/mapbox-gl.css';
 
 const vibranceEffect = new PostProcessEffect(vibrance, {
@@ -11,15 +12,10 @@ const vibranceEffect = new PostProcessEffect(vibrance, {
 
 export default class Map extends React.Component {
   state = {
-    gl: null,
     zRange: null,
   };
 
-  _onWebGLInitialized = gl => {
-    this.setState({ gl });
-  };
-
-  // Update zRange of viewport
+  // Update zRange of viewport so that correct tiles are requested
   onViewportLoad = data => {
     if (!data || data.length === 0 || data.every(x => !x)) {
       return;
@@ -39,39 +35,20 @@ export default class Map extends React.Component {
   };
 
   render() {
-    const { gl, zRange } = this.state;
-    const {
-      landsatBands,
-      landsatMosaicId,
-      naipMosaicId,
-      onViewStateChange,
-      onDragEnd,
-      useNaip,
-      viewState,
-      landsatBandCombination,
-      landsatColormapName,
-    } = this.props;
+    const { zRange } = this.state;
+    const { onViewStateChange, onDragEnd, viewState } = this.props;
 
-    let layers = gl && [
-      TileLayer3d({
-        gl,
-        landsatBands,
-        landsatBandCombination,
-        landsatColormapName,
-        landsatMosaicId,
-        modisDateStr: '2018-06-01',
-        naipMosaicId,
-        useNaip,
-        tileSize: 256,
-        zRange,
-        onViewportLoad: this.onViewportLoad,
-      }),
-    ];
+    let layers = TileLayer3d({
+      modisDateStr: '2018-06-01',
+      tileSize: 256,
+      zRange,
+      onViewportLoad: this.onViewportLoad,
+      ...this.props,
+    });
 
     // TODO: only use effects for landsat
     return (
       <DeckGL
-        onWebGLInitialized={this._onWebGLInitialized}
         viewState={viewState}
         onViewStateChange={onViewStateChange}
         onDragEnd={onDragEnd}
