@@ -27,6 +27,6 @@
     "key": "modifiedSoilAdjustedVegetationIndex",
     "text": "Modified Soil Adjusted Vegetation Index (MSAVI)",
     "value": "modifiedSoilAdjustedVegetationIndex",
-    "nBands": 3
+    "nBands": 2
   }
 }

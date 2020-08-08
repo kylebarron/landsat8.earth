@@ -63,7 +63,6 @@ async function loadLandsatImages(options) {
 
   // Modules must be added before colormap module
   // Number of bands to load
-  // TODO: check other band combinations for how many bands they use
   let maxBands = 3;
   switch (landsatBandCombination) {
     case 'normalizedDifference':
@@ -75,9 +74,11 @@ async function loadLandsatImages(options) {
       break;
     case 'soilAdjustedVegetationIndex':
       modules.push(soilAdjustedVegetationIndex);
+      maxBands = 2;
       break;
     case 'modifiedSoilAdjustedVegetationIndex':
       modules.push(modifiedSoilAdjustedVegetationIndex);
+      maxBands = 2;
       break;
     default:
       break;
