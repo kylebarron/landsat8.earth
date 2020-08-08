@@ -67,11 +67,12 @@ function renderSubLayers(props) {
   }
 
   const [textures, mesh] = data;
-  const { modules, ...moduleProps } = textures;
+  const { modules, images, ...moduleProps } = textures;
 
   return new RasterMeshLayer(props, {
     data: DUMMY_DATA,
     mesh,
+    images,
     modules,
     moduleProps,
     getPolygonOffset: null,
