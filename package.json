@@ -6,7 +6,7 @@
   "author": "Kyle Barron <kyle@unfolded.ai>",
   "dependencies": {
     "@emotion/core": "^10.0.22",
-    "@kylebarron/deck.gl-raster": "0.2.3",
+    "@kylebarron/deck.gl-raster": "^0.3.0",
     "@loaders.gl/core": "^2.2.3",
     "@loaders.gl/images": "^2.2.3",
     "@loaders.gl/terrain": "^2.2.3",

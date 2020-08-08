@@ -29,11 +29,13 @@ export function loadImages(options) {
 }
 
 async function loadModisImages(options) {
-  const { gl } = options;
   const modules = [rgbaImage];
   const url = getModisUrls(options)[0];
-  const { texture } = await loadRgbImage(gl, url);
-  return { imageRgba: texture, modules };
+
+  const { imageData } = await loadRgbImage(url);
+  const images = { imageRgba: imageData };
+
+  return { images, modules };
 }
 
 async function loadLandsatImages(options) {
@@ -55,7 +57,7 @@ async function loadLandsatImages(options) {
         landsatBands: 8,
       })
     );
-    imagePan = loadSingleBandImage(gl, panUrl);
+    imagePan = loadSingleBandImage(panUrl);
     modules.push(pansharpenBrovey);
   }
 
@@ -90,14 +92,14 @@ async function loadLandsatImages(options) {
   );
 
   // Note: imageBands (will be) an Array of objects, not direct textures
-  const imageBands = bandsUrls.map(url => loadSingleBandImage(gl, url));
+  const imageBands = bandsUrls.map(url => loadSingleBandImage(url));
 
   // Load colormap
   // Only load if landsatBandCombination is not RGB
   let imageColormap;
   if (landsatColormapName && landsatBandCombination !== 'rgb') {
     const colormapUrl = getColormapUrl(landsatColormapName);
-    imageColormap = loadSingleBandImage(gl, colormapUrl);
+    imageColormap = loadSingleBandImage(colormapUrl);
     modules.push(colormap);
   }
 
@@ -106,18 +108,24 @@ async function loadLandsatImages(options) {
 
   // The `Promise.all(imageBands)` converts an array of Promises to an array of
   // objects
-  return {
+  const images = {
     imageBands: await Promise.all(imageBands),
     imageColormap: await imageColormap,
     imagePan: await imagePan,
+  };
+
+  return {
+    images,
     modules,
   };
 }
 
 async function loadNaipImages(options) {
-  const { gl } = options;
   const modules = [rgbaImage];
   const url = getNaipUrl(options);
-  const { texture, assets } = await loadRgbImage(gl, url);
-  return { imageRgba: texture, modules, assets };
+
+  const { imageData, assets } = await loadRgbImage(url);
+  const images = { imageRgba: imageData };
+
+  return { images, modules, assets };
 }

@@ -1753,10 +1753,12 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
-"@kylebarron/deck.gl-raster@0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@kylebarron/deck.gl-raster/-/deck.gl-raster-0.2.3.tgz#1f69a6587f14b8042a469fb8def96e7636b64413"
-  integrity sha512-nSV/gdQRRlGkXCSzpMJ7cbMptEXFe7/FmrxSNXi6TVJWxPdPunVB4nMDw1i/k/bNzdko2HnzYau/Klof4vD84A==
+"@kylebarron/deck.gl-raster@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@kylebarron/deck.gl-raster/-/deck.gl-raster-0.3.0.tgz#48a144c0a9a8d0d385d8b4ec8d213cfa1db18df4"
+  integrity sha512-xUI/B5EJij6ia9ljDbC5VpfQds9NFTJIDYcs2hj5o/Yfpyh/D7zBJkN9cnCoB4+txfV5NgRptyPbrI01oojkqw==
+  dependencies:
+    lodash.isequal "^4.5.0"
 
 "@loaders.gl/3d-tiles@^2.2.3":
   version "2.2.8"
@@ -10483,6 +10485,11 @@ lodash.get@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
   integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
+
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
 
 lodash.map@^4.6.0:
   version "4.6.0"

@@ -49,10 +49,11 @@ function renderSubLayers(props) {
     return null;
   }
 
-  const { modules, ...moduleProps } = data;
+  const { modules, images, ...moduleProps } = data;
 
   return new RasterLayer(props, {
     modules,
+    images,
     moduleProps,
     bounds: [west, south, east, north],
   });

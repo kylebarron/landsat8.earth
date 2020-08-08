@@ -3,13 +3,6 @@ import { parse } from '@loaders.gl/core';
 import { Texture2D } from '@luma.gl/core';
 import GL from '@luma.gl/constants';
 
-const DEFAULT_TEXTURE_PARAMETERS = {
-  [GL.TEXTURE_MIN_FILTER]: GL.LINEAR_MIPMAP_LINEAR,
-  [GL.TEXTURE_MAG_FILTER]: GL.LINEAR,
-  [GL.TEXTURE_WRAP_S]: GL.CLAMP_TO_EDGE,
-  [GL.TEXTURE_WRAP_T]: GL.CLAMP_TO_EDGE,
-};
-
 // WIP: Intended to work with 16 bit textures, but doesn't currently work
 // See https://github.com/kylebarron/deck.gl-raster/issues/16
 export async function bytesToTextures(
@@ -38,52 +31,26 @@ export async function bytesToTextures(
   return textures;
 }
 
-export async function loadRgbImage(gl, url) {
+export async function loadRgbImage(url) {
   const { image, assets } = await loadImageUrl(url);
-  // Can I use GL.RGB here instead of GL.RGBA?
-  const texture = new Texture2D(gl, {
+  const imageData = {
     data: image,
-    parameters: DEFAULT_TEXTURE_PARAMETERS,
-    format: GL.RGBA,
-  });
-  return { texture, assets };
+    format: GL.RGB,
+  };
+  return { imageData, assets };
 }
 
-export async function loadSingleBandImage(gl, url) {
+export async function loadSingleBandImage(url) {
   const { image, assets } = await loadImageUrl(url);
-  const texture = new Texture2D(gl, {
+  const imageData = {
     data: image,
-    parameters: DEFAULT_TEXTURE_PARAMETERS,
     // Colormaps are 10 pixels high
     // Load colormaps as RGB; all others as LUMINANCE
     format: image && image.height === 10 ? GL.RGB : GL.LUMINANCE,
-  });
-  // return { texture, assets };
-  return texture;
+  };
+  // return { imageData, assets };
+  return imageData;
 }
-
-// export async function imageUrlsToTextures(gl, urls) {
-//   // Single image, not array
-//   if (!Array.isArray(urls)) {
-//     const { image } = await loadImageUrl(urls);
-//     return new Texture2D(gl, {
-//       data: image,
-//       parameters: DEFAULT_TEXTURE_PARAMETERS,
-//       format: GL.LUMINANCE,
-//     });
-//   }
-
-//   const outputs = await Promise.all(urls.map(url => loadImageUrl(url)));
-//   const assets = new Set(...outputs.map(({ header }) => header));
-//   const textures = outputs.map(({ image }) => {
-//     return new Texture2D(gl, {
-//       data: image,
-//       parameters: DEFAULT_TEXTURE_PARAMETERS,
-//       format: GL.LUMINANCE,
-//     });
-//   });
-//   return textures;
-// }
 
 async function loadImageUrl(url) {
   const res = await fetch(url);
