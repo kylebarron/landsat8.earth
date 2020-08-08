@@ -1,8 +1,16 @@
 import React from 'react';
-import { Header, Accordion, Icon } from 'semantic-ui-react';
+import { Header, Accordion, Icon, Message } from 'semantic-ui-react';
 import BandSelection from './band-selection';
 import MosaicSelection from './mosaic-selection';
 import DimensionSelection from './dimension-selection';
+
+const Experimental3dWarning = () => (
+  <Message size="small" warning compact>
+    <Message.Content>
+      <p>3D terrain rendering is experimental</p>
+    </Message.Content>
+  </Message>
+);
 
 export default class Options extends React.Component {
   state = {
@@ -50,7 +58,10 @@ export default class Options extends React.Component {
       >
         <Header as="h2">Landsat8.earth</Header>
         <Header as="h3">Map Options</Header>
+        
         <DimensionSelection map3d={map3d} onChange={onChange} />
+        {map3d && <Experimental3dWarning />}
+
         <Accordion>
           <Accordion.Title
             active={activeIndex === 0}
