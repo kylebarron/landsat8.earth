@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default-theme-ui",
+  "name": "landsat8.earth",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby & Theme UI",
+  "description": "Serverless, 2D/3D WebGL satellite image analysis",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Kyle Barron <kyle@unfolded.ai>",
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@kylebarron/deck.gl-raster": "0.2.3",
@@ -60,9 +60,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/kylebarron/landsat8.earth"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/kylebarron/landsat8.earth/issues"
   }
 }
