@@ -40,7 +40,9 @@ class IndexPage extends React.Component {
     landsatBandPreset: 'True Color',
     landsatBands: [4, 3, 2],
     landsatColormapName: 'cfastie',
-    landsatBandCombination: 'rgb',
+
+    filter_min_r: 0,
+    filter_max_r: 1,
 
     // NAIP options
     // Show NAIP imagery at zoom >= 12
@@ -70,6 +72,8 @@ class IndexPage extends React.Component {
       landsatBands,
       landsatColormapName,
       landsatMosaicId,
+      filter_max_r,
+      filter_min_r,
       map3d,
       naipMosaicId,
       useNaip,
@@ -97,6 +101,8 @@ class IndexPage extends React.Component {
             onDragEnd={this.onDragEnd}
             useNaip={useNaip}
             landsatMosaicId={landsatMosaicId}
+            filter_max_r={filter_max_r}
+            filter_min_r={filter_min_r}
             naipMosaicId={naipMosaicId}
             landsatBands={landsatBands}
             landsatColormapName={landsatColormapName}
@@ -112,6 +118,8 @@ class IndexPage extends React.Component {
           naipMosaicId={naipMosaicId}
           landsatColormapName={landsatColormapName}
           useNaip={useNaip}
+          filter_min_r={filter_min_r}
+          filter_max_r={filter_max_r}
           onChange={value => this.setState(value)}
           map3d={map3d}
         />

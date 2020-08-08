@@ -12,6 +12,7 @@ import {
 import { getModisUrls, getNaipUrl, getLandsatUrl, getColormapUrl } from './url';
 import { isTrueColor } from './landsat';
 import { loadRgbImage, loadSingleBandImage } from './webgl';
+import textureFilter from './texture_filter';
 
 export function loadImages(options) {
   const { z, useNaip = false } = options || {};
@@ -81,6 +82,17 @@ async function loadLandsatImages(options) {
       break;
   }
 
+  // Filter by value
+  modules.push(textureFilter);
+  const filter_min_r = 0.2;
+  const filter_min_g = -1;
+  const filter_min_b = -1;
+  const filter_min_a = -1;
+  const filter_max_r = 1;
+  const filter_max_g = 1;
+  const filter_max_b = 1;
+  const filter_max_a = 1;
+
   const bandsUrls = landsatBands.slice(0, maxBands).map(band =>
     getLandsatUrl(
       Object.assign(options, {
@@ -111,6 +123,14 @@ async function loadLandsatImages(options) {
     imageColormap: await imageColormap,
     imagePan: await imagePan,
     modules,
+    filter_min_r,
+    filter_min_g,
+    filter_min_b,
+    filter_min_a,
+    filter_max_r,
+    filter_max_g,
+    filter_max_b,
+    filter_max_a,
   };
 }
 

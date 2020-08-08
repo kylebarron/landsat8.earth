@@ -1,5 +1,5 @@
 import React from 'react';
-import { Select, Grid, Header } from 'semantic-ui-react';
+import { Form, Select, Grid, Header } from 'semantic-ui-react';
 import bandChoices from '../constants/band_choices.json';
 import bandPresets from '../constants/band_presets.json';
 import bandCombinations from '../constants/band_combinations.json';
@@ -29,6 +29,8 @@ export default function BandSelection(props) {
     landsatBandPreset,
     landsatBandCombination,
     landsatColormapName,
+    filter_min_r,
+    filter_max_r,
     onChange,
   } = props;
 
@@ -51,6 +53,8 @@ export default function BandSelection(props) {
         onChange={onChange}
       />
 
+      <FilterSlider filter_min_r={filter_min_r} onChange={onChange} />
+
       {/* Only show ColormapSelection when creating index of some kind */}
       {landsatBandCombination !== 'rgb' && (
         <div>
@@ -63,6 +67,28 @@ export default function BandSelection(props) {
       )}
     </div>
   );
+}
+
+function FilterSlider(props) {
+
+
+  export function OpacitySlider(props) {
+    const { value, name, onChange } = props;
+
+    return (
+      <Form.Input
+        label={`Opacity: ${value}`}
+        min={0}
+        max={1}
+        name={name}
+        onChange={onChange}
+        step={0.05}
+        type="range"
+        value={value}
+      />
+    );
+  }
+
 }
 
 function BandPresetSelection(props) {
