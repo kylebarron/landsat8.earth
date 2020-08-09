@@ -13,6 +13,8 @@ import {
 import {
   getViewStateFromHash,
   setHashFromViewState,
+  setQueryParams,
+  getQueryParams,
 } from '../components/util/view-state';
 import '../css/semantic-ui.css';
 
@@ -46,6 +48,9 @@ class IndexPage extends React.Component {
     // Show NAIP imagery at zoom >= 12
     useNaip: false,
     naipMosaicId: DEFAULT_NAIP_MOSAIC_ID,
+
+    // Overwrite state values with querystring parameters if they exist
+    ...getQueryParams(),
   };
 
   onViewStateChange = ({ viewState, interactionState }) => {
@@ -112,7 +117,10 @@ class IndexPage extends React.Component {
           naipMosaicId={naipMosaicId}
           landsatColormapName={landsatColormapName}
           useNaip={useNaip}
-          onChange={value => this.setState(value)}
+          onChange={value => {
+            this.setState(value);
+            setQueryParams(value);
+          }}
           map3d={map3d}
         />
       </div>

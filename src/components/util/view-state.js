@@ -1,3 +1,5 @@
+import queryString from 'query-string';
+
 /**
  * Get ViewState from page URL hash
  * Note: does not necessarily return all viewState fields
@@ -58,3 +60,26 @@ export function setHashFromViewState(viewState) {
   // eslint-disable-next-line no-restricted-globals
   if (typeof history !== undefined) history.replaceState(null, null, hash);
 }
+
+/* eslint-disable no-restricted-globals */
+export function setQueryParams(newParams = {}) {
+  const existingParams = getQueryParams();
+  const params = { ...existingParams, ...newParams };
+
+  const qs = queryString.stringify(params, {
+    arrayFormat: 'comma',
+    skipNull: true,
+    skipEmptyString: true,
+  });
+  const newUrlString = `${location.pathname}?${qs}${location.hash}`;
+  window.history.replaceState({}, '', newUrlString);
+}
+
+export function getQueryParams() {
+  const parsed = queryString.parse(location.search, {
+    arrayFormat: 'comma',
+    parseNumbers: true,
+  });
+  return parsed;
+}
+/* eslint-enable no-restricted-globals */
