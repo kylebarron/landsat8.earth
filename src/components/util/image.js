@@ -40,7 +40,6 @@ async function loadModisImages(options) {
 
 async function loadLandsatImages(options) {
   const {
-    gl,
     z,
     landsatBands,
     landsatColormapName,

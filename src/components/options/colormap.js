@@ -27,7 +27,7 @@ export default function ColormapSelection(props) {
 
       <p>
         minimum to maximum:
-        <img src={colormapUrl} />
+        <img src={colormapUrl} alt={landsatColormapName} />
       </p>
     </div>
   );
