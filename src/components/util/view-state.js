@@ -63,6 +63,10 @@ export function setHashFromViewState(viewState) {
 
 /* eslint-disable no-restricted-globals */
 export function setQueryParams(newParams = {}) {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
   const existingParams = getQueryParams();
   const params = { ...existingParams, ...newParams };
 
@@ -76,6 +80,10 @@ export function setQueryParams(newParams = {}) {
 }
 
 export function getQueryParams() {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
   const parsed = queryString.parse(location.search, {
     arrayFormat: 'comma',
     parseNumbers: true,
