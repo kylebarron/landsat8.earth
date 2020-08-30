@@ -50,7 +50,7 @@ export default class Map extends React.Component {
     return (
       <DeckGL
         style={{
-          'background-color': 'rgb(0, 0, 0)',
+          'backgroundColor': 'rgb(0, 0, 0)',
         }}
         viewState={viewState}
         onViewStateChange={onViewStateChange}
