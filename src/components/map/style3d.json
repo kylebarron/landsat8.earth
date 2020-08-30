@@ -1,0 +1,29 @@
+{
+  "version": 8,
+  "name": "OSM Liberty",
+  "metadata": {
+    "maputnik:license": "https://github.com/maputnik/osm-liberty/blob/gh-pages/LICENSE.md",
+    "maputnik:renderer": "mbgljs"
+  },
+  "sources": {},
+  "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
+  "glyphs": "https://cdn.jsdelivr.net/gh/kylebarron/openmaptiles-fonts/fonts/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "rgb(0,0,0)"
+      }
+    },
+    {
+      "id": "aeroway_fill",
+      "type": "background",
+      "paint": {
+        "background-color": "rgb(0,0,0)",
+        "background-opacity": 0
+      }
+    }
+  ],
+  "id": "osm-liberty"
+}

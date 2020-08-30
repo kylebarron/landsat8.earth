@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
+import Map from '../components/map/map';
 import { Map2d, Map3d } from '../components/map/index';
 import Layout from '../components/layout';
 import Image from '../components/image';
@@ -83,6 +84,18 @@ class IndexPage extends React.Component {
 
     return (
       <div>
+        {/* <Map
+          map3d={map3d}
+          viewState={viewState}
+          onViewStateChange={this.onViewStateChange}
+          onDragEnd={this.onDragEnd}
+          useNaip={useNaip}
+          naipMosaicId={naipMosaicId}
+          landsatMosaicId={landsatMosaicId}
+          landsatBands={landsatBands}
+          landsatColormapName={landsatColormapName}
+          landsatBandCombination={landsatBandCombination}
+        /> */}
         {map3d ? (
           <Map3d
             viewState={viewState}
