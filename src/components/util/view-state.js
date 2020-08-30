@@ -87,6 +87,7 @@ export function getQueryParams() {
   const parsed = queryString.parse(location.search, {
     arrayFormat: 'comma',
     parseNumbers: true,
+    parseBooleans: true
   });
   return parsed;
 }
