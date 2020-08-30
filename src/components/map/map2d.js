@@ -51,8 +51,12 @@ export default class Map extends React.Component {
         onDragEnd={onDragEnd}
         controller
         onWebGLInitialized={this._onWebGLInitialized}
-        // For correct Mapbox rendering of polygons
-        glOptions={{ stencil: true }}
+        glOptions={{
+          // For correct Mapbox rendering of polygons
+          stencil: true,
+          // Tell browser to use discrete GPU if available
+          powerPreference: 'high-performance',
+        }}
       >
         {gl && (
           <StaticMap

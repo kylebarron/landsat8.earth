@@ -55,6 +55,8 @@ export default class Map extends React.Component {
         controller
         layers={layers}
         effects={[vibranceEffect]}
+        // Tell browser to use discrete GPU if available
+        glOptions={{ powerPreference: 'high-performance' }}
       />
     );
   }
