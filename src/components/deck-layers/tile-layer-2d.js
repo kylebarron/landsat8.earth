@@ -12,6 +12,8 @@ export function TileLayer2d(props) {
     landsatBands,
     landsatBandCombination,
     landsatColormapName,
+    onViewportLoad,
+    onTileLoad,
   } = props || {};
 
   return new TileLayer({
@@ -32,6 +34,8 @@ export function TileLayer2d(props) {
         ...landsatBands,
       ],
     },
+    onViewportLoad,
+    onTileLoad,
   });
 }
 
@@ -49,7 +53,7 @@ function renderSubLayers(props) {
     return null;
   }
 
-  const { modules, images, ...moduleProps } = data;
+  const { modules, images, landsatAssetIds, ...moduleProps } = data;
 
   return new RasterLayer(props, {
     modules,

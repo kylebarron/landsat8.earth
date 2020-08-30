@@ -27,6 +27,8 @@ export default class Options extends React.Component {
   render() {
     const { activeIndex } = this.state;
     const {
+      _landsatMaxAssetDate,
+      _landsatMinAssetDate,
       landsatMosaicId,
       naipMosaicId,
       useNaip,
@@ -58,7 +60,7 @@ export default class Options extends React.Component {
       >
         <Header as="h2">Landsat8.earth</Header>
         <Header as="h3">Map Options</Header>
-        
+
         <DimensionSelection map3d={map3d} onChange={onChange} />
         {map3d && <Experimental3dWarning />}
 
@@ -80,7 +82,6 @@ export default class Options extends React.Component {
               onChange={onChange}
             />
           </Accordion.Content>
-
           <Accordion.Title
             active={activeIndex === 1}
             index={1}
@@ -97,6 +98,13 @@ export default class Options extends React.Component {
               onChange={onChange}
             />
           </Accordion.Content>
+          {_landsatMinAssetDate && _landsatMaxAssetDate && (
+            <p>
+              Date range:{' '}
+              <b>{_landsatMinAssetDate.format('MMMM D, YYYY')}</b> to{' '}
+              <b>{_landsatMaxAssetDate.format('MMMM D, YYYY')}</b>
+            </p>
+          )}
         </Accordion>
       </div>
     );

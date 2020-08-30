@@ -1,6 +1,38 @@
 import dayjs from 'dayjs';
 
-// NOTE change this to switch between precollection/collection based on string length, use substrings instead of regexp
+// Simpler, faster landsat asset ID parser that uses string lengths instead of a
+// regex
+export function simpleLandsatParser(sceneid) {
+  if (sceneid.length === 40) {
+    return simpleLandsatCollection1Parser(sceneid);
+  } else if (sceneid.length == 21) {
+    return simpleLandsatPreCollectionParser(sceneid);
+  }
+
+  return null;
+}
+
+function simpleLandsatPreCollectionParser(sceneid) {
+  const acquisitionYear = sceneid.substring(9, 13);
+  const acquisitionJulianDay = sceneid.substring(13, 16);
+
+  // Note, this might be in local timezone
+  const acquisitionDate = dayjs(new Date(acquisitionYear, 0, 1)).add(
+    Number(acquisitionJulianDay) - 1,
+    'day'
+  );
+  return { acquisitionDate };
+}
+
+function simpleLandsatCollection1Parser(sceneid) {
+  const acquisitionYear = sceneid.substring(17, 21);
+  const acquisitionMonth = sceneid.substring(21, 23);
+  const acquisitionDay = sceneid.substring(23, 25);
+  const acquisitionDate = dayjs(
+    new Date(acquisitionYear, acquisitionMonth - 1, acquisitionDay)
+  );
+  return { acquisitionDate };
+}
 
 /**
  * Parse Landsat-8 scene id

@@ -48,8 +48,7 @@ export async function loadSingleBandImage(url) {
     // Load colormaps as RGB; all others as LUMINANCE
     format: image && image.height === 10 ? GL.RGB : GL.LUMINANCE,
   };
-  // return { imageData, assets };
-  return imageData;
+  return { imageData, assets };
 }
 
 async function loadImageUrl(url) {
