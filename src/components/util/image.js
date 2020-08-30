@@ -92,7 +92,7 @@ async function loadLandsatImages(options) {
   );
 
   // Note: imageBands (will be) an Array of objects, not direct textures
-  const imageBands = bandsUrls.map(url => loadSingleBandImage(url));
+  let imageBands = bandsUrls.map(url => loadSingleBandImage(url));
 
   // Load colormap
   // Only load if landsatBandCombination is not RGB
@@ -106,17 +106,27 @@ async function loadLandsatImages(options) {
   // Await all images together
   await Promise.all([imagePan, imageBands, imageColormap]);
 
+  // Split each image object into its `imageData` and `assets` identifiers
+  // https://stackoverflow.com/a/27386370/7319250
+  ({ imageData: imagePan } = (await imagePan) || {});
+  ({ imageData: imageColormap } = (await imageColormap) || {});
+
+  const imageBandsObjects = await Promise.all(imageBands);
+  imageBands = imageBandsObjects.map(({ imageData }) => imageData);
+  const landsatAssetIds = imageBandsObjects.map(({ assets }) => assets);
+
   // The `Promise.all(imageBands)` converts an array of Promises to an array of
   // objects
   const images = {
-    imageBands: await Promise.all(imageBands),
-    imageColormap: await imageColormap,
-    imagePan: await imagePan,
+    imageBands,
+    imageColormap,
+    imagePan,
   };
 
   return {
     images,
     modules,
+    landsatAssetIds,
   };
 }
 
