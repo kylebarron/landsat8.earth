@@ -49,6 +49,9 @@ export default class Map extends React.Component {
     // TODO: only use effects for landsat
     return (
       <DeckGL
+        style={{
+          'background-color': 'rgb(0, 0, 0)',
+        }}
         viewState={viewState}
         onViewStateChange={onViewStateChange}
         onDragEnd={onDragEnd}
