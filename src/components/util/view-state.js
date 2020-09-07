@@ -1,4 +1,5 @@
 import queryString from 'query-string';
+import {debounce} from './util';
 
 /**
  * Get ViewState from page URL hash
@@ -55,11 +56,19 @@ function getHashFromViewState(viewState) {
   return `#${parts.join('/')}`;
 }
 
-export function setHashFromViewState(viewState) {
+function _setHashFromViewState(viewState) {
   const hash = getHashFromViewState(viewState);
   // eslint-disable-next-line no-restricted-globals
   if (typeof history !== undefined) history.replaceState(null, null, hash);
 }
+
+// Setting hash is known to be expensive (I'm guessing it's the
+// `history.replaceState`). Therefore the function is wrapped in a debounce call
+// to reduce the call frequency
+export const setHashFromViewState = debounce(
+  (viewState) => _setHashFromViewState(viewState),
+  1000
+);
 
 /* eslint-disable no-restricted-globals */
 export function setQueryParams(newParams = {}) {

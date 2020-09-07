@@ -35,7 +35,7 @@ export default class Map extends React.Component {
 
   render() {
     const {zRange} = this.state;
-    const {onViewStateChange, onDragEnd, viewState} = this.props;
+    const {onViewStateChange, viewState} = this.props;
 
     let layers = TileLayer3d({
       modisDateStr: '2018-06-01',
@@ -53,7 +53,6 @@ export default class Map extends React.Component {
         }}
         viewState={viewState}
         onViewStateChange={onViewStateChange}
-        onDragEnd={onDragEnd}
         controller
         layers={layers}
         effects={[vibranceEffect]}

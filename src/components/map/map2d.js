@@ -28,7 +28,7 @@ export default class Map extends React.Component {
 
   render() {
     const {gl} = this.state;
-    const {onViewStateChange, onDragEnd, viewState} = this.props;
+    const {onViewStateChange, viewState} = this.props;
 
     const layers = new TileLayer2d({
       id: 'tile-layer-2d',
@@ -45,7 +45,6 @@ export default class Map extends React.Component {
         layers={layers}
         viewState={viewState}
         onViewStateChange={onViewStateChange}
-        onDragEnd={onDragEnd}
         controller
         onWebGLInitialized={this._onWebGLInitialized}
         glOptions={{

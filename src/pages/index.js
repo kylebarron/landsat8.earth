@@ -53,23 +53,9 @@ class IndexPage extends React.Component {
     ...getQueryParams(),
   };
 
-  onViewStateChange = ({viewState, interactionState}) => {
-    if (!interactionState) {
-      return null;
-    }
-
-    const {isDragging, isPanning} = interactionState;
-    // Set page hash based on view state
-    // Only update page hash when dragging finished for performance
-    if (!isDragging && !isPanning) {
-      setHashFromViewState(viewState);
-    }
-    this.setState({viewState});
-  };
-
-  onDragEnd = () => {
-    const {viewState} = this.state;
+  onViewStateChange = ({viewState}) => {
     setHashFromViewState(viewState);
+    this.setState({viewState});
   };
 
   render() {
@@ -91,7 +77,6 @@ class IndexPage extends React.Component {
           <Map3d
             viewState={viewState}
             onViewStateChange={this.onViewStateChange}
-            onDragEnd={this.onDragEnd}
             useNaip={useNaip}
             naipMosaicId={naipMosaicId}
             landsatMosaicId={landsatMosaicId}
@@ -103,7 +88,6 @@ class IndexPage extends React.Component {
           <Map2d
             viewState={viewState}
             onViewStateChange={this.onViewStateChange}
-            onDragEnd={this.onDragEnd}
             useNaip={useNaip}
             landsatMosaicId={landsatMosaicId}
             naipMosaicId={naipMosaicId}
