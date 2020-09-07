@@ -29,10 +29,11 @@ export function loadImages(options) {
 }
 
 async function loadModisImages(options) {
+  const { signal } = options || {};
   const modules = [rgbaImage];
   const url = getModisUrls(options)[0];
 
-  const { imageData } = await loadRgbImage(url);
+  const { imageData } = await loadRgbImage(url, { signal });
   const images = { imageRgba: imageData };
 
   return { images, modules };
@@ -40,13 +41,17 @@ async function loadModisImages(options) {
 
 async function loadLandsatImages(options) {
   const {
-    z,
+    landsatBandCombination,
     landsatBands,
     landsatColormapName,
-    landsatBandCombination,
-  } = options;
+    signal,
+    z,
+  } = options || {};
   const modules = [combineBands];
   const usePan = z >= 13 && isTrueColor(landsatBands);
+  const useColormap = Boolean(
+    landsatColormapName && landsatBandCombination !== 'rgb'
+  );
 
   // Load pansharpen
   let imagePan;
@@ -56,7 +61,7 @@ async function loadLandsatImages(options) {
         landsatBands: 8,
       })
     );
-    imagePan = loadSingleBandImage(panUrl);
+    imagePan = loadSingleBandImage(panUrl, { signal });
     modules.push(pansharpenBrovey);
   }
 
@@ -92,26 +97,39 @@ async function loadLandsatImages(options) {
   );
 
   // Note: imageBands (will be) an Array of objects, not direct textures
-  const imageBands = bandsUrls.map(url => loadSingleBandImage(url));
+  let imageBands = bandsUrls.map(url => loadSingleBandImage(url, { signal }));
 
   // Load colormap
   // Only load if landsatBandCombination is not RGB
   let imageColormap;
-  if (landsatColormapName && landsatBandCombination !== 'rgb') {
+  if (useColormap) {
     const colormapUrl = getColormapUrl(landsatColormapName);
-    imageColormap = loadSingleBandImage(colormapUrl);
+    imageColormap = loadSingleBandImage(colormapUrl, { signal });
     modules.push(colormap);
   }
 
   // Await all images together
-  await Promise.all([imagePan, imageBands, imageColormap]);
-
   // The `Promise.all(imageBands)` converts an array of Promises to an array of
   // objects
+  [imagePan, imageBands, imageColormap] = await Promise.all([
+    imagePan,
+    Promise.all(imageBands),
+    imageColormap,
+  ]);
+
+  // Aborted requests
+  if (
+    (usePan && !imagePan) ||
+    (useColormap && !imageColormap) ||
+    imageBands.some(x => !x)
+  ) {
+    return null;
+  }
+
   const images = {
-    imageBands: await Promise.all(imageBands),
-    imageColormap: await imageColormap,
-    imagePan: await imagePan,
+    imageBands,
+    imageColormap,
+    imagePan,
   };
 
   return {
@@ -121,10 +139,11 @@ async function loadLandsatImages(options) {
 }
 
 async function loadNaipImages(options) {
+  const { signal } = options || {};
   const modules = [rgbaImage];
   const url = getNaipUrl(options);
 
-  const { imageData, assets } = await loadRgbImage(url);
+  const { imageData, assets } = await loadRgbImage(url, { signal });
   const images = { imageRgba: imageData };
 
   return { images, modules, assets };

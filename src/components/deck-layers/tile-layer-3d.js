@@ -1,11 +1,14 @@
 import { COORDINATE_SYSTEM } from '@deck.gl/core';
-import { TileLayer } from '@deck.gl/geo-layers';
+// Use copied code from deck.gl master until 8.3 release
+// import { TileLayer } from '@deck.gl/geo-layers';
 import { QuantizedMeshLoader } from '@loaders.gl/terrain';
 import { load } from '@loaders.gl/core';
 import { RasterMeshLayer } from '@kylebarron/deck.gl-raster';
 import { getMercatorModelMatrix } from './util';
 import { loadImages } from '../util/image';
 import { getTerrainUrl } from '../util/terrain';
+
+import TileLayer from './tile-layer/tile-layer';
 
 const DUMMY_DATA = [1];
 

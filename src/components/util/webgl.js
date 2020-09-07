@@ -31,8 +31,12 @@ export async function bytesToTextures(
   return textures;
 }
 
-export async function loadRgbImage(url) {
-  const { image, assets } = await loadImageUrl(url);
+export async function loadRgbImage(url, {signal}) {
+  const { image, assets } = await loadImageUrl(url, {signal}) || {};
+  if (!image) {
+    return null;
+  }
+
   const imageData = {
     data: image,
     format: GL.RGB,
@@ -40,8 +44,12 @@ export async function loadRgbImage(url) {
   return { imageData, assets };
 }
 
-export async function loadSingleBandImage(url) {
-  const { image, assets } = await loadImageUrl(url);
+export async function loadSingleBandImage(url, {signal}) {
+  const { image, assets } = await loadImageUrl(url, { signal }) || {};
+  if (!image) {
+    return null;
+  }
+
   const imageData = {
     data: image,
     // Colormaps are 10 pixels high
@@ -52,8 +60,20 @@ export async function loadSingleBandImage(url) {
   return imageData;
 }
 
-async function loadImageUrl(url) {
-  const res = await fetch(url);
+async function loadImageUrl(url, {signal}) {
+  let res;
+  try {
+    res = await fetch(url, { signal });
+  } catch (error) {
+    console.warn(error);
+    return null;
+  }
+
+  if (!res) {
+    console.warn('image not loaded');
+    return null;
+  }
+
   const assets = JSON.parse(res.headers.get('x-assets')) || [];
   return {
     assets,

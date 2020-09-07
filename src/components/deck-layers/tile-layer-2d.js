@@ -1,6 +1,9 @@
-import { TileLayer } from '@deck.gl/geo-layers';
+// Use copied code from deck.gl master until 8.3 release
+// import { TileLayer } from '@deck.gl/geo-layers';
 import { RasterLayer } from '@kylebarron/deck.gl-raster';
 import { loadImages } from '../util/image';
+
+import TileLayer from './tile-layer/tile-layer';
 
 export function TileLayer2d(props) {
   const {
