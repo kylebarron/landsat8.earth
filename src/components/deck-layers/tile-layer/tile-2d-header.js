@@ -70,8 +70,6 @@ export default class Tile2DHeader {
     } finally {
       requestToken.done();
 
-      console.log(this._isCancelled);
-      console.log(tileData);
       if (this._isCancelled && !tileData) {
         this._isLoaded = false;
       } else {
