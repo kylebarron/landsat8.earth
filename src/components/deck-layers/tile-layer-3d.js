@@ -58,7 +58,12 @@ async function getTileData(options) {
   const terrainUrl = getTerrainUrl({x, y, z, meshMultiplier});
   const terrain = load(terrainUrl, QuantizedMeshLoader);
 
-  const images = loadImages(options);
+  const images = await loadImages(options);
+  // Aborted fetch
+  if (!images) {
+    return null;
+  }
+
   return Promise.all([images, terrain]);
 }
 
