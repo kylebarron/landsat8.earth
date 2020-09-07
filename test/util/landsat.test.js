@@ -1,4 +1,4 @@
-import { landsatParser } from '../../src/components/util/landsat';
+import {landsatParser} from '../../src/components/util/landsat';
 import dayjs from 'dayjs';
 
 // Landsat parsing tests from rio-tiler

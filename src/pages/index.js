@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import {Link} from 'gatsby';
 
-import { Map2d, Map3d } from '../components/map/index';
+import {Map2d, Map3d} from '../components/map/index';
 import Layout from '../components/layout';
 import Image from '../components/image';
 import SEO from '../components/seo';
@@ -53,22 +53,22 @@ class IndexPage extends React.Component {
     ...getQueryParams(),
   };
 
-  onViewStateChange = ({ viewState, interactionState }) => {
+  onViewStateChange = ({viewState, interactionState}) => {
     if (!interactionState) {
       return null;
     }
-    
-    const { isDragging, isPanning } = interactionState;
+
+    const {isDragging, isPanning} = interactionState;
     // Set page hash based on view state
     // Only update page hash when dragging finished for performance
     if (!isDragging && !isPanning) {
       setHashFromViewState(viewState);
     }
-    this.setState({ viewState });
+    this.setState({viewState});
   };
 
   onDragEnd = () => {
-    const { viewState } = this.state;
+    const {viewState} = this.state;
     setHashFromViewState(viewState);
   };
 
@@ -121,7 +121,7 @@ class IndexPage extends React.Component {
           naipMosaicId={naipMosaicId}
           landsatColormapName={landsatColormapName}
           useNaip={useNaip}
-          onChange={value => {
+          onChange={(value) => {
             this.setState(value);
             setQueryParams(value);
           }}
