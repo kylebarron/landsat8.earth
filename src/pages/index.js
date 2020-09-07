@@ -54,10 +54,14 @@ class IndexPage extends React.Component {
   };
 
   onViewStateChange = ({ viewState, interactionState }) => {
-    const { isDragging } = interactionState;
+    if (!interactionState) {
+      return null;
+    }
+    
+    const { isDragging, isPanning } = interactionState;
     // Set page hash based on view state
     // Only update page hash when dragging finished for performance
-    if (!isDragging) {
+    if (!isDragging && !isPanning) {
       setHashFromViewState(viewState);
     }
     this.setState({ viewState });
