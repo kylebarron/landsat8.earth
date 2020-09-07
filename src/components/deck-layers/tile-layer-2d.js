@@ -2,13 +2,14 @@
 // import { TileLayer } from '@deck.gl/geo-layers';
 import {RasterLayer} from '@kylebarron/deck.gl-raster';
 import {loadImages} from '../util/image';
+import {defaultTileSize} from '../util/constants';
 
 import TileLayer from './tile-layer/tile-layer';
 
 export function TileLayer2d(props) {
   const {
     id = 'tile-layer-2d',
-    tileSize = 256,
+    tileSize = defaultTileSize,
     maxZoom = props.useNaip ? 17 : 13,
     landsatMosaicId,
     naipMosaicId,

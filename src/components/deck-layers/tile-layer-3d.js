@@ -7,6 +7,7 @@ import {RasterMeshLayer} from '@kylebarron/deck.gl-raster';
 import {getMercatorModelMatrix} from './util';
 import {loadImages} from '../util/image';
 import {getTerrainUrl} from '../util/terrain';
+import {defaultTileSize} from '../util/constants';
 
 import TileLayer from './tile-layer/tile-layer';
 
@@ -16,7 +17,7 @@ export function TileLayer3d(props) {
   const {
     id = 'tile-layer-3d',
     onViewportLoad = (x) => null,
-    tileSize = 256,
+    tileSize = defaultTileSize,
     maxZoom = props.useNaip ? 17 : 13,
     zRange,
     landsatMosaicId,
