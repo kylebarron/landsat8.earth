@@ -9,12 +9,12 @@ import {
   rgbaImage,
   soilAdjustedVegetationIndex,
 } from '@kylebarron/deck.gl-raster';
-import { getModisUrls, getNaipUrl, getLandsatUrl, getColormapUrl } from './url';
-import { isTrueColor } from './landsat';
-import { loadRgbImage, loadSingleBandImage } from './webgl';
+import {getModisUrls, getNaipUrl, getLandsatUrl, getColormapUrl} from './url';
+import {isTrueColor} from './landsat';
+import {loadRgbImage, loadSingleBandImage} from './webgl';
 
 export function loadImages(options) {
-  const { z, useNaip = false } = options || {};
+  const {z, useNaip = false} = options || {};
 
   if (z < 8) {
     return loadModisImages(options);
@@ -29,24 +29,19 @@ export function loadImages(options) {
 }
 
 async function loadModisImages(options) {
-  const { signal } = options || {};
+  const {signal} = options || {};
   const modules = [rgbaImage];
   const url = getModisUrls(options)[0];
 
-  const { imageData } = await loadRgbImage(url, { signal });
-  const images = { imageRgba: imageData };
+  const {imageData} = await loadRgbImage(url, {signal});
+  const images = {imageRgba: imageData};
 
-  return { images, modules };
+  return {images, modules};
 }
 
 async function loadLandsatImages(options) {
-  const {
-    landsatBandCombination,
-    landsatBands,
-    landsatColormapName,
-    signal,
-    z,
-  } = options || {};
+  const {landsatBandCombination, landsatBands, landsatColormapName, signal, z} =
+    options || {};
   const modules = [combineBands];
   const usePan = z >= 13 && isTrueColor(landsatBands);
   const useColormap = Boolean(
@@ -61,7 +56,7 @@ async function loadLandsatImages(options) {
         landsatBands: 8,
       })
     );
-    imagePan = loadSingleBandImage(panUrl, { signal });
+    imagePan = loadSingleBandImage(panUrl, {signal});
     modules.push(pansharpenBrovey);
   }
 
@@ -88,7 +83,7 @@ async function loadLandsatImages(options) {
       break;
   }
 
-  const bandsUrls = landsatBands.slice(0, maxBands).map(band =>
+  const bandsUrls = landsatBands.slice(0, maxBands).map((band) =>
     getLandsatUrl(
       Object.assign(options, {
         landsatBands: band,
@@ -97,14 +92,14 @@ async function loadLandsatImages(options) {
   );
 
   // Note: imageBands (will be) an Array of objects, not direct textures
-  let imageBands = bandsUrls.map(url => loadSingleBandImage(url, { signal }));
+  let imageBands = bandsUrls.map((url) => loadSingleBandImage(url, {signal}));
 
   // Load colormap
   // Only load if landsatBandCombination is not RGB
   let imageColormap;
   if (useColormap) {
     const colormapUrl = getColormapUrl(landsatColormapName);
-    imageColormap = loadSingleBandImage(colormapUrl, { signal });
+    imageColormap = loadSingleBandImage(colormapUrl, {signal});
     modules.push(colormap);
   }
 
@@ -121,7 +116,7 @@ async function loadLandsatImages(options) {
   if (
     (usePan && !imagePan) ||
     (useColormap && !imageColormap) ||
-    imageBands.some(x => !x)
+    imageBands.some((x) => !x)
   ) {
     return null;
   }
@@ -139,12 +134,12 @@ async function loadLandsatImages(options) {
 }
 
 async function loadNaipImages(options) {
-  const { signal } = options || {};
+  const {signal} = options || {};
   const modules = [rgbaImage];
   const url = getNaipUrl(options);
 
-  const { imageData, assets } = await loadRgbImage(url, { signal });
-  const images = { imageRgba: imageData };
+  const {imageData, assets} = await loadRgbImage(url, {signal});
+  const images = {imageRgba: imageData};
 
-  return { images, modules, assets };
+  return {images, modules, assets};
 }

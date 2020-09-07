@@ -1,9 +1,9 @@
 import React from 'react';
 import DeckGL from '@deck.gl/react';
-import { MapboxLayer } from '@deck.gl/mapbox';
-import { StaticMap } from 'react-map-gl';
+import {MapboxLayer} from '@deck.gl/mapbox';
+import {StaticMap} from 'react-map-gl';
 
-import { TileLayer2d } from '../deck-layers/tile-layer-2d';
+import {TileLayer2d} from '../deck-layers/tile-layer-2d';
 
 import mapStyle from './style.json';
 import '../../css/mapbox-gl.css';
@@ -14,8 +14,8 @@ export default class Map extends React.Component {
   };
 
   // DeckGL and mapbox will both draw into this WebGL context
-  _onWebGLInitialized = gl => {
-    this.setState({ gl });
+  _onWebGLInitialized = (gl) => {
+    this.setState({gl});
   };
 
   _onMapLoad = () => {
@@ -23,15 +23,12 @@ export default class Map extends React.Component {
     const deck = this._deck;
 
     // This id has to match the id of the Deck layer
-    map.addLayer(
-      new MapboxLayer({ id: 'tile-layer-2d', deck }),
-      'aeroway_fill'
-    );
+    map.addLayer(new MapboxLayer({id: 'tile-layer-2d', deck}), 'aeroway_fill');
   };
 
   render() {
-    const { gl } = this.state;
-    const { onViewStateChange, onDragEnd, viewState } = this.props;
+    const {gl} = this.state;
+    const {onViewStateChange, onDragEnd, viewState} = this.props;
 
     const layers = new TileLayer2d({
       id: 'tile-layer-2d',
@@ -42,7 +39,7 @@ export default class Map extends React.Component {
 
     return (
       <DeckGL
-        ref={ref => {
+        ref={(ref) => {
           this._deck = ref && ref.deck;
         }}
         layers={layers}
@@ -60,7 +57,7 @@ export default class Map extends React.Component {
       >
         {gl && (
           <StaticMap
-            ref={ref => {
+            ref={(ref) => {
               this._map = ref && ref.getMap();
             }}
             gl={gl}

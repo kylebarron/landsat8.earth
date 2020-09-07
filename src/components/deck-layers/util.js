@@ -1,4 +1,4 @@
-import { Matrix4 } from 'math.gl';
+import {Matrix4} from 'math.gl';
 
 // From https://github.com/uber/deck.gl/blob/b1901b11cbdcb82b317e1579ff236d1ca1d03ea7/modules/geo-layers/src/mvt-tile-layer/mvt-tile-layer.js#L41-L52
 export function getMercatorModelMatrix(tile) {

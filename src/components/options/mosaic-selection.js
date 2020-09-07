@@ -1,11 +1,11 @@
 import React from 'react';
-import { Select } from 'semantic-ui-react';
+import {Select} from 'semantic-ui-react';
 
 import LANDSAT_MOSAICS from '../constants/landsat_mosaics.json';
 import NAIP_MOSAICS from '../constants/naip_mosaics.json';
 
 export default function MosaicSelection(props) {
-  const { landsatMosaicId, naipMosaicId, useNaip, onChange } = props;
+  const {landsatMosaicId, naipMosaicId, useNaip, onChange} = props;
 
   return (
     <div>
@@ -15,9 +15,7 @@ export default function MosaicSelection(props) {
       <Select
         value={landsatMosaicId}
         options={Object.values(LANDSAT_MOSAICS)}
-        onChange={(event, object) =>
-          onChange({ landsatMosaicId: object.value })
-        }
+        onChange={(event, object) => onChange({landsatMosaicId: object.value})}
       />
 
       {/* Todo: don't show unless also at a zoom where NAIP is visible */}
@@ -27,9 +25,7 @@ export default function MosaicSelection(props) {
           <Select
             value={naipMosaicId}
             options={Object.values(NAIP_MOSAICS)}
-            onChange={(event, object) =>
-              onChange({ naipMosaicId: object.value })
-            }
+            onChange={(event, object) => onChange({naipMosaicId: object.value})}
           />
         </div>
       )}

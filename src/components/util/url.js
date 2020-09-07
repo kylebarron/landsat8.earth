@@ -7,7 +7,7 @@ export const DEFAULT_LANDSAT_MOSAIC_ID = 'autoUpdateCloudless';
 export const DEFAULT_NAIP_MOSAIC_ID = '2016-2018';
 
 export function getImageUrl(options) {
-  const { z, useNaip = false } = options || {};
+  const {z, useNaip = false} = options || {};
 
   if (z < 7) {
     return getModisUrls(options);
@@ -21,7 +21,7 @@ export function getImageUrl(options) {
   return getNaipUrl(options);
 }
 
-const getScale = tileSize => (tileSize === 512 ? '@2x' : '');
+const getScale = (tileSize) => (tileSize === 512 ? '@2x' : '');
 
 /**
  * Get color operations string for landsat bands
@@ -105,10 +105,7 @@ export function getNaipUrl(options) {
 
   // If x, y, z are passsed fill them into url template
   if (x && y && z) {
-    baseUrl = baseUrl
-      .replace('{x}', x)
-      .replace('{y}', y)
-      .replace('{z}', z);
+    baseUrl = baseUrl.replace('{x}', x).replace('{y}', y).replace('{z}', z);
   }
   return baseUrl + params.toString();
 }
@@ -118,7 +115,7 @@ export function getNaipUrl(options) {
  * @param {object} options {modisDateStr: str}
  */
 export function getModisUrls(options) {
-  const { x = null, y = null, z = null, modisDateStr = '2018-06-01' } =
+  const {x = null, y = null, z = null, modisDateStr = '2018-06-01'} =
     options || {};
 
   // From https://github.com/nasa-gibs/gibs-web-examples/blob/8cd157424abd98d0b3463b457579eb0e62e1cdd2/examples/mapbox-gl/webmercator-epsg3857.js#L22-L24
@@ -129,10 +126,7 @@ export function getModisUrls(options) {
 
   // If x, y, z are passsed fill them into url template
   if (x && y && z) {
-    tilePath = tilePath
-      .replace('{x}', x)
-      .replace('{y}', y)
-      .replace('{z}', z);
+    tilePath = tilePath.replace('{x}', x).replace('{y}', y).replace('{z}', z);
   }
 
   return [

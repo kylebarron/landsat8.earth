@@ -1,7 +1,7 @@
 // Use copied code from deck.gl master until 8.3 release
 // import { TileLayer } from '@deck.gl/geo-layers';
-import { RasterLayer } from '@kylebarron/deck.gl-raster';
-import { loadImages } from '../util/image';
+import {RasterLayer} from '@kylebarron/deck.gl-raster';
+import {loadImages} from '../util/image';
 
 import TileLayer from './tile-layer/tile-layer';
 
@@ -22,7 +22,7 @@ export function TileLayer2d(props) {
     minZoom: 0,
     maxZoom,
     tileSize,
-    getTileData: args => getTileData(Object.assign(args, props)),
+    getTileData: (args) => getTileData(Object.assign(args, props)),
     renderSubLayers,
     maxRequests: 10,
     updateTriggers: {
@@ -44,15 +44,15 @@ async function getTileData(options) {
 
 function renderSubLayers(props) {
   const {
-    bbox: { west, south, east, north },
+    bbox: {west, south, east, north},
   } = props.tile;
-  const { data } = props;
+  const {data} = props;
 
   if (!data) {
     return null;
   }
 
-  const { modules, images, ...moduleProps } = data;
+  const {modules, images, ...moduleProps} = data;
 
   return new RasterLayer(props, {
     modules,

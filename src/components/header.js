@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { Styled, jsx } from "theme-ui"
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import {Styled, jsx} from 'theme-ui';
+import {Link} from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-const Header = ({ siteTitle }) => (
+const Header = ({siteTitle}) => (
   <Styled.div
     as="header"
     sx={{
@@ -20,7 +20,7 @@ const Header = ({ siteTitle }) => (
         px: 3,
       }}
     >
-      <Styled.h1 sx={{ margin: 0 }}>
+      <Styled.h1 sx={{margin: 0}}>
         <Link
           to="/"
           sx={{
@@ -33,14 +33,14 @@ const Header = ({ siteTitle }) => (
       </Styled.h1>
     </div>
   </Styled.div>
-)
+);
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Header.defaultProps = {
   siteTitle: ``,
-}
+};
 
-export default Header
+export default Header;

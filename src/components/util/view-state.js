@@ -18,7 +18,7 @@ export function getViewStateFromHash(hash) {
     .map(Number);
 
   // Remove non-numeric values
-  hashArray = hashArray.map(val => (Number.isFinite(val) && val) || null);
+  hashArray = hashArray.map((val) => (Number.isFinite(val) && val) || null);
 
   // Order of arguments:
   // https://docs.mapbox.com/mapbox-gl-js/api/
@@ -34,14 +34,14 @@ export function getViewStateFromHash(hash) {
   // Delete null keys
   // https://stackoverflow.com/a/38340730
   Object.keys(viewState).forEach(
-    key => viewState[key] == null && delete viewState[key]
+    (key) => viewState[key] == null && delete viewState[key]
   );
 
   return viewState;
 }
 
 function getHashFromViewState(viewState) {
-  const { zoom, latitude, longitude, bearing, pitch } = viewState;
+  const {zoom, latitude, longitude, bearing, pitch} = viewState;
   const parts = [zoom.toFixed(2), latitude.toFixed(4), longitude.toFixed(4)];
 
   if (bearing) {
@@ -68,7 +68,7 @@ export function setQueryParams(newParams = {}) {
   }
 
   const existingParams = getQueryParams();
-  const params = { ...existingParams, ...newParams };
+  const params = {...existingParams, ...newParams};
 
   const qs = queryString.stringify(params, {
     arrayFormat: 'comma',
@@ -87,7 +87,7 @@ export function getQueryParams() {
   const parsed = queryString.parse(location.search, {
     arrayFormat: 'comma',
     parseNumbers: true,
-    parseBooleans: true
+    parseBooleans: true,
   });
   return parsed;
 }

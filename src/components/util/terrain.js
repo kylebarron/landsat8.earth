@@ -1,5 +1,5 @@
 export function getTerrainUrl(opts) {
-  const { x, y, z, mosaicUrl = 'terrarium', meshMultiplier } = opts;
+  const {x, y, z, mosaicUrl = 'terrarium', meshMultiplier} = opts;
   const meshMaxError =
     opts.meshMaxError || getMeshMaxError(z, meshMultiplier).toFixed(2);
   const params = {

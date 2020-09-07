@@ -1,13 +1,14 @@
 import React from 'react';
-import { Select, Grid, Header } from 'semantic-ui-react';
+import {Select, Grid, Header, Icon, Popup} from 'semantic-ui-react';
+
 import bandChoices from '../constants/band_choices.json';
 import bandPresets from '../constants/band_presets.json';
 import bandCombinations from '../constants/band_combinations.json';
 import ColormapSelection from './colormap';
-import { arrayToProps } from '../util/util';
+import {arrayToProps} from '../util/util';
 
 function SingleBandSelector(props) {
-  const { i, landsatBands, onChange } = props;
+  const {i, landsatBands, onChange} = props;
   return (
     <Select
       value={landsatBands[i] || 1}
@@ -17,7 +18,7 @@ function SingleBandSelector(props) {
         // bandPresets
         const newLandsatBands = landsatBands.slice();
         newLandsatBands[i] = object.value;
-        onChange({ landsatBands: newLandsatBands, landsatBandPreset: null });
+        onChange({landsatBands: newLandsatBands, landsatBandPreset: null});
       }}
     />
   );
@@ -66,7 +67,7 @@ export default function BandSelection(props) {
 }
 
 function BandPresetSelection(props) {
-  const { landsatBandPreset, onChange } = props;
+  const {landsatBandPreset, onChange} = props;
 
   return (
     <div>
@@ -78,7 +79,7 @@ function BandPresetSelection(props) {
         onChange={(event, object) => {
           const newLandsatBandPreset = object.value;
           const presetData = bandPresets[newLandsatBandPreset];
-          const { landsatBands, bandCombination } = presetData;
+          const {landsatBands, bandCombination} = presetData;
           onChange({
             landsatBandPreset: newLandsatBandPreset,
             landsatBands,
@@ -91,12 +92,12 @@ function BandPresetSelection(props) {
 }
 
 function BandChoice(props) {
-  const { nBands, landsatBands, onChange } = props;
+  const {nBands, landsatBands, onChange} = props;
 
   return (
     <Grid>
       <Grid.Column>
-        {[...Array(nBands).keys()].map(i => (
+        {[...Array(nBands).keys()].map((i) => (
           <Grid.Row key={i}>
             <SingleBandSelector
               landsatBands={landsatBands}
@@ -111,7 +112,7 @@ function BandChoice(props) {
 }
 
 function BandCombinationSelection(props) {
-  const { landsatBandCombination, onChange } = props;
+  const {landsatBandCombination, onChange} = props;
 
   return (
     <Select

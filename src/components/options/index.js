@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Accordion, Icon, Message } from 'semantic-ui-react';
+import {Header, Accordion, Icon, Message} from 'semantic-ui-react';
 import BandSelection from './band-selection';
 import MosaicSelection from './mosaic-selection';
 import DimensionSelection from './dimension-selection';
@@ -17,15 +17,15 @@ export default class Options extends React.Component {
     activeIndex: -1,
   };
   handleClick = (e, titleProps) => {
-    const { index } = titleProps;
-    const { activeIndex } = this.state;
+    const {index} = titleProps;
+    const {activeIndex} = this.state;
     const newIndex = activeIndex === index ? -1 : index;
 
-    this.setState({ activeIndex: newIndex });
+    this.setState({activeIndex: newIndex});
   };
 
   render() {
-    const { activeIndex } = this.state;
+    const {activeIndex} = this.state;
     const {
       landsatMosaicId,
       naipMosaicId,
@@ -58,7 +58,7 @@ export default class Options extends React.Component {
       >
         <Header as="h2">Landsat8.earth</Header>
         <Header as="h3">Map Options</Header>
-        
+
         <DimensionSelection map3d={map3d} onChange={onChange} />
         {map3d && <Experimental3dWarning />}
 

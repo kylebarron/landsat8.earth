@@ -1,6 +1,6 @@
-import { ImageLoader } from '@loaders.gl/images';
-import { parse } from '@loaders.gl/core';
-import { Texture2D } from '@luma.gl/core';
+import {ImageLoader} from '@loaders.gl/images';
+import {parse} from '@loaders.gl/core';
+import {Texture2D} from '@luma.gl/core';
 import GL from '@luma.gl/constants';
 
 // WIP: Intended to work with 16 bit textures, but doesn't currently work
@@ -8,13 +8,13 @@ import GL from '@luma.gl/constants';
 export async function bytesToTextures(
   gl,
   urls,
-  { ArrayType = Uint8Array, scale = 1 }
+  {ArrayType = Uint8Array, scale = 1}
 ) {
   const tileSize = scale * 256;
   const arrays = await Promise.all(
-    urls.map(url => fetch(url).then(res => res.arrayBuffer()))
+    urls.map((url) => fetch(url).then((res) => res.arrayBuffer()))
   );
-  const textures = arrays.map(array => {
+  const textures = arrays.map((array) => {
     const data = new ArrayType(array);
     return new Texture2D(gl, {
       data,
@@ -32,7 +32,7 @@ export async function bytesToTextures(
 }
 
 export async function loadRgbImage(url, {signal}) {
-  const { image, assets } = await loadImageUrl(url, {signal}) || {};
+  const {image, assets} = (await loadImageUrl(url, {signal})) || {};
   if (!image) {
     return null;
   }
@@ -41,11 +41,11 @@ export async function loadRgbImage(url, {signal}) {
     data: image,
     format: GL.RGB,
   };
-  return { imageData, assets };
+  return {imageData, assets};
 }
 
 export async function loadSingleBandImage(url, {signal}) {
-  const { image, assets } = await loadImageUrl(url, { signal }) || {};
+  const {image, assets} = (await loadImageUrl(url, {signal})) || {};
   if (!image) {
     return null;
   }
@@ -63,7 +63,7 @@ export async function loadSingleBandImage(url, {signal}) {
 async function loadImageUrl(url, {signal}) {
   let res;
   try {
-    res = await fetch(url, { signal });
+    res = await fetch(url, {signal});
   } catch (error) {
     console.warn(error);
     return null;
