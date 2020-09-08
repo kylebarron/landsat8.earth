@@ -3,6 +3,7 @@ import {Accordion, Message} from 'semantic-ui-react';
 import BandSelection from './band-selection';
 import MosaicSelection from './mosaic-selection';
 import DimensionSelection from './dimension-selection';
+import AboutPanel from './about';
 
 const Warnings = (props) => {
   const {modisWarning, map3dWarning} = props;
@@ -113,6 +114,13 @@ function OptionsBody(props) {
             onChange={onChange}
           />
         ),
+      },
+    },
+    {
+      key: 'about',
+      title: 'About the Project',
+      content: {
+        content: <AboutPanel />,
       },
     },
   ];
