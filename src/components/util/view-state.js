@@ -67,7 +67,7 @@ function _setHashFromViewState(viewState) {
 // to reduce the call frequency
 export const setHashFromViewState = debounce(
   (viewState) => _setHashFromViewState(viewState),
-  1000
+  500
 );
 
 /* eslint-disable no-restricted-globals */
