@@ -5,7 +5,7 @@
     "value": "ndvi",
     "landsatBands": [5, 4],
     "bandCombination": "normalizedDifference",
-    "desc": "Red, green, and blue light as our eyes see them.",
+    "desc": "From USGS: \"NDVI is used to quantify vegetation greenness and is useful in understanding vegetation density and assessing changes in plant health.\"",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/ndvi.jpg"
@@ -17,7 +17,7 @@
     "value": "enhancedVegetationIndex",
     "landsatBands": [5, 4, 2],
     "bandCombination": "enhancedVegetationIndex",
-    "desc": "Red, green, and blue light as our eyes see them.",
+    "desc": "Another vegetation index; from USGS: \"EVI corrects for some atmospheric conditions and canopy background noise and is more sensitive in areas with dense vegetation.\"",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/enhanced_vegetation_index.jpg"
@@ -29,7 +29,7 @@
     "value": "savi",
     "landsatBands": [5, 4],
     "bandCombination": "soilAdjustedVegetationIndex",
-    "desc": "Red, green, and blue light as our eyes see them.",
+    "desc": "From USGS: \"SAVI is used to correct Normalized Difference Vegetation Index (NDVI) for the influence of soil brightness in areas where vegetative cover is low.\"",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/soil_adjusted_vegetation_index.jpg"
@@ -41,7 +41,7 @@
     "value": "msavi",
     "landsatBands": [5, 4],
     "bandCombination": "modifiedSoilAdjustedVegetationIndex",
-    "desc": "Red, green, and blue light as our eyes see them.",
+    "desc": "From USGS: \"MSAVI minimizes the effect of bare soil on the Soil Adjusted Vegetation Index (SAVI).\"",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/modified_soil_adjusted_vegetation_index.jpg"
@@ -53,7 +53,7 @@
     "value": "ndmi",
     "landsatBands": [5, 6],
     "bandCombination": "normalizedDifference",
-    "desc": "Red, green, and blue light as our eyes see them.",
+    "desc": "From USGS: \"NDMI is used to determine vegetation water content.\"",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/normalized_difference_moisture_index.jpg"
@@ -64,8 +64,8 @@
     "text": "Normalized Burn Ratio",
     "value": "nbr",
     "landsatBands": [5, 7],
-    "bandCombination": "normalizedDifference",
-    "desc": "Red, green, and blue light as our eyes see them.",
+    "bandCombination": "normalizedDifference",    
+    "desc": "From USGS: \"NBR is used to identify burned areas and provide a measure of burn severity.\"",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/normalized_burn_ratio.jpg"
@@ -77,7 +77,7 @@
     "value": "nbr2",
     "landsatBands": [6, 7],
     "bandCombination": "normalizedDifference",
-    "desc": "Red, green, and blue light as our eyes see them.",
+    "desc": "From USGS: \"NBR2 modifies the Normalized Burn Ratio (NBR) to highlight water sensitivity in vegetation and may be useful in post-fire recovery studies.\"",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/normalized_burn_ratio2.jpg"

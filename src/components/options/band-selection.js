@@ -105,7 +105,7 @@ function BandPresetSelection(props) {
   const presetData = isRgbComposite
     ? rgbBandPresets[landsatBandPreset]
     : spectralBandPresets[landsatBandPreset];
-  const desc = presetData && presetData.desc;
+  const {desc, text} = presetData;
 
   return (
     <div>
@@ -144,6 +144,7 @@ function BandPresetSelection(props) {
       {desc && (
         <div>
           <br />
+          <b>{text}:</b>
           <p>{desc}</p>
         </div>
       )}
