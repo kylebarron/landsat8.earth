@@ -31,7 +31,11 @@ export default function Options(props) {
       content: {
         content: (
           <div>
-            <DimensionSelection map3d={map3d} onChange={onChange} />
+            <DimensionSelection
+              map3d={map3d}
+              onChange={onChange}
+              viewState={viewState}
+            />
             <Warnings modisWarning={zoom < 6.5} map3dWarning={map3d} />
             <OptionsBody {...props} />
           </div>
