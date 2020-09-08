@@ -76,41 +76,42 @@ class IndexPage extends React.Component {
 
         {map3d ? (
           <Map3d
-            viewState={viewState}
-            onViewStateChange={this.onViewStateChange}
-            useNaip={useNaip}
-            naipMosaicId={naipMosaicId}
-            landsatMosaicId={landsatMosaicId}
+            landsatBandCombination={landsatBandCombination}
             landsatBands={landsatBands}
             landsatColormapName={landsatColormapName}
-            landsatBandCombination={landsatBandCombination}
+            landsatMosaicId={landsatMosaicId}
+            naipMosaicId={naipMosaicId}
+            onViewStateChange={this.onViewStateChange}
+            useNaip={useNaip}
+            viewState={viewState}
           />
         ) : (
           <Map2d
-            viewState={viewState}
-            onViewStateChange={this.onViewStateChange}
-            useNaip={useNaip}
-            landsatMosaicId={landsatMosaicId}
-            naipMosaicId={naipMosaicId}
+            landsatBandCombination={landsatBandCombination}
             landsatBands={landsatBands}
             landsatColormapName={landsatColormapName}
-            landsatBandCombination={landsatBandCombination}
+            landsatMosaicId={landsatMosaicId}
+            naipMosaicId={naipMosaicId}
+            onViewStateChange={this.onViewStateChange}
+            useNaip={useNaip}
+            viewState={viewState}
           />
         )}
 
         <Options
-          landsatBands={landsatBands}
-          landsatBandPreset={landsatBandPreset}
           landsatBandCombination={landsatBandCombination}
-          landsatMosaicId={landsatMosaicId}
-          naipMosaicId={naipMosaicId}
+          landsatBandPreset={landsatBandPreset}
+          landsatBands={landsatBands}
           landsatColormapName={landsatColormapName}
-          useNaip={useNaip}
+          landsatMosaicId={landsatMosaicId}
+          map3d={map3d}
+          naipMosaicId={naipMosaicId}
           onChange={(value) => {
             this.setState(value);
             setQueryParams(value);
           }}
-          map3d={map3d}
+          useNaip={useNaip}
+          viewState={viewState}
         />
         <AttributionDiv
           showLandsat={zoom >= 6.5}

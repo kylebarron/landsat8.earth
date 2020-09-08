@@ -4,16 +4,23 @@ import BandSelection from './band-selection';
 import MosaicSelection from './mosaic-selection';
 import DimensionSelection from './dimension-selection';
 
-const Experimental3dWarning = () => (
-  <Message size="small" warning compact>
-    <Message.Content>
-      <p>3D terrain rendering is experimental</p>
-    </Message.Content>
-  </Message>
-);
+const Warnings = (props) => {
+  const {modisWarning, map3dWarning} = props;
+  if (!modisWarning && !map3dWarning) {
+    return null;
+  }
+
+  return (
+    <Message size="small" warning compact>
+      {modisWarning && <p>Static MODIS imagery is used at low zooms</p>}
+      {map3dWarning && <p>3D terrain rendering is experimental</p>}
+    </Message>
+  );
+};
 
 export default function Options(props) {
-  const {onChange, map3d} = props;
+  const {onChange, map3d, viewState} = props;
+  const {zoom} = viewState;
 
   const panels = [
     {
@@ -25,7 +32,7 @@ export default function Options(props) {
         content: (
           <div>
             <DimensionSelection map3d={map3d} onChange={onChange} />
-            {map3d && <Experimental3dWarning />}
+            <Warnings modisWarning={zoom < 6.5} map3dWarning={map3d} />
             <OptionsBody {...props} />
           </div>
         ),
