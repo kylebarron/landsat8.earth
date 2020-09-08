@@ -29,7 +29,7 @@ export default function AttributionDiv(props) {
           target="_blank"
           rel="noreferrer"
         >
-          © USGS/NASA Landsat{' '}
+          © USGS/NASA{' '}
         </a>
       )}
       {showModis && (

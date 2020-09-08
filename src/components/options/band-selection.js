@@ -2,7 +2,8 @@ import React from 'react';
 import {Select, Grid, Header, Icon, Popup} from 'semantic-ui-react';
 
 import bandChoices from '../constants/band_choices.json';
-import bandPresets from '../constants/band_presets.json';
+import rgbBandPresets from '../constants/rgb_band_presets.json';
+import spectralBandPresets from '../constants/spectral_index_band_presets.json';
 import bandCombinations from '../constants/band_combinations.json';
 import ColormapSelection from './colormap';
 import {arrayToProps} from '../util/util';
@@ -72,13 +73,31 @@ function BandPresetSelection(props) {
   return (
     <div>
       <Select
-        placeholder="Choose a Preset"
-        value={landsatBandPreset}
-        options={arrayToProps(Object.values(bandPresets))}
+        placeholder="RGB Composites"
+        value={landsatBandPreset in rgbBandPresets ? landsatBandPreset : null}
+        options={arrayToProps(Object.values(rgbBandPresets))}
         fluid
         onChange={(event, object) => {
           const newLandsatBandPreset = object.value;
-          const presetData = bandPresets[newLandsatBandPreset];
+          const presetData = rgbBandPresets[newLandsatBandPreset];
+          const {landsatBands, bandCombination} = presetData;
+          onChange({
+            landsatBandPreset: newLandsatBandPreset,
+            landsatBands,
+            landsatBandCombination: bandCombination,
+          });
+        }}
+      />
+      <Select
+        placeholder="Spectral Indices"
+        value={
+          landsatBandPreset in spectralBandPresets ? landsatBandPreset : null
+        }
+        options={arrayToProps(Object.values(spectralBandPresets))}
+        fluid
+        onChange={(event, object) => {
+          const newLandsatBandPreset = object.value;
+          const presetData = spectralBandPresets[newLandsatBandPreset];
           const {landsatBands, bandCombination} = presetData;
           onChange({
             landsatBandPreset: newLandsatBandPreset,
