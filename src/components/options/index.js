@@ -53,7 +53,8 @@ export default function Options(props) {
         zIndex: 1,
         pointerEvents: 'auto',
         overflowY: 'auto',
-        // overflow: 'visible',
+        // Needs to be visible so that dropdown is visible outside div
+        overflow: 'visible',
       }}
     >
       <Accordion
