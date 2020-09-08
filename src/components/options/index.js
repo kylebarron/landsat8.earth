@@ -50,7 +50,7 @@ export default function Options(props) {
       }}
     >
       <Accordion
-        defaultActiveIndex={1}
+        defaultActiveIndex={0}
         styled
         panels={panels}
         style={{
