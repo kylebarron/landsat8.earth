@@ -3,6 +3,7 @@ import React from 'react';
 import {Map2d, Map3d} from '../components/map/index';
 import SEO from '../components/seo';
 import Options from '../components/options';
+import AttributionDiv from '../components/attribution';
 import {
   DEFAULT_NAIP_MOSAIC_ID,
   DEFAULT_LANDSAT_MOSAIC_ID,
@@ -67,10 +68,11 @@ class IndexPage extends React.Component {
       useNaip,
       viewState,
     } = this.state;
+    const {zoom} = viewState;
 
     return (
       <div>
-        <SEO title="Home" />
+        <SEO title="Landsat8.earth" />
 
         {map3d ? (
           <Map3d
@@ -109,6 +111,11 @@ class IndexPage extends React.Component {
             setQueryParams(value);
           }}
           map3d={map3d}
+        />
+        <AttributionDiv
+          showLandsat={zoom >= 6.5}
+          showNaip={useNaip && zoom >= 12}
+          showModis={zoom < 6.5}
         />
       </div>
     );
