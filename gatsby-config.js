@@ -2,7 +2,10 @@ module.exports = {
   siteMetadata: {
     title: `Landsat8.earth`,
     description: `2D/3D WebGL-powered Landsat 8 satellite imagery analysis`,
-    author: `@kylebarron`,
+    // Twitter username
+    author: `@kylebarron2`,
+    siteUrl: `https://landsat8.earth`,
+    image: `/share-preview-rainier-fire-burn.jpg`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
