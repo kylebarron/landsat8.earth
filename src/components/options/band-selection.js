@@ -1,5 +1,13 @@
 import React from 'react';
-import {Select, Grid, Header, Icon, Popup} from 'semantic-ui-react';
+import {
+  Divider,
+  Message,
+  Select,
+  Grid,
+  Header,
+  Icon,
+  Popup,
+} from 'semantic-ui-react';
 
 import bandChoices from '../constants/band_choices.json';
 import rgbBandPresets from '../constants/rgb_band_presets.json';
@@ -7,6 +15,13 @@ import spectralBandPresets from '../constants/spectral_index_band_presets.json';
 import bandCombinations from '../constants/band_combinations.json';
 import ColormapSelection from './colormap';
 import {arrayToProps} from '../util/util';
+
+const BandInterpretationPopup = () => (
+  <Popup
+    content="The manner in which individual bands are combined."
+    trigger={<Icon name="question circle" />}
+  />
+);
 
 function SingleBandSelector(props) {
   const {i, landsatBands, onChange} = props;
@@ -41,13 +56,26 @@ export default function BandSelection(props) {
         landsatBandPreset={landsatBandPreset}
         onChange={onChange}
       />
-      <Header as="h5">Band Choice</Header>
+      <Divider />
+      <Message size="tiny" warning compact>
+        <Message.Header>Advanced</Message.Header>
+        <p>
+          Settings can be further customized below, but for most cases use the
+          above presets.
+        </p>
+      </Message>
+
+      <b>Band Choice</b>
       <BandChoice
         nBands={bandCombinations[landsatBandCombination].nBands}
         landsatBands={landsatBands}
         onChange={onChange}
       />
-      <Header as="h5">Band Interpretation</Header>
+
+      <br />
+      <b>Band Interpretation</b>
+      {/* <BandInterpretationPopup /> */}
+
       <BandCombinationSelection
         landsatBandCombination={landsatBandCombination}
         onChange={onChange}
