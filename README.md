@@ -25,3 +25,8 @@ mosaic, allowing for the option of viewing the latest available imagery.
 [landsat-mosaic-tiler]: https://github.com/kylebarron/landsat-mosaic-tiler
 [landsat-cogeo-mosaic]: https://github.com/kylebarron/landsat-cogeo-mosaic
 [landsat-mosaic-latest]: https://github.com/kylebarron/landsat-mosaic-latest
+
+
+### Credits
+
+<div>Icon used as website favicon made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

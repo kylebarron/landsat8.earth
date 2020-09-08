@@ -73,6 +73,8 @@ class IndexPage extends React.Component {
 
     return (
       <div>
+        <SEO title="Home" />
+
         {map3d ? (
           <Map3d
             viewState={viewState}
