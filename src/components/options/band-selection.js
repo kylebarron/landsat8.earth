@@ -99,12 +99,19 @@ export default function BandSelection(props) {
 
 function BandPresetSelection(props) {
   const {landsatBandPreset, onChange} = props;
+  // Either true: is an RGB false-color composite or
+  // false: is a spectral index
+  const isRgbComposite = landsatBandPreset in rgbBandPresets;
+  const presetData = isRgbComposite
+    ? rgbBandPresets[landsatBandPreset]
+    : spectralBandPresets[landsatBandPreset];
+  const desc = presetData && presetData.desc;
 
   return (
     <div>
       <Select
         placeholder="RGB Composites"
-        value={landsatBandPreset in rgbBandPresets ? landsatBandPreset : null}
+        value={isRgbComposite ? landsatBandPreset : null}
         options={arrayToProps(Object.values(rgbBandPresets))}
         fluid
         onChange={(event, object) => {
@@ -120,9 +127,7 @@ function BandPresetSelection(props) {
       />
       <Select
         placeholder="Spectral Indices"
-        value={
-          landsatBandPreset in spectralBandPresets ? landsatBandPreset : null
-        }
+        value={!isRgbComposite ? landsatBandPreset : null}
         options={arrayToProps(Object.values(spectralBandPresets))}
         fluid
         onChange={(event, object) => {
@@ -136,6 +141,12 @@ function BandPresetSelection(props) {
           });
         }}
       />
+      {desc && (
+        <div>
+          <br />
+          <p>{desc}</p>
+        </div>
+      )}
     </div>
   );
 }
