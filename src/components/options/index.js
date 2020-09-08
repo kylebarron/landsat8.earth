@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Accordion, Icon, Message} from 'semantic-ui-react';
+import {Accordion, Message} from 'semantic-ui-react';
 import BandSelection from './band-selection';
 import MosaicSelection from './mosaic-selection';
 import DimensionSelection from './dimension-selection';
@@ -12,93 +12,107 @@ const Experimental3dWarning = () => (
   </Message>
 );
 
-export default class Options extends React.Component {
-  state = {
-    activeIndex: -1,
-  };
-  handleClick = (e, titleProps) => {
-    const {index} = titleProps;
-    const {activeIndex} = this.state;
-    const newIndex = activeIndex === index ? -1 : index;
+export default function Options(props) {
+  const {onChange, map3d} = props;
 
-    this.setState({activeIndex: newIndex});
-  };
+  const panels = [
+    {
+      key: 'top-level-panel',
+      title: {
+        content: <b style={{fontSize: '20px'}}>Landsat8.earth</b>,
+      },
+      content: {
+        content: (
+          <div>
+            <DimensionSelection map3d={map3d} onChange={onChange} />
+            {map3d && <Experimental3dWarning />}
+            <OptionsBody {...props} />
+          </div>
+        ),
+      },
+    },
+  ];
 
-  render() {
-    const {activeIndex} = this.state;
-    const {
-      landsatMosaicId,
-      naipMosaicId,
-      useNaip,
-      landsatBands,
-      landsatColormapName,
-      landsatBandCombination,
-      landsatBandPreset,
-      onChange,
-      map3d,
-    } = this.props;
-
-    return (
-      <div
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        width: 400,
+        maxWidth: '95%',
+        left: '1%',
+        top: '1%',
+        padding: 15,
+        maxHeight: '70%',
+        zIndex: 1,
+        pointerEvents: 'auto',
+        overflowY: 'auto',
+        // overflow: 'visible',
+      }}
+    >
+      <Accordion
+        defaultActiveIndex={1}
+        styled
+        panels={panels}
         style={{
-          position: 'absolute',
-          width: 300,
-          maxWidth: 400,
-          left: 5,
-          top: 5,
-          padding: 5,
-          height: '100%',
-          // maxHeight: '70%',
-          zIndex: 1,
-          backgroundColor: '#fff',
-          pointerEvents: 'auto',
-          overflowY: 'auto',
-          // overflow: 'visible',
+          backgroundColor: '#e9f2eb',
         }}
-      >
-        <Header as="h2">Landsat8.earth</Header>
-        <Header as="h3">Map Options</Header>
+      />
+    </div>
+  );
+}
 
-        <DimensionSelection map3d={map3d} onChange={onChange} />
-        {map3d && <Experimental3dWarning />}
+function OptionsBody(props) {
+  const {
+    landsatMosaicId,
+    naipMosaicId,
+    useNaip,
+    landsatBands,
+    landsatColormapName,
+    landsatBandCombination,
+    landsatBandPreset,
+    onChange,
+  } = props;
 
-        <Accordion>
-          <Accordion.Title
-            active={activeIndex === 0}
-            index={0}
-            onClick={this.handleClick}
-          >
-            <Icon name="dropdown" />
-            <b>Band Selection</b>
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 0}>
-            <BandSelection
-              landsatBands={landsatBands}
-              landsatBandPreset={landsatBandPreset}
-              landsatBandCombination={landsatBandCombination}
-              landsatColormapName={landsatColormapName}
-              onChange={onChange}
-            />
-          </Accordion.Content>
+  const optionsBodyPanels = [
+    {
+      key: 'band-selection',
+      title: 'Band Selection',
+      content: {
+        content: (
+          <BandSelection
+            landsatBands={landsatBands}
+            landsatBandPreset={landsatBandPreset}
+            landsatBandCombination={landsatBandCombination}
+            landsatColormapName={landsatColormapName}
+            onChange={onChange}
+          />
+        ),
+      },
+    },
+    {
+      key: 'mosaic-selection',
+      title: 'Mosaic/Imagery Selection',
+      content: {
+        content: (
+          <MosaicSelection
+            landsatMosaicId={landsatMosaicId}
+            naipMosaicId={naipMosaicId}
+            useNaip={useNaip}
+            onChange={onChange}
+          />
+        ),
+      },
+    },
+  ];
 
-          <Accordion.Title
-            active={activeIndex === 1}
-            index={1}
-            onClick={this.handleClick}
-          >
-            <Icon name="dropdown" />
-            <b>Mosaic/Imagery Selection</b>
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 1}>
-            <MosaicSelection
-              landsatMosaicId={landsatMosaicId}
-              naipMosaicId={naipMosaicId}
-              useNaip={useNaip}
-              onChange={onChange}
-            />
-          </Accordion.Content>
-        </Accordion>
-      </div>
-    );
-  }
+  return (
+    <Accordion
+      defaultActiveIndex={-1}
+      styled
+      panels={optionsBodyPanels}
+      style={{
+        backgroundColor: '#e9f2eb',
+      }}
+    />
+  );
 }
