@@ -5,7 +5,7 @@ export default function AttributionDiv(props) {
 
   return (
     <div
-      class="mapboxgl-ctrl-attrib mapboxgl-ctrl"
+      className="mapboxgl-ctrl-attrib mapboxgl-ctrl"
       style={{
         position: 'absolute',
         right: 0,
