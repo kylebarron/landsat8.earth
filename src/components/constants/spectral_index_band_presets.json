@@ -1,7 +1,7 @@
 {
   "ndvi": {
     "key": "ndvi",
-    "text": "Normalized Difference Vegetation Index (NDVI)",
+    "text": "Normalized Difference Vegetation Index",
     "value": "ndvi",
     "landsatBands": [5, 4],
     "bandCombination": "normalizedDifference",
@@ -13,7 +13,7 @@
   },
   "enhancedVegetationIndex": {
     "key": "enhancedVegetationIndex",
-    "text": "Enhanced Vegetation Index (EVI)",
+    "text": "Enhanced Vegetation Index",
     "value": "enhancedVegetationIndex",
     "landsatBands": [5, 4, 2],
     "bandCombination": "enhancedVegetationIndex",
@@ -25,7 +25,7 @@
   },
   "savi": {
     "key": "savi",
-    "text": "Soil Adjusted Vegetation Index (SAVI)",
+    "text": "Soil Adjusted Vegetation Index",
     "value": "savi",
     "landsatBands": [5, 4],
     "bandCombination": "soilAdjustedVegetationIndex",
@@ -37,7 +37,7 @@
   },
   "msavi": {
     "key": "msavi",
-    "text": "Modified Soil Adjusted Vegetation Index (MSAVI)",
+    "text": "Modified Soil Adjusted Vegetation Index",
     "value": "msavi",
     "landsatBands": [5, 4],
     "bandCombination": "modifiedSoilAdjustedVegetationIndex",
@@ -49,7 +49,7 @@
   },
   "ndmi": {
     "key": "ndmi",
-    "text": "Normalized Difference Moisture Index (NDMI)",
+    "text": "Normalized Difference Moisture Index",
     "value": "ndmi",
     "landsatBands": [5, 6],
     "bandCombination": "normalizedDifference",
@@ -61,7 +61,7 @@
   },
   "nbr": {
     "key": "nbr",
-    "text": "Normalized Burn Ratio (NBR)",
+    "text": "Normalized Burn Ratio",
     "value": "nbr",
     "landsatBands": [5, 7],
     "bandCombination": "normalizedDifference",
@@ -73,7 +73,7 @@
   },
   "nbr2": {
     "key": "nbr2",
-    "text": "Normalized Burn Ratio 2 (NBR2)",
+    "text": "Normalized Burn Ratio 2",
     "value": "nbr2",
     "landsatBands": [6, 7],
     "bandCombination": "normalizedDifference",
