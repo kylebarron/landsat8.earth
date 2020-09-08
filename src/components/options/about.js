@@ -25,7 +25,7 @@ export default function AboutPanel(props) {
         <a href="https://deck.gl" target="_blank" rel="noreferrer">
           deck.gl
         </a>
-        ). The backend runs on AWS Lambda is powered by{' '}
+        ). The backend runs on AWS Lambda and is powered by{' '}
         <a href="https://cogeo.org" target="_blank" rel="noreferrer">
           Cloud-Optimized GeoTIFFs
         </a>
