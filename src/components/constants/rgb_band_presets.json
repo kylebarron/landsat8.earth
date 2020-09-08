@@ -5,22 +5,10 @@
     "value": "True Color",
     "landsatBands": [4, 3, 2],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them.",
+    "desc": "Red, green, and blue light as our eyes normally see them.",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/true_color.jpg"
-    }
-  },
-  "False Color Urban": {
-    "key": "False Color Urban",
-    "text": "False Color Urban",
-    "value": "False Color Urban",
-    "landsatBands": [7, 6, 4],
-    "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them.",
-    "image": {
-      "avatar": true,
-      "src": "/images/thumbnail/bands/false_color_urban.jpg"
     }
   },
   "Infrared": {
@@ -29,7 +17,7 @@
     "value": "Infrared",
     "landsatBands": [5, 4, 3],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them.",
+    "desc": "A false-color composite that displays near-infrared as red, red as green, and green as blue. Redder pixels represent greater vegetation.",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/false_color_infrared.jpg"
@@ -41,34 +29,10 @@
     "value": "Agriculture",
     "landsatBands": [6, 5, 2],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them.",
+    "desc": "A false-color composite that shows agriculture in bright green.",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/false_color_agriculture.jpg"
-    }
-  },
-  "Atmospheric Penetration": {
-    "key": "Atmospheric Penetration",
-    "text": "Atmospheric Penetration",
-    "value": "Atmospheric Penetration",
-    "landsatBands": [7, 6, 5],
-    "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them.",
-    "image": {
-      "avatar": true,
-      "src": "/images/thumbnail/bands/false_color_atmospheric_penetration.jpg"
-    }
-  },
-  "Healthy Vegetation": {
-    "key": "Healthy Vegetation",
-    "text": "Healthy Vegetation",
-    "value": "Healthy Vegetation",
-    "landsatBands": [5, 6, 2],
-    "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them.",
-    "image": {
-      "avatar": true,
-      "src": "/images/thumbnail/bands/false_color_healthy_vegetation.jpg"
     }
   },
   "Forest Burn": {
@@ -77,10 +41,43 @@
     "value": "Forest Burn",
     "landsatBands": [7, 5, 2],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them.",
+    "desc": "A false-color composite that shows wildfire burn scars in red.",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/false_color_forest_burn.jpg"
+    }
+  },
+  "Healthy Vegetation": {
+    "key": "Healthy Vegetation",
+    "text": "Healthy Vegetation",
+    "value": "Healthy Vegetation",
+    "landsatBands": [5, 6, 2],
+    "bandCombination": "rgb",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/false_color_healthy_vegetation.jpg"
+    }
+  },
+  "False Color Urban": {
+    "key": "False Color Urban",
+    "text": "False Color Urban",
+    "value": "False Color Urban",
+    "landsatBands": [7, 6, 4],
+    "bandCombination": "rgb",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/false_color_urban.jpg"
+    }
+  },
+  "Atmospheric Penetration": {
+    "key": "Atmospheric Penetration",
+    "text": "Atmospheric Penetration",
+    "value": "Atmospheric Penetration",
+    "landsatBands": [7, 6, 5],
+    "bandCombination": "rgb",
+    "image": {
+      "avatar": true,
+      "src": "/images/thumbnail/bands/false_color_atmospheric_penetration.jpg"
     }
   },
   "Land/Water": {
@@ -89,7 +86,6 @@
     "value": "Land/Water",
     "landsatBands": [5, 6, 4],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them.",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/false_color_land_water.jpg"
@@ -101,7 +97,6 @@
     "value": "Natural with Atmo Removal",
     "landsatBands": [7, 5, 3],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them.",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/false_color_natural_atmo_removal.jpg"
@@ -113,7 +108,6 @@
     "value": "Shortwave Infrared",
     "landsatBands": [7, 5, 4],
     "bandCombination": "rgb",
-    "desc": "Red, green, and blue light as our eyes see them.",
     "image": {
       "avatar": true,
       "src": "/images/thumbnail/bands/false_color_swir.jpg"
