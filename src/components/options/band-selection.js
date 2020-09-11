@@ -49,6 +49,17 @@ export default function BandSelection(props) {
     onChange,
   } = props;
 
+  // https://joshwcomeau.com/react/the-perils-of-rehydration/#the-solution
+  const [hasMounted, setHasMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
+
   return (
     <div>
       <Header as="h4">Presets</Header>
