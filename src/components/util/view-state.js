@@ -79,6 +79,12 @@ export function setQueryParams(newParams = {}) {
   const existingParams = getQueryParams();
   const params = {...existingParams, ...newParams};
 
+  // Parameters that shouldn't be serialized to the query string
+  const removeParams = ['viewState'];
+  for (const removeParam of removeParams) {
+    delete params[removeParam];
+  }
+
   const qs = queryString.stringify(params, {
     arrayFormat: 'comma',
     skipNull: true,
